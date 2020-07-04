@@ -27,7 +27,7 @@ public abstract class Event
         return playerListeners.toArray(new IPlayerEventListener[playerListeners.size()]);
     }
 
-    protected void OnMyEvent()
+    protected void NotifySubscribers()
     {
         for (int i = 0; i < playerListeners.size(); i++)
         {

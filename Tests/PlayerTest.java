@@ -47,7 +47,7 @@ class PlayerTest
             }
         };
 
-        String actual = player.getCurrentPath();
+        String actual = player.GetCurrentPath();
 
         Assert.assertEquals(expected, actual);
     }
