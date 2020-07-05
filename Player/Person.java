@@ -1,6 +1,5 @@
 package Player;
 
-import Player.Events.EventArgs;
 import Player.Role.Civilian;
 import Player.Role.Role;
 
@@ -43,15 +42,4 @@ public class Person extends Player
         return new Person(this.role.clone(), this.characters.clone());
     }
 
-    @Override
-    public void TellAStory(Scenario scenario)
-    {
-
-    }
-
-    @Override
-    public void Handle(Object sender, EventArgs e)
-    {
-
-    }
 }

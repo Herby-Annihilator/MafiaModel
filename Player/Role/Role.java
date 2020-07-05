@@ -1,8 +1,9 @@
 package Player.Role;
 
+import Player.Events.EventListenersAdapter;
 import Player.Player;
 
-public abstract class Role
+public abstract class Role extends EventListenersAdapter
 {
     protected String roleName;
 

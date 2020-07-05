@@ -1,6 +1,5 @@
 package Player;
 
-import Player.Events.IPlayerEventListener;
 import Player.Role.Role;
 
 import java.awt.*;
@@ -11,7 +10,7 @@ import java.nio.file.Path;
 import java.util.List;
 import java.util.Random;
 
-public abstract class Player implements IPlayerEventListener
+public abstract class Player //implements IPlayerEventListener
 {
     protected Role role;
     public Role GetRole()

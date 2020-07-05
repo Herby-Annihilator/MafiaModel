@@ -20,4 +20,5 @@ public class Civilian extends Role
         Civilian civilian = new Civilian();
         return civilian;
     }
+
 }

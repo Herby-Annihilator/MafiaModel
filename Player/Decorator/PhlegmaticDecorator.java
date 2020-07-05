@@ -1,6 +1,5 @@
 package Player.Decorator;
 
-import Player.Events.EventArgs;
 import Player.Person;
 import Player.Player;
 
@@ -49,11 +48,5 @@ public class PhlegmaticDecorator extends PersonDecorator
     public Player clone() throws CloneNotSupportedException
     {
         return new PhlegmaticDecorator((Person) player.clone());
-    }
-
-    @Override
-    public void Handle(Object sender, EventArgs e)
-    {
-
     }
 }

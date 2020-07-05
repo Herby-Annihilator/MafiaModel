@@ -1,6 +1,5 @@
 package Player.Decorator;
 
-import Player.Events.EventArgs;
 import Player.Person;
 import Player.Player;
 
@@ -47,9 +46,4 @@ public class SanguineDecorator extends PersonDecorator
         return new SanguineDecorator((Person) player.clone());
     }
 
-    @Override
-    public void Handle(Object sender, EventArgs e)
-    {
-
-    }
 }

@@ -1,7 +1,6 @@
 package Player.Decorator;
 
 
-import Player.Events.EventArgs;
 import Player.Person;
 import Player.Player;
 
@@ -43,11 +42,5 @@ public class FreakDecorator extends PersonDecorator
     public Player clone() throws CloneNotSupportedException
     {
         return new FreakDecorator((Person) player.clone());
-    }
-
-    @Override
-    public void Handle(Object sender, EventArgs e)
-    {
-
     }
 }

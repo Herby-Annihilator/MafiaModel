@@ -1,6 +1,5 @@
 package Player.Decorator;
 
-import Player.Events.EventArgs;
 import Player.Person;
 import Player.Player;
 
@@ -49,9 +48,4 @@ public class CholericDecorator extends PersonDecorator
         return new CholericDecorator((Person) player.clone());
     }
 
-    @Override
-    public void Handle(Object sender, EventArgs e)
-    {
-
-    }
 }
