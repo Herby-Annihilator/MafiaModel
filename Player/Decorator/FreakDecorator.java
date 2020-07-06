@@ -4,8 +4,6 @@ package Player.Decorator;
 import Player.Person;
 import Player.Player;
 
-import java.util.List;
-
 public class FreakDecorator extends PersonDecorator
 {
     public FreakDecorator(Person person)
@@ -22,18 +20,6 @@ public class FreakDecorator extends PersonDecorator
 
     @Override
     public void ExecuteRole()
-    {
-
-    }
-
-    @Override
-    public void MakeExcuses()
-    {
-
-    }
-
-    @Override
-    public void Substitute(List<Player> players)
     {
 
     }

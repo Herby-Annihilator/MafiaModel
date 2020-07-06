@@ -3,8 +3,6 @@ package Player.Decorator;
 import Player.Person;
 import Player.Player;
 
-import java.util.List;
-
 public class SanguineDecorator extends PersonDecorator
 {
     @Override
@@ -22,17 +20,6 @@ public class SanguineDecorator extends PersonDecorator
         role.Execute(this);
     }
 
-    @Override
-    public void MakeExcuses()
-    {
-
-    }
-
-    @Override
-    public void Substitute(List<Player> players)
-    {
-
-    }
 
     public SanguineDecorator(Person person)
     {

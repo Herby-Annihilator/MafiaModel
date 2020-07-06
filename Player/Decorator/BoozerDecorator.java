@@ -3,8 +3,6 @@ package Player.Decorator;
 import Player.Person;
 import Player.Player;
 
-import java.util.List;
-
 public class BoozerDecorator extends PersonDecorator
 {
     public BoozerDecorator(Person person)
@@ -24,20 +22,9 @@ public class BoozerDecorator extends PersonDecorator
     @Override
     public void ExecuteRole()
     {
-
+        player.ExecuteRole();
     }
 
-    @Override
-    public void MakeExcuses()
-    {
-
-    }
-
-    @Override
-    public void Substitute(List<Player> players)
-    {
-
-    }
 
     @Override
     public Player clone() throws CloneNotSupportedException

@@ -3,8 +3,6 @@ package Player.Decorator;
 import Player.Person;
 import Player.Player;
 
-import java.util.List;
-
 public class PhlegmaticDecorator extends PersonDecorator
 {
     public PhlegmaticDecorator(Person person)
@@ -28,18 +26,6 @@ public class PhlegmaticDecorator extends PersonDecorator
 
     @Override
     public void ExecuteRole()
-    {
-
-    }
-
-    @Override
-    public void MakeExcuses()
-    {
-
-    }
-
-    @Override
-    public void Substitute(List<Player> players)
     {
 
     }

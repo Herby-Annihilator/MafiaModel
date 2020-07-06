@@ -3,8 +3,6 @@ package Player.Decorator;
 import Player.Person;
 import Player.Player;
 
-import java.util.List;
-
 public class FanDecorator extends PersonDecorator
 {
     public FanDecorator(Person person)
@@ -21,18 +19,6 @@ public class FanDecorator extends PersonDecorator
 
     @Override
     public void ExecuteRole()
-    {
-
-    }
-
-    @Override
-    public void MakeExcuses()
-    {
-
-    }
-
-    @Override
-    public void Substitute(List<Player> players)
     {
 
     }

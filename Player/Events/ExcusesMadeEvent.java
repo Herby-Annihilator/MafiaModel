@@ -9,7 +9,7 @@ public class ExcusesMadeEvent extends Event
         playerListeners = new ArrayList<IPlayerEventListener>();
     }
     @Override
-    public void NotifySubscribers(Object sender, EventArgs e)
+    public void NotifySubscribers(Object sender, DefaultEventArgs e)
     {
         for (int i = 0; i < playerListeners.size(); i++)
         {

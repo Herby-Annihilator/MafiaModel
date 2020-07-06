@@ -29,6 +29,11 @@ public abstract class Player
     protected ArrayList<Player> blackList;
     protected ArrayList<Player> redList;
     protected ArrayList<Player> grayList;
+    //
+    // Default fields
+    //
+    protected Characters characters;
+    protected Role role;
 
     protected void ScanPlayersAndPutThemInColorList()
     {
@@ -77,13 +82,11 @@ public abstract class Player
         }
     }
 
-    protected Role role;
+
     public Role GetRole()
     {
         return role;
     }
-
-    protected Characters characters;
 
     public abstract void ExecuteRole();
 
@@ -111,7 +114,7 @@ public abstract class Player
         }
 
     }
-    private List<String> RemoveEmptyEntries(List<String> strings)
+    protected List<String> RemoveEmptyEntries(List<String> strings)
     {
         List<String> toReturn = strings;
         for (int i = 0; i < toReturn.size(); i++)
@@ -131,41 +134,75 @@ public abstract class Player
             case asylum:
             {
                 textField.setText(GetRandomStringFromFile("asylum.txt"));
-                storyToldEvent.NotifySubscribers();
+                storyToldEvent.NotifySubscribers(this, new DefaultEventArgs(CalculateCredibilityOfStory()));
                 break;
             }
             case camp:
             {
                 textField.setText(GetRandomStringFromFile("camp.txt"));
+                storyToldEvent.NotifySubscribers(this, new DefaultEventArgs(CalculateCredibilityOfStory()));
                 break;
             }
             case factory:
             {
                 textField.setText(GetRandomStringFromFile("factory.txt"));
+                storyToldEvent.NotifySubscribers(this, new DefaultEventArgs(CalculateCredibilityOfStory()));
                 break;
             }
             case hospital:
             {
                 textField.setText(GetRandomStringFromFile("hospital.txt"));
+                storyToldEvent.NotifySubscribers(this, new DefaultEventArgs(CalculateCredibilityOfStory()));
                 break;
             }
             case university:
             {
                 textField.setText(GetRandomStringFromFile("university.txt"));
+                storyToldEvent.NotifySubscribers(this, new DefaultEventArgs(CalculateCredibilityOfStory()));
                 break;
             }
         }
     }
 
+    protected int CalculateCredibilityOfStory()
+    {
+        return (int)(characters.GetOratory() + characters.GetActingAbilities()
+                + characters.GetLeadership() * 0.9 + characters.GetHumor()) / 4;
+    }
+
     // отмазаться
-    public abstract void MakeExcuses();
+    public void MakeExcuses()
+    {
+        excusesMadeEvent.NotifySubscribers(this, new DefaultEventArgs(CalculateCredibilityOfExcuse()));
+    }
+    protected int CalculateCredibilityOfExcuse()
+    {
+        return (int)(characters.GetHumor() * 0.85 + characters.GetLeadership() +
+                characters.GetActingAbilities() + characters.GetOratory() + characters.GetOptimism()) / 5;
+    }
 
     // очернить других
-    public abstract void Substitute(List<Player> players);
-
-    public String PublishRole()
+    public void Substitute(List<Player> players)
     {
-        return role.GetRoleName();
+        ArrayList<PlayerWithAccusations> playerWithAccusations = new ArrayList<PlayerWithAccusations>();
+        for (int i = 0; i < players.size(); i++)
+        {
+            playerWithAccusations.add(new PlayerWithAccusations(players.get(i), CalculateAccusation(players.get(i))));
+        }
+        substitutedEvent.NotifySubscribers(this, new SubstitutedEventArgs(playerWithAccusations));
+    }
+    protected int CalculateAccusation(Player oppositionist)
+    {
+        return (int)(characters.GetOratory() + characters.GetActingAbilities() + characters.GetSuspicion() +
+                characters.GetHumor() * 0.5 + characters.GetLeadership() * 0.75) / 5 - (int)(
+                        oppositionist.characters.GetLeadership() * 0.5 + oppositionist.characters.GetHumor() * 0.5 +
+                                oppositionist.characters.GetSuspicion() * 0.5 + oppositionist.characters.GetOratory() * 0.5 +
+                                oppositionist.characters.GetActingAbilities() * 0.5) / 5;
+    }
+
+    public void PublishRole()
+    {
+        rolePublishedEvent.NotifySubscribers(this, new RolePublishedEventArgs(role.GetRoleName()));
     }
 
     public Player PutCandidateForDeletion(Player player)
@@ -179,6 +216,7 @@ public abstract class Player
         {
             toReturn = FindPlayerWithLessConfidenceLevel(grayList);
         }
+        candidateWasPutOnDeletionEvent.NotifySubscribers(this, new CandidateWasPutOnDeletionEventArgs(toReturn));
         return toReturn;
     }
 
@@ -199,7 +237,6 @@ public abstract class Player
         }
         return toReturn;
     }
-
 
     @Override
     public abstract Player clone() throws CloneNotSupportedException;

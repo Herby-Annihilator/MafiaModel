@@ -3,8 +3,6 @@ package Player.Decorator;
 import Player.Person;
 import Player.Player;
 
-import java.util.List;
-
 public class CompleteSecondaryEducationDecorator extends PersonDecorator
 {
     public CompleteSecondaryEducationDecorator(Person person)
@@ -29,18 +27,6 @@ public class CompleteSecondaryEducationDecorator extends PersonDecorator
 
     @Override
     public void ExecuteRole()
-    {
-
-    }
-
-    @Override
-    public void MakeExcuses()
-    {
-
-    }
-
-    @Override
-    public void Substitute(List<Player> players)
     {
 
     }

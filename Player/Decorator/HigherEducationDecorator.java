@@ -3,8 +3,6 @@ package Player.Decorator;
 import Player.Person;
 import Player.Player;
 
-import java.util.List;
-
 public class HigherEducationDecorator extends PersonDecorator
 {
     public HigherEducationDecorator(Person person)
@@ -33,17 +31,6 @@ public class HigherEducationDecorator extends PersonDecorator
 
     }
 
-    @Override
-    public void MakeExcuses()
-    {
-
-    }
-
-    @Override
-    public void Substitute(List<Player> players)
-    {
-
-    }
 
     @Override
     public Player clone() throws CloneNotSupportedException
