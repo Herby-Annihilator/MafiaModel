@@ -5,7 +5,7 @@ import Player.Player;
 
 public class BoozerDecorator extends PersonDecorator
 {
-    public BoozerDecorator(Person person)
+    public BoozerDecorator(Player person)
     {
         player = person;
         ChangeCharacters();

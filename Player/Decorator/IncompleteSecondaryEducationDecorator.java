@@ -5,7 +5,7 @@ import Player.Player;
 
 public class IncompleteSecondaryEducationDecorator extends PersonDecorator
 {
-    public IncompleteSecondaryEducationDecorator(Person person)
+    public IncompleteSecondaryEducationDecorator(Player person)
     {
         player = person;
         ChangeCharacters();

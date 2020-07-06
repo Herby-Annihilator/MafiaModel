@@ -5,7 +5,7 @@ import Player.Player;
 
 public class PhlegmaticDecorator extends PersonDecorator
 {
-    public PhlegmaticDecorator(Person person)
+    public PhlegmaticDecorator(Player person)
     {
         player = person;
         ChangeCharacters();

@@ -1,10 +1,9 @@
 package Player.Decorator;
 
-import Player.Player;
-import Player.Person;
+import Player.*;
 
 public abstract class PersonDecorator extends Player
 {
-    protected Person player;
+    protected Player player;
     protected abstract void ChangeCharacters();
 }

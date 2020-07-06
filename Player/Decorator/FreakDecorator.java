@@ -6,7 +6,7 @@ import Player.Player;
 
 public class FreakDecorator extends PersonDecorator
 {
-    public FreakDecorator(Person person)
+    public FreakDecorator(Player person)
     {
         player = person;
         ChangeCharacters();

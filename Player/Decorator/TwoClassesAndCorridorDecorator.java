@@ -5,7 +5,7 @@ import Player.Player;
 
 public class TwoClassesAndCorridorDecorator extends PersonDecorator
 {
-    public TwoClassesAndCorridorDecorator(Person person)
+    public TwoClassesAndCorridorDecorator(Player person)
     {
         player = person;
         ChangeCharacters();

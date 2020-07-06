@@ -5,7 +5,7 @@ public enum Fetish
     Boozer,
     Freak,
     Bugger,
-    Femenist,
+    Feminist,
     Fan,
     ReligiousMan,
 }

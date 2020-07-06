@@ -21,7 +21,7 @@ public class SanguineDecorator extends PersonDecorator
     }
 
 
-    public SanguineDecorator(Person person)
+    public SanguineDecorator(Player person)
     {
         player = person;
         ChangeCharacters();

@@ -5,7 +5,7 @@ import Player.Player;
 
 public class ParasiteDecorator extends PersonDecorator
 {
-    public ParasiteDecorator(Person person)
+    public ParasiteDecorator(Player person)
     {
         player = person;
         ChangeCharacters();

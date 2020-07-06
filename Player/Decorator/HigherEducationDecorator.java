@@ -5,7 +5,7 @@ import Player.Player;
 
 public class HigherEducationDecorator extends PersonDecorator
 {
-    public HigherEducationDecorator(Person person)
+    public HigherEducationDecorator(Player person)
     {
         player = person;
         ChangeCharacters();

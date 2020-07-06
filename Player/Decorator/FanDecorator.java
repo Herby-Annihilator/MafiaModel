@@ -5,7 +5,7 @@ import Player.Player;
 
 public class FanDecorator extends PersonDecorator
 {
-    public FanDecorator(Person person)
+    public FanDecorator(Player person)
     {
         player = person;
         ChangeCharacters();

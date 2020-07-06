@@ -5,7 +5,7 @@ import Player.Player;
 
 public class MelancholicDecorator extends PersonDecorator
 {
-    public MelancholicDecorator(Person person)
+    public MelancholicDecorator(Player person)
     {
         player = person;
         ChangeCharacters();

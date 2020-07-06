@@ -5,7 +5,7 @@ import Player.Player;
 
 public class ReligiousManDecorator extends PersonDecorator
 {
-    public ReligiousManDecorator(Person person)
+    public ReligiousManDecorator(Player person)
     {
         player = person;
         ChangeCharacters();

@@ -5,7 +5,7 @@ import Player.Player;
 
 public class FeministDecorator extends PersonDecorator
 {
-    public FeministDecorator(Person person)
+    public FeministDecorator(Player person)
     {
         player = person;
         ChangeCharacters();
