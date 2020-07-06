@@ -9,7 +9,7 @@ public class SubstitutedEvent extends Event
         playerListeners = new ArrayList<IPlayerEventListener>();
     }
     @Override
-    public void NotifySubscribers(Object sender, DefaultEventArgs e)
+    public void NotifySubscribers(Object sender, EventArgs e)
     {
         for (int i = 0; i < playerListeners.size(); i++)
         {

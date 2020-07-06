@@ -21,7 +21,17 @@ public class Builder
         int countOfTemperaments = random.nextInt(Temperament.values().length);
         int countOfFetishes = random.nextInt(Fetish.values().length);
         int educationRank = random.nextInt(Education.values().length);
-        Player player;
+        Player player = new Person();
+        for (int i = 0; i < countOfFetishes; i++)
+        {
+            player = SetPlayerFetish(player, Fetish.values()[i]);
+        }
+        for (int i = 0; i < countOfTemperaments; i++)
+        {
+            player = SetPlayerTemperament(player, Temperament.values()[i]);
+        }
+        player = SetPlayerEducation(player, Education.values()[educationRank]);
+        return player;
     }
 
     public Player SetPlayerTemperament(Player player, Temperament temperament)

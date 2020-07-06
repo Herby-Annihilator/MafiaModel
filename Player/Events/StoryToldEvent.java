@@ -11,7 +11,7 @@ public class StoryToldEvent extends Event
     }
 
     @Override
-    public void NotifySubscribers(Object sender, DefaultEventArgs e)
+    public void NotifySubscribers(Object sender, EventArgs e)
     {
          for (int i = 0; i < playerListeners.size(); i++)
          {
