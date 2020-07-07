@@ -1,32 +1,25 @@
 package Player.Decorator;
 
-import Player.Person;
 import Player.Player;
 
 public class ParasiteDecorator extends PersonDecorator
 {
     public ParasiteDecorator(Player person)
     {
-        player = person;
+        super(person);
         ChangeCharacters();
     }
 
     @Override
     protected void ChangeCharacters()
     {
-        characters.SetOratory((int)(characters.GetOratory() * 1.15));
-        characters.SetActingAbilities((int)(characters.GetActingAbilities() * 1.15));
+        player.GetCharacters().SetOratory((int)(player.GetCharacters().GetOratory() * 1.15));
+        player.GetCharacters().SetActingAbilities((int)(player.GetCharacters().GetActingAbilities() * 1.15));
     }
 
     @Override
     public void ExecuteRole()
     {
 
-    }
-
-    @Override
-    public Player clone() throws CloneNotSupportedException
-    {
-        return new ParasiteDecorator((Person) player.clone());
     }
 }

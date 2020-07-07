@@ -1,20 +1,19 @@
 package Player.Decorator;
 
-import Player.Person;
 import Player.Player;
 
 public class FanDecorator extends PersonDecorator
 {
     public FanDecorator(Player person)
     {
-        player = person;
+        super(person);
         ChangeCharacters();
     }
 
     @Override
     protected void ChangeCharacters()
     {
-        characters.SetStressResistance((int)(characters.GetStressResistance() * 0.9));
+        player.GetCharacters().SetStressResistance((int)(player.GetCharacters().GetStressResistance() * 0.9));
     }
 
     @Override
@@ -23,9 +22,4 @@ public class FanDecorator extends PersonDecorator
 
     }
 
-    @Override
-    public Player clone() throws CloneNotSupportedException
-    {
-        return new FanDecorator((Person) player.clone());
-    }
 }

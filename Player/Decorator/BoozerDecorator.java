@@ -1,22 +1,21 @@
 package Player.Decorator;
 
-import Player.Person;
 import Player.Player;
 
 public class BoozerDecorator extends PersonDecorator
 {
     public BoozerDecorator(Player person)
     {
-        player = person;
+        super(person);
         ChangeCharacters();
     }
 
     @Override
     protected void ChangeCharacters()
     {
-        characters.SetLeadership((int)(characters.GetLeadership() * 1.1));
-        characters.SetOratory((int)(characters.GetOratory() * 1.1));
-        characters.SetActingAbilities((int)(characters.GetActingAbilities() * 1.1));
+        player.GetCharacters().SetLeadership((int)(player.GetCharacters().GetLeadership() * 1.1));
+        player.GetCharacters().SetOratory((int)(player.GetCharacters().GetOratory() * 1.1));
+        player.GetCharacters().SetActingAbilities((int)(player.GetCharacters().GetActingAbilities() * 1.1));
     }
 
     @Override
@@ -24,12 +23,4 @@ public class BoozerDecorator extends PersonDecorator
     {
         player.ExecuteRole();
     }
-
-
-    @Override
-    public Player clone() throws CloneNotSupportedException
-    {
-        return new BoozerDecorator((Person) player.clone());
-    }
-
 }

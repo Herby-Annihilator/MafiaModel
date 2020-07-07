@@ -16,4 +16,12 @@ public class SubstitutedEvent extends Event
             playerListeners.get(i).Substituted(sender, e);
         }
     }
+
+    @Override
+    public Event clone() throws CloneNotSupportedException
+    {
+        SubstitutedEvent event = new SubstitutedEvent();
+        event.playerListeners = (ArrayList<IPlayerEventListener>) this.playerListeners.clone();
+        return event;
+    }
 }

@@ -1,6 +1,5 @@
 package Player.Decorator;
 
-import Player.Person;
 import Player.Player;
 
 public class SanguineDecorator extends PersonDecorator
@@ -8,10 +7,10 @@ public class SanguineDecorator extends PersonDecorator
     @Override
     protected void ChangeCharacters()
     {
-        characters.SetLeadership(characters.GetLeadership() / 10 + characters.GetLeadership());
-        characters.SetWillPower(characters.GetWillPower() - characters.GetWillPower() / 10);
-        characters.SetOptimism(characters.GetOptimism() / 10 + characters.GetOptimism());
-        characters.SetHumor(characters.GetHumor() + characters.GetHumor() / 10);
+        player.GetCharacters().SetLeadership(player.GetCharacters().GetLeadership() / 10 + player.GetCharacters().GetLeadership());
+        player.GetCharacters().SetWillPower(player.GetCharacters().GetWillPower() - player.GetCharacters().GetWillPower() / 10);
+        player.GetCharacters().SetOptimism(player.GetCharacters().GetOptimism() / 10 + player.GetCharacters().GetOptimism());
+        player.GetCharacters().SetHumor(player.GetCharacters().GetHumor() + player.GetCharacters().GetHumor() / 10);
     }
 
     @Override
@@ -23,14 +22,7 @@ public class SanguineDecorator extends PersonDecorator
 
     public SanguineDecorator(Player person)
     {
-        player = person;
+        super(person);
         ChangeCharacters();
     }
-
-    @Override
-    public Player clone() throws CloneNotSupportedException
-    {
-        return new SanguineDecorator((Person) player.clone());
-    }
-
 }

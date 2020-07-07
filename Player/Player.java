@@ -35,6 +35,11 @@ public abstract class Player
     protected Characters characters;
     protected Role role;
 
+    public Characters GetCharacters()
+    {
+        return characters;
+    }
+
     protected void ScanPlayersAndPutThemInColorList()
     {
         for (int i = 0; i < playersInGame.size(); i++)

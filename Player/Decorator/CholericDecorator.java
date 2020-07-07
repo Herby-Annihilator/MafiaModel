@@ -1,37 +1,30 @@
 package Player.Decorator;
 
-import Player.Person;
 import Player.Player;
 
 public class CholericDecorator extends PersonDecorator
 {
     public CholericDecorator(Player person)
     {
-        player = person;
+        super(person);
         ChangeCharacters();
     }
 
     @Override
     protected void ChangeCharacters()
     {
-        characters.SetLeadership(characters.GetLeadership() / 10 + characters.GetLeadership());
-        characters.SetWillPower((int)(characters.GetWillPower() * 1.1));
-        characters.SetOptimism((int)(characters.GetOptimism() * 1.1));
-        characters.SetOratory((int)(characters.GetOratory() * 1.1));
-        characters.SetActingAbilities((int)(characters.GetActingAbilities() + 0.85));
-        characters.SetHumor((int)(characters.GetHumor() * 1.1));
+        player.GetCharacters().SetLeadership(player.GetCharacters().GetLeadership() / 10 + player.GetCharacters().GetLeadership());
+        player.GetCharacters().SetWillPower((int)(player.GetCharacters().GetWillPower() * 1.1));
+        player.GetCharacters().SetOptimism((int)(player.GetCharacters().GetOptimism() * 1.1));
+        player.GetCharacters().SetOratory((int)(player.GetCharacters().GetOratory() * 1.1));
+        player.GetCharacters().SetActingAbilities((int)(player.GetCharacters().GetActingAbilities() + 0.85));
+        player.GetCharacters().SetHumor((int)(player.GetCharacters().GetHumor() * 1.1));
     }
 
     @Override
     public void ExecuteRole()
     {
 
-    }
-
-    @Override
-    public Player clone() throws CloneNotSupportedException
-    {
-        return new CholericDecorator((Person) player.clone());
     }
 
 }

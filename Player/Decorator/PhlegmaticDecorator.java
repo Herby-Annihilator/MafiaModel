@@ -1,38 +1,31 @@
 package Player.Decorator;
 
-import Player.Person;
 import Player.Player;
 
 public class PhlegmaticDecorator extends PersonDecorator
 {
     public PhlegmaticDecorator(Player person)
     {
-        player = person;
+        super(person);
         ChangeCharacters();
     }
 
     @Override
     protected void ChangeCharacters()
     {
-        characters.SetOptimism((int)(characters.GetOptimism() * 0.85));
-        characters.SetHumor((int)(characters.GetHumor() * 0.85));
-        characters.SetLeadership((int)(characters.GetLeadership() * 0.85));
-        characters.SetOratory((int)(characters.GetOratory() * 0.85));
-        characters.SetWillPower((int)(characters.GetWillPower() * 0.8));
-        characters.SetIntuition((int)(characters.GetIntuition() * 1.15));
-        characters.SetSuspicion((int)(characters.GetSuspicion() * 1.2));
-        characters.SetStressResistance((int)(characters.GetStressResistance() * 1.2));
+        player.GetCharacters().SetOptimism((int)(player.GetCharacters().GetOptimism() * 0.85));
+        player.GetCharacters().SetHumor((int)(player.GetCharacters().GetHumor() * 0.85));
+        player.GetCharacters().SetLeadership((int)(player.GetCharacters().GetLeadership() * 0.85));
+        player.GetCharacters().SetOratory((int)(player.GetCharacters().GetOratory() * 0.85));
+        player.GetCharacters().SetWillPower((int)(player.GetCharacters().GetWillPower() * 0.8));
+        player.GetCharacters().SetIntuition((int)(player.GetCharacters().GetIntuition() * 1.15));
+        player.GetCharacters().SetSuspicion((int)(player.GetCharacters().GetSuspicion() * 1.2));
+        player.GetCharacters().SetStressResistance((int)(player.GetCharacters().GetStressResistance() * 1.2));
     }
 
     @Override
     public void ExecuteRole()
     {
 
-    }
-
-    @Override
-    public Player clone() throws CloneNotSupportedException
-    {
-        return new PhlegmaticDecorator((Person) player.clone());
     }
 }

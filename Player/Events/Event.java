@@ -21,4 +21,5 @@ public abstract class Event
     }
 
     public abstract void NotifySubscribers(Object sender, EventArgs e);
+    public abstract Event clone() throws CloneNotSupportedException;
 }

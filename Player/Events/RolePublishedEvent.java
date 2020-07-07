@@ -16,4 +16,12 @@ public class RolePublishedEvent extends Event
             playerListeners.get(i).RolePublished(sender, e);
         }
     }
+
+    @Override
+    public Event clone() throws CloneNotSupportedException
+    {
+        RolePublishedEvent event = new RolePublishedEvent();
+        event.playerListeners = (ArrayList<IPlayerEventListener>) this.playerListeners.clone();
+        return event;
+    }
 }

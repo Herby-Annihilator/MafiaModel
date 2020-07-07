@@ -18,4 +18,12 @@ public class StoryToldEvent extends Event
              playerListeners.get(i).StoryTold(sender, e);
          }
     }
+
+    @Override
+    public Event clone() throws CloneNotSupportedException
+    {
+        StoryToldEvent event = new StoryToldEvent();
+        event.playerListeners = (ArrayList<IPlayerEventListener>) this.playerListeners.clone();
+        return event;
+    }
 }

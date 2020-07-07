@@ -16,4 +16,12 @@ public class ExcusesMadeEvent extends Event
             playerListeners.get(i).ExcusesMade(sender, e);
         }
     }
+
+    @Override
+    public Event clone() throws CloneNotSupportedException
+    {
+        ExcusesMadeEvent event = new ExcusesMadeEvent();
+        event.playerListeners = (ArrayList<IPlayerEventListener>) this.playerListeners.clone();
+        return event;
+    }
 }

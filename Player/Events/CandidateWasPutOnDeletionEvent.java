@@ -16,4 +16,12 @@ public class CandidateWasPutOnDeletionEvent extends Event
             playerListeners.get(i).CandidateWasPutOnDeletion(sender, e);
         }
     }
+
+    @Override
+    public Event clone() throws CloneNotSupportedException
+    {
+        CandidateWasPutOnDeletionEvent event = new CandidateWasPutOnDeletionEvent();
+        event.playerListeners = (ArrayList<IPlayerEventListener>) this.playerListeners.clone();
+        return event;
+    }
 }

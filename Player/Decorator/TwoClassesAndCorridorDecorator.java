@@ -1,39 +1,32 @@
 package Player.Decorator;
 
-import Player.Person;
 import Player.Player;
 
 public class TwoClassesAndCorridorDecorator extends PersonDecorator
 {
     public TwoClassesAndCorridorDecorator(Player person)
     {
-        player = person;
+        super(person);
         ChangeCharacters();
     }
 
     @Override
     protected void ChangeCharacters()
     {
-        characters.SetOratory((int)(characters.GetOratory() * 1.07));
-        characters.SetActingAbilities((int)(characters.GetActingAbilities() * 1.07));
-        characters.SetStressResistance((int)(characters.GetStressResistance() * 1.07));
-        characters.SetSuspicion((int)(characters.GetSuspicion() * 1.07));
-        characters.SetLeadership((int)(characters.GetLeadership() * 1.07));
-        characters.SetIntuition((int)(characters.GetIntuition() * 1.07));
-        characters.SetWillPower((int)(characters.GetWillPower() * 1.07));
-        characters.SetOptimism((int)(characters.GetOptimism() * 1.07));
-        characters.SetHumor((int)(characters.GetHumor() * 1.07));
+        player.GetCharacters().SetOratory((int)(player.GetCharacters().GetOratory() * 1.07));
+        player.GetCharacters().SetActingAbilities((int)(player.GetCharacters().GetActingAbilities() * 1.07));
+        player.GetCharacters().SetStressResistance((int)(player.GetCharacters().GetStressResistance() * 1.07));
+        player.GetCharacters().SetSuspicion((int)(player.GetCharacters().GetSuspicion() * 1.07));
+        player.GetCharacters().SetLeadership((int)(player.GetCharacters().GetLeadership() * 1.07));
+        player.GetCharacters().SetIntuition((int)(player.GetCharacters().GetIntuition() * 1.07));
+        player.GetCharacters().SetWillPower((int)(player.GetCharacters().GetWillPower() * 1.07));
+        player.GetCharacters().SetOptimism((int)(player.GetCharacters().GetOptimism() * 1.07));
+        player.GetCharacters().SetHumor((int)(player.GetCharacters().GetHumor() * 1.07));
     }
 
     @Override
     public void ExecuteRole()
     {
 
-    }
-
-    @Override
-    public Player clone() throws CloneNotSupportedException
-    {
-        return new TwoClassesAndCorridorDecorator((Person) player.clone());
     }
 }
