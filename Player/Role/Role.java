@@ -5,13 +5,18 @@ import Player.Player;
 
 public abstract class Role extends EventListenersAdapter
 {
+    protected Player owner;
     protected String roleName;
 
     public String GetRoleName()
     {
         return roleName;
     }
-    public abstract void Execute(Player player);
+    public Role(Player owner)
+    {
+        this.owner = owner;
+    }
+    public abstract void Execute();
 
-    public abstract Role clone() throws CloneNotSupportedException;
+    protected abstract void ChangeConfidenceLevelOfPlayer(Player player, int persuasiveness);
 }

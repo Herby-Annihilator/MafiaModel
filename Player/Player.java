@@ -25,7 +25,7 @@ public abstract class Player
     //
     // Lists of players
     //
-    protected ArrayList<PlayerWithConfidenceLevel> playersInGame;
+    public ArrayList<PlayerWithConfidenceLevel> playersInGame;
     protected ArrayList<Player> blackList;
     protected ArrayList<Player> redList;
     protected ArrayList<Player> grayList;
@@ -40,7 +40,7 @@ public abstract class Player
         return characters;
     }
 
-    protected void ScanPlayersAndPutThemInColorList()
+    public void ScanPlayersAndPutThemInColorList()
     {
         for (int i = 0; i < playersInGame.size(); i++)
         {

@@ -4,15 +4,16 @@ import Player.Player;
 
 public class MafiaDon extends Mafia
 {
-    public MafiaDon()
+    public MafiaDon(Player owner)
     {
+        super(owner);
         roleName = "MafiaDon";
     }
 
     @Override
-    public void Execute(Player player)
+    public void Execute()
     {
-        super.Execute(player);
+        super.Execute();
     }
 
     public boolean IsCommissioner(Player player)
@@ -20,9 +21,4 @@ public class MafiaDon extends Mafia
         return player.GetRole().GetRoleName().equals("Commissioner");
     }
 
-    @Override
-    public Role clone() throws CloneNotSupportedException
-    {
-        return new MafiaDon();
-    }
 }

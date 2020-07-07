@@ -4,8 +4,9 @@ import Player.Player;
 
 public class Commissioner extends Civilian
 {
-    public Commissioner()
+    public Commissioner(Player owner)
     {
+        super(owner);
         roleName = "Commissioner";
     }
     public boolean IsMafia(Player player)
@@ -14,14 +15,8 @@ public class Commissioner extends Civilian
     }
 
     @Override
-    public void Execute(Player player)
+    public void Execute()
     {
-        super.Execute(player);
-    }
-
-    @Override
-    public Role clone() throws CloneNotSupportedException
-    {
-        return new Commissioner();
+        super.Execute();
     }
 }

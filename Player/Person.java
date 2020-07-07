@@ -16,7 +16,7 @@ public class Person extends Player
     }
     public Person()
     {
-        role = new Civilian();
+        role = new Civilian(this);
         characters = new Characters();
         InitAllEvents();
     }
@@ -25,17 +25,22 @@ public class Person extends Player
         this.role = role;
         this.characters = characters;
     }
+    public Person(Characters characters)
+    {
+        this.characters = characters;
+        role = new Civilian(this);
+    }
     @Override
     public void ExecuteRole()
     {
-        role.Execute(this);
+        role.Execute();
     }
 
 
     @Override
     public Player clone() throws CloneNotSupportedException
     {
-        Person toReturn = new Person(this.role.clone(), this.characters.clone());
+        Person toReturn = new Person(this.characters.clone());
         toReturn.storyToldEvent = (StoryToldEvent) this.storyToldEvent.clone();
         toReturn.candidateWasPutOnDeletionEvent =
                 (CandidateWasPutOnDeletionEvent) this.candidateWasPutOnDeletionEvent.clone();

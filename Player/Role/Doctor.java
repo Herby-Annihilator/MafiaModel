@@ -4,8 +4,9 @@ import Player.Player;
 
 public class Doctor extends Civilian
 {
-    public Doctor()
+    public Doctor(Player owner)
     {
+        super(owner);
         roleName = "Doctor";
     }
     private int countOfHimselfTreats = 1;
@@ -25,14 +26,8 @@ public class Doctor extends Civilian
     }
 
     @Override
-    public void Execute(Player player)
+    public void Execute()
     {
-        super.Execute(player);
-    }
-
-    @Override
-    public Role clone() throws CloneNotSupportedException
-    {
-        return new Doctor();
+        super.Execute();
     }
 }
