@@ -11,7 +11,7 @@ import java.util.Random;
 public class Mafia extends Role
 {
     protected final int priorityInResolvingTheIssue = 1;
-    protected static Player nextPlayerToKill;
+    protected Player nextPlayerToKill;
     protected ArrayList<Player> mafias;
 
     public Mafia(Player owner)

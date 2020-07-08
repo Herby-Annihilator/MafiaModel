@@ -1,30 +1,49 @@
 package Player.Role;
 
+import Master.Master;
 import Player.Events.DefaultEventArgs;
 import Player.Events.EventArgs;
 import Player.Events.RolePublishedEventArgs;
 import Player.Player;
 
+import java.util.Random;
+
 public class Whore extends Role
 {
     private int countOfItselfAlibi;
+    private Player playerWasGivenAnAlibiLastMove;
     public Whore(Player owner)
     {
         super(owner);
         countOfItselfAlibi = 1;
         roleName = "Whore";
+        playerWasGivenAnAlibiLastMove = null;
     }
-    public void GiveAnAlibi()
+    public void GiveAnAlibi(Master master)
     {
-
-    }
-    public void GiveAnAlibiToYourself()
-    {
-        if (countOfItselfAlibi > 0)
+        Player playerWillHasAnAlibi = null;
+        Random random = new Random();
+        if (owner.GetCharacters().GetOptimism() < 10 && countOfItselfAlibi > 0)
         {
-            GiveAnAlibi();
+            playerWillHasAnAlibi = owner;
+            countOfItselfAlibi--;
         }
-        countOfItselfAlibi--;
+        else
+        {
+            boolean playerWasChosen = false;
+            while (!playerWasChosen)
+            {
+                playerWillHasAnAlibi = owner.playersInGame.get(random.nextInt(owner.playersInGame.size())).getPlayer();
+                if (playerWasGivenAnAlibiLastMove != null)
+                {
+                    if (!playerWillHasAnAlibi.equals(playerWasGivenAnAlibiLastMove))
+                    {
+                        playerWasChosen = true;
+                    }
+                }
+            }
+        }
+        master.TakeThePlayerWitchWillHasAnAlibi(playerWillHasAnAlibi);
     }
 
     @Override

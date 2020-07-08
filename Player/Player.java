@@ -26,9 +26,9 @@ public abstract class Player
     // Lists of players
     //
     public ArrayList<PlayerWithConfidenceLevel> playersInGame;
-    protected ArrayList<Player> blackList;
-    protected ArrayList<Player> redList;
-    protected ArrayList<Player> grayList;
+    public ArrayList<Player> blackList;
+    public ArrayList<Player> redList;
+    public ArrayList<Player> grayList;
     //
     // Default fields
     //

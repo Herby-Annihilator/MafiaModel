@@ -1,8 +1,11 @@
 package Player.Role;
 
+import Master.Master;
 import Player.Events.EventArgs;
 import Player.Events.RolePublishedEventArgs;
 import Player.Player;
+
+import java.util.Random;
 
 public class Maniac extends Role
 {
@@ -14,9 +17,14 @@ public class Maniac extends Role
         roleName = "Maniac";
     }
 
-    public void TakeAShot()
+    public void TakeAShot(Master master)
     {
-
+        Player playerWillBeKilled = null;
+        if (countOfShots > 0)
+        {
+            playerWillBeKilled = owner.playersInGame.get(new Random().nextInt(owner.playersInGame.size())).getPlayer();
+        }
+        master.TakeThePlayerToBeKilled(playerWillBeKilled);
     }
 
     @Override

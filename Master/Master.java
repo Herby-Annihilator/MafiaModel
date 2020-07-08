@@ -1,6 +1,8 @@
 package Master;
 
 import Player.Player;
+import Player.Role.*;
+
 
 import java.util.ArrayList;
 
@@ -8,6 +10,7 @@ public class Master
 {
     private static Master master;
     private ArrayList<Player> allPlayersInGame;
+    private ArrayList<Player> playersRemainingInTheGame;   // оставшиеся в игре игроки
     private ArrayList<Player> mafias;
     private ArrayList<Player> civilians;
     private ArrayList<Player> playersWitchMafiaIsGoingToKill;
@@ -17,9 +20,15 @@ public class Master
     private Player maniac;
     private Player commissioner;
 
+    private Player playerYouWillHeal;
+    private Player playerWillHasAnAlibi;
+    private Player mafiaWantKillHim;
+    private Player maniacWantKillHim;
+
     private Master()
     {
         allPlayersInGame = new ArrayList<Player>();
+        playersRemainingInTheGame = new ArrayList<Player>();
         mafias = new ArrayList<Player>();
         civilians = new ArrayList<Player>();
         playersWitchMafiaIsGoingToKill = new ArrayList<Player>();
@@ -132,4 +141,119 @@ public class Master
             playersWitchMafiaIsGoingToKill.add(player);
         }
     }
+
+    public void TakeThePlayerDoctorWillHeal(Player player)
+    {
+        if (player != null)
+        {
+            playerYouWillHeal = player;
+        }
+    }
+
+    public void TakeThePlayerWitchWillHasAnAlibi(Player player)
+    {
+        if (player != null)
+        {
+            playerWillHasAnAlibi = player;
+        }
+    }
+
+    //
+    // Будим игроков по ролям
+    //
+    public void WakeUpMafia()
+    {
+        for (int i = 0; i < mafias.size(); i++)
+        {
+            ((Mafia)mafias.get(i).GetRole()).TakeAShot(this);
+        }
+        ((MafiaDon)mafiaDon.GetRole()).TakeAShot(this);
+        mafiaWantKillHim = FindOutPlayerToKill();
+        playersWitchMafiaIsGoingToKill.clear();
+    }
+    private Player FindOutPlayerToKill()
+    {
+        int[] countOfMafiasWitchWantToKillPlayerWithSpecificIndex = new int[playersWitchMafiaIsGoingToKill.size()];
+        for (int i = 0; i < countOfMafiasWitchWantToKillPlayerWithSpecificIndex.length; i++)
+        {
+            countOfMafiasWitchWantToKillPlayerWithSpecificIndex[i] = 0;
+        }
+        for (int i = 0; i < playersWitchMafiaIsGoingToKill.size(); i++)
+        {
+            Player currentPlayer = playersWitchMafiaIsGoingToKill.get(i);
+            for (int j = 0; j < playersWitchMafiaIsGoingToKill.size(); j++)
+            {
+                if (currentPlayer.equals(playersWitchMafiaIsGoingToKill.get(j)))
+                {
+                    countOfMafiasWitchWantToKillPlayerWithSpecificIndex[j]++;
+                }
+            }
+        }
+        int maxIndex = 0;
+        for (int i = 1; i < countOfMafiasWitchWantToKillPlayerWithSpecificIndex.length; i++)
+        {
+            if (countOfMafiasWitchWantToKillPlayerWithSpecificIndex[maxIndex] <
+                    countOfMafiasWitchWantToKillPlayerWithSpecificIndex[i])
+            {
+                maxIndex = i;
+            }
+        }
+        for (int i = 0; i < countOfMafiasWitchWantToKillPlayerWithSpecificIndex.length; i++)
+        {
+            if (i != maxIndex)
+            {
+                if (countOfMafiasWitchWantToKillPlayerWithSpecificIndex[i] ==
+                        countOfMafiasWitchWantToKillPlayerWithSpecificIndex[maxIndex])
+                {
+                    playersWitchMafiaIsGoingToKill.clear();
+                    ((MafiaDon)mafiaDon.GetRole()).TakeAShot(this);
+                    return playersWitchMafiaIsGoingToKill.get(0);
+                }
+            }
+        }
+        return playersWitchMafiaIsGoingToKill.get(maxIndex);
+    }
+
+    public void WakeUpMafiaDon()
+    {
+        if (mafiaDon != null)
+        {
+            ((MafiaDon)(mafiaDon.GetRole())).ExecuteSpecialFunctions(this);
+        }
+    }
+
+    public void WakeUpDoctor()
+    {
+        if (doctor != null)
+        {
+            ((Doctor)(doctor.GetRole())).Treat(this);
+        }
+    }
+
+    public void WakeUpManiac()
+    {
+        if (maniac != null)
+        {
+            ((Maniac)(maniac.GetRole())).TakeAShot(this);
+            maniacWantKillHim = playersWitchMafiaIsGoingToKill.get(0);
+            playersWitchMafiaIsGoingToKill.clear();
+        }
+    }
+
+    public void WakeUpWhore()
+    {
+        if (whore != null)
+        {
+            ((Whore)(whore.GetRole())).GiveAnAlibi(this);
+        }
+    }
+
+    public void WakeUpCommissioner()
+    {
+        if (commissioner != null)
+        {
+            ((Commissioner)(commissioner.GetRole())).ExecuteSpecialFunctions(this);
+        }
+    }
+
 }

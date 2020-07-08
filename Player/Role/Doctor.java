@@ -1,8 +1,11 @@
 package Player.Role;
 
+import Master.Master;
 import Player.Events.EventArgs;
 import Player.Events.RolePublishedEventArgs;
 import Player.Player;
+
+import java.util.Random;
 
 public class Doctor extends Civilian
 {
@@ -13,18 +16,26 @@ public class Doctor extends Civilian
     }
     private int countOfHimselfTreats = 1;
 
-    public void Treat(Player player)
+    public void Treat(Master master)
     {
-
-    }
-
-    public void TreatYourself()
-    {
-        if (countOfHimselfTreats > 0)
+        Player playerWillBeHeal = null;
+        if (owner.GetCharacters().GetOptimism() < 10)
         {
-            //Treat();
+            if (countOfHimselfTreats > 0)
+            {
+                playerWillBeHeal = owner;
+            }
+            else
+            {
+                playerWillBeHeal = owner.playersInGame.get(new Random().nextInt(owner.playersInGame.size())).getPlayer();
+
+            }
         }
-        countOfHimselfTreats--;
+        else
+        {
+            playerWillBeHeal = owner.playersInGame.get(new Random().nextInt(owner.playersInGame.size())).getPlayer();
+        }
+        master.TakeThePlayerDoctorWillHeal(playerWillBeHeal);
     }
 
     @Override
