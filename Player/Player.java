@@ -180,6 +180,7 @@ public abstract class Player
     {
         excusesMadeEvent.NotifySubscribers(this, new DefaultEventArgs(CalculateCredibilityOfExcuse()));
     }
+
     protected int CalculateCredibilityOfExcuse()
     {
         return (int)(characters.GetHumor() * 0.85 + characters.GetLeadership() +

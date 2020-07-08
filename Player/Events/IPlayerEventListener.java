@@ -1,6 +1,6 @@
 package Player.Events;
 
-interface IPlayerEventListener
+public interface IPlayerEventListener
 {
     void StoryTold(Object sender, EventArgs e);
     void RolePublished(Object sender, EventArgs e);

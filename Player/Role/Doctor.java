@@ -1,5 +1,7 @@
 package Player.Role;
 
+import Player.Events.EventArgs;
+import Player.Events.RolePublishedEventArgs;
 import Player.Player;
 
 public class Doctor extends Civilian
@@ -29,5 +31,23 @@ public class Doctor extends Civilian
     public void Execute()
     {
         super.Execute();
+    }
+
+    @Override
+    public void RolePublished(Object sender, EventArgs e)
+    {
+        if (((RolePublishedEventArgs)e).getRoleName().equals("Civilian"))
+        {
+            ChangeConfidenceLevelOfPlayer((Player)sender, 70);
+        }
+        else if (((RolePublishedEventArgs)e).getRoleName().equals("Commissioner"))
+        {
+            ChangeConfidenceLevelOfPlayer((Player)sender, 85);
+        }
+        else if (((RolePublishedEventArgs)e).getRoleName().equals("Doctor"))
+        {
+            ChangeConfidenceLevelOfPlayer((Player)sender, -100);
+        }
+        owner.ScanPlayersAndPutThemInColorList();
     }
 }

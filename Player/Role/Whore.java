@@ -2,6 +2,7 @@ package Player.Role;
 
 import Player.Events.DefaultEventArgs;
 import Player.Events.EventArgs;
+import Player.Events.RolePublishedEventArgs;
 import Player.Player;
 
 public class Whore extends Role
@@ -43,26 +44,25 @@ public class Whore extends Role
     @Override
     public void RolePublished(Object sender, EventArgs e)
     {
-        super.RolePublished(sender, e);
+        if (((RolePublishedEventArgs)e).getRoleName().equals("Civilian"))
+        {
+            ChangeConfidenceLevelOfPlayer((Player)sender, 70);
+        }
+        else if (((RolePublishedEventArgs)e).getRoleName().equals("Commissioner"))
+        {
+            ChangeConfidenceLevelOfPlayer((Player)sender, 85);
+        }
+        else if (((RolePublishedEventArgs)e).getRoleName().equals("Doctor"))
+        {
+            ChangeConfidenceLevelOfPlayer((Player)sender, 75);
+        }
+        else if (((RolePublishedEventArgs)e).getRoleName().equals("Whore"))
+        {
+            ChangeConfidenceLevelOfPlayer((Player)sender, -100);
+        }
+        owner.ScanPlayersAndPutThemInColorList();
     }
 
-    @Override
-    public void Substituted(Object sender, EventArgs e)
-    {
-        super.Substituted(sender, e);
-    }
-
-    @Override
-    public void CandidateWasPutOnDeletion(Object sender, EventArgs e)
-    {
-        super.CandidateWasPutOnDeletion(sender, e);
-    }
-
-    @Override
-    public void ExcusesMade(Object sender, EventArgs e)
-    {
-        super.ExcusesMade(sender, e);
-    }
 
     @Override
     protected void ChangeConfidenceLevelOfPlayer(Player player, int persuasiveness)

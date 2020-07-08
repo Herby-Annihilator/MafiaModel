@@ -1,18 +1,24 @@
 package Player.Role;
 
+import Master.Master;
+import Player.Events.CandidateWasPutOnDeletionEventArgs;
 import Player.Events.EventArgs;
 import Player.Player;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Mafia extends Role
 {
     protected final int priorityInResolvingTheIssue = 1;
+    protected static Player nextPlayerToKill;
+    protected ArrayList<Player> mafias;
 
     public Mafia(Player owner)
     {
         super(owner);
         roleName = "Mafia";
+        mafias = new ArrayList<Player>();
     }
 
     @Override
@@ -38,25 +44,35 @@ public class Mafia extends Role
     @Override
     public void RolePublished(Object sender, EventArgs e)
     {
-        super.RolePublished(sender, e);
+        if (!mafias.contains(((CandidateWasPutOnDeletionEventArgs)e).getPlayerWasPut()))
+        {
+            ChangeConfidenceLevelOfPlayer((Player)sender, -70);
+        }
     }
 
     @Override
     public void Substituted(Object sender, EventArgs e)
     {
-        super.Substituted(sender, e);
+
     }
 
     @Override
     public void CandidateWasPutOnDeletion(Object sender, EventArgs e)
     {
-        super.CandidateWasPutOnDeletion(sender, e);
+        if (((CandidateWasPutOnDeletionEventArgs)e).getPlayerWasPut().equals(owner) ||
+        mafias.contains(((CandidateWasPutOnDeletionEventArgs)e).getPlayerWasPut()))
+        {
+            nextPlayerToKill = (Player)sender;
+        }
     }
 
     @Override
     public void ExcusesMade(Object sender, EventArgs e)
     {
-        super.ExcusesMade(sender, e);
+        if (!mafias.contains(((CandidateWasPutOnDeletionEventArgs)e).getPlayerWasPut()))
+        {
+            ChangeConfidenceLevelOfPlayer((Player)sender, -70);
+        }
     }
 
 
@@ -66,8 +82,8 @@ public class Mafia extends Role
 
     }
 
-    public void TakeAShot()
+    public void TakeAShot(Master master)
     {
-
+        master.TakeThePlayerToBeKilled(nextPlayerToKill);
     }
 }

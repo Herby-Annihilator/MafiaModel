@@ -9,4 +9,9 @@ public class CandidateWasPutOnDeletionEventArgs implements EventArgs
     {
         playerWasPut = player;
     }
+
+    public Player getPlayerWasPut()
+    {
+        return playerWasPut;
+    }
 }

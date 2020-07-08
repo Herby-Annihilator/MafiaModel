@@ -1,7 +1,5 @@
 package Player.Role;
 
-import Player.Events.DefaultEventArgs;
-import Player.Events.EventArgs;
 import Player.Player;
 
 public class Civilian extends Role
@@ -17,15 +15,6 @@ public class Civilian extends Role
 
     }
 
-
-    @Override
-    public void StoryTold(Object sender, EventArgs e)
-    {
-        ChangeConfidenceLevelOfPlayer((Player) sender,
-                ((DefaultEventArgs) e).getReceivedCumulativeSizeOfChangeInConfidenceLevel());
-        owner.ScanPlayersAndPutThemInColorList();
-    }
-
     @Override
     protected void ChangeConfidenceLevelOfPlayer(Player player, int persuasiveness) // persuasiveness - убедительность
     {
@@ -38,29 +27,5 @@ public class Civilian extends Role
                 break;
             }
         }
-    }
-
-    @Override
-    public void RolePublished(Object sender, EventArgs e)
-    {
-        super.RolePublished(sender, e);
-    }
-
-    @Override
-    public void Substituted(Object sender, EventArgs e)
-    {
-        super.Substituted(sender, e);
-    }
-
-    @Override
-    public void CandidateWasPutOnDeletion(Object sender, EventArgs e)
-    {
-        super.CandidateWasPutOnDeletion(sender, e);
-    }
-
-    @Override
-    public void ExcusesMade(Object sender, EventArgs e)
-    {
-        super.ExcusesMade(sender, e);
     }
 }

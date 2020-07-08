@@ -7,4 +7,9 @@ public class RolePublishedEventArgs implements EventArgs
     {
         this.roleName = roleName;
     }
+
+    public String getRoleName()
+    {
+        return roleName;
+    }
 }

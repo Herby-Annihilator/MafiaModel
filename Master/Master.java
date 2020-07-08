@@ -10,6 +10,7 @@ public class Master
     private ArrayList<Player> allPlayersInGame;
     private ArrayList<Player> mafias;
     private ArrayList<Player> civilians;
+    private ArrayList<Player> playersWitchMafiaIsGoingToKill;
     private Player mafiaDon;
     private Player doctor;
     private Player whore;
@@ -21,6 +22,7 @@ public class Master
         allPlayersInGame = new ArrayList<Player>();
         mafias = new ArrayList<Player>();
         civilians = new ArrayList<Player>();
+        playersWitchMafiaIsGoingToKill = new ArrayList<Player>();
     }
     public static Master InitMaster()
     {
@@ -101,5 +103,33 @@ public class Master
     public Player getCommissioner()
     {
         return commissioner;
+    }
+
+    public boolean IsThisPlayerRoleYouNeed(Player sender, Player verifiedPlayer)
+    {
+        if (sender.GetRole().GetRoleName().equals("Commissioner"))
+        {
+            if (verifiedPlayer.GetRole().GetRoleName().equals("Mafia") ||
+                    verifiedPlayer.GetRole().GetRoleName().equals("MafiaDon"))
+            {
+                return true;
+            }
+        }
+        else if (sender.GetRole().GetRoleName().equals("MafiaDon"))
+        {
+            if (verifiedPlayer.GetRole().GetRoleName().equals("Commissioner"))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void TakeThePlayerToBeKilled(Player player)
+    {
+        if (player != null)
+        {
+            playersWitchMafiaIsGoingToKill.add(player);
+        }
     }
 }

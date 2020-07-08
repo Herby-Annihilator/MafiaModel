@@ -10,17 +10,17 @@ public class PlayerWithAccusations
     private Player player;
     private int accusationLevel;
 
-    Player getPlayer()
+    public Player getPlayer()
     {
         return player;
     }
 
-    int getAccusationLevel()
+    public int getAccusationLevel()
     {
         return accusationLevel;
     }
 
-    void setAccusationLevel(int value)
+    public void setAccusationLevel(int value)
     {
         if (value < 0)
         {
