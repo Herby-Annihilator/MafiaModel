@@ -1,5 +1,6 @@
 package Player.Decorator;
 
+import Master.Master;
 import Player.Player;
 
 public class FeministDecorator extends PersonDecorator
@@ -25,9 +26,9 @@ public class FeministDecorator extends PersonDecorator
     }
 
     @Override
-    public void ExecuteRole()
+    public void Discuss(Master master)
     {
-
+        player.Discuss(master);
     }
 
 }

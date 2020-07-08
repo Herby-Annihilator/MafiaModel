@@ -5,7 +5,7 @@ import Player.Events.EventArgs;
 import Player.Events.RolePublishedEventArgs;
 import Player.Player;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class Commissioner extends Civilian
 {
@@ -13,8 +13,8 @@ public class Commissioner extends Civilian
     {
         super(owner);
         roleName = "Commissioner";
-        mafias = new ArrayList<Player>();
-        checkedPlayers = new ArrayList<Player>();
+        mafias = new LinkedList<Player>();
+        checkedPlayers = new LinkedList<Player>();
     }
     public boolean IsMafia(Player player)
     {
@@ -25,8 +25,8 @@ public class Commissioner extends Civilian
         }
         return false;
     }
-    private ArrayList<Player> mafias;
-    private ArrayList<Player> checkedPlayers;
+    private LinkedList<Player> mafias;
+    private LinkedList<Player> checkedPlayers;
 
     public void ExecuteSpecialFunctions(Master master)
     {

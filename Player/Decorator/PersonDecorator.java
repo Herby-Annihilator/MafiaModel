@@ -1,5 +1,6 @@
 package Player.Decorator;
 
+import Master.Master;
 import Player.Player;
 
 public abstract class PersonDecorator extends Player
@@ -22,5 +23,11 @@ public abstract class PersonDecorator extends Player
     public Player clone() throws CloneNotSupportedException
     {
         return player.clone();
+    }
+
+    @Override
+    public void Discuss(Master master)
+    {
+        player.Discuss(master);
     }
 }

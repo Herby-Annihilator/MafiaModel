@@ -1,12 +1,12 @@
 package Player.Events;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class ExcusesMadeEvent extends Event
 {
     public ExcusesMadeEvent()
     {
-        playerListeners = new ArrayList<IPlayerEventListener>();
+        playerListeners = new LinkedList<IPlayerEventListener>();
     }
     @Override
     public void NotifySubscribers(Object sender, EventArgs e)
@@ -21,7 +21,7 @@ public class ExcusesMadeEvent extends Event
     public Event clone() throws CloneNotSupportedException
     {
         ExcusesMadeEvent event = new ExcusesMadeEvent();
-        event.playerListeners = (ArrayList<IPlayerEventListener>) this.playerListeners.clone();
+        event.playerListeners = (LinkedList<IPlayerEventListener>) this.playerListeners.clone();
         return event;
     }
 }

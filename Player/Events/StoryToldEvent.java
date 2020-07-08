@@ -1,13 +1,13 @@
 package Player.Events;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class StoryToldEvent extends Event
 {
 
     public StoryToldEvent()
     {
-        this.playerListeners = new ArrayList<IPlayerEventListener>();
+        this.playerListeners = new LinkedList<IPlayerEventListener>();
     }
 
     @Override
@@ -23,7 +23,7 @@ public class StoryToldEvent extends Event
     public Event clone() throws CloneNotSupportedException
     {
         StoryToldEvent event = new StoryToldEvent();
-        event.playerListeners = (ArrayList<IPlayerEventListener>) this.playerListeners.clone();
+        event.playerListeners = (LinkedList<IPlayerEventListener>) this.playerListeners.clone();
         return event;
     }
 }

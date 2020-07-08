@@ -1,5 +1,6 @@
 package Player.Decorator;
 
+import Master.Master;
 import Player.Player;
 
 public class SanguineDecorator extends PersonDecorator
@@ -14,9 +15,9 @@ public class SanguineDecorator extends PersonDecorator
     }
 
     @Override
-    public void ExecuteRole()
+    public void Discuss(Master master)
     {
-        role.Execute(this);
+        player.Discuss(master);
     }
 
 

@@ -1,10 +1,10 @@
 package Player.Events;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 
 public abstract class Event
 {
-    protected ArrayList<IPlayerEventListener> playerListeners;
+    protected LinkedList<IPlayerEventListener> playerListeners;
     public void AddListener(IPlayerEventListener listener)
     {
         playerListeners.add(listener);

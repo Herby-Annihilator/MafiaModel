@@ -1,5 +1,6 @@
 package Player.Decorator;
 
+import Master.Master;
 import Player.Player;
 
 public class CholericDecorator extends PersonDecorator
@@ -22,9 +23,9 @@ public class CholericDecorator extends PersonDecorator
     }
 
     @Override
-    public void ExecuteRole()
+    public void Discuss(Master master)
     {
-
+        player.Discuss(master);
     }
 
 }

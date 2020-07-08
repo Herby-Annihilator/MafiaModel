@@ -3,17 +3,17 @@ package Master;
 import Player.Player;
 import Player.Role.*;
 
-
-import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class Master
 {
     private static Master master;
-    private ArrayList<Player> allPlayersInGame;
-    private ArrayList<Player> playersRemainingInTheGame;   // оставшиеся в игре игроки
-    private ArrayList<Player> mafias;
-    private ArrayList<Player> civilians;
-    private ArrayList<Player> playersWitchMafiaIsGoingToKill;
+    private LinkedList<Player> allPlayersInGame;
+    private LinkedList<Player> playersRemainingInTheGame;   // оставшиеся в игре игроки
+    private LinkedList<Player> mafias;
+    private LinkedList<Player> civilians;
+    private LinkedList<Player> playersWitchMafiaIsGoingToKill;
+    private LinkedList<Player> playersWerePutOnDeletion;
     private Player mafiaDon;
     private Player doctor;
     private Player whore;
@@ -27,11 +27,12 @@ public class Master
 
     private Master()
     {
-        allPlayersInGame = new ArrayList<Player>();
-        playersRemainingInTheGame = new ArrayList<Player>();
-        mafias = new ArrayList<Player>();
-        civilians = new ArrayList<Player>();
-        playersWitchMafiaIsGoingToKill = new ArrayList<Player>();
+        allPlayersInGame = new LinkedList<Player>();
+        playersRemainingInTheGame = new LinkedList<Player>();
+        mafias = new LinkedList<Player>();
+        civilians = new LinkedList<Player>();
+        playersWitchMafiaIsGoingToKill = new LinkedList<Player>();
+        playersWerePutOnDeletion = new LinkedList<Player>();
     }
     public static Master InitMaster()
     {
@@ -41,15 +42,15 @@ public class Master
         }
         return master;
     }
-    public void setAllPlayersInGame(ArrayList<Player> playersInGame)
+    public void setAllPlayersInGame(LinkedList<Player> playersInGame)
     {
         allPlayersInGame = playersInGame;
     }
-    public void setMafias(ArrayList<Player> mafias)
+    public void setMafias(LinkedList<Player> mafias)
     {
         this.mafias = mafias;
     }
-    public void setCivilians(ArrayList<Player> civilians)
+    public void setCivilians(LinkedList<Player> civilians)
     {
         this.civilians = civilians;
     }
@@ -74,17 +75,17 @@ public class Master
         this.maniac = maniac;
     }
 
-    public ArrayList<Player> getAllPlayersInGame()
+    public LinkedList<Player> getAllPlayersInGame()
     {
         return allPlayersInGame;
     }
 
-    public ArrayList<Player> getMafias()
+    public LinkedList<Player> getMafias()
     {
         return mafias;
     }
 
-    public ArrayList<Player> getCivilians()
+    public LinkedList<Player> getCivilians()
     {
         return civilians;
     }
@@ -156,6 +157,19 @@ public class Master
         {
             playerWillHasAnAlibi = player;
         }
+    }
+
+    public void TakePlayerWasPutOnDeletion(Player player)
+    {
+        if (player != null)
+        {
+            playersWerePutOnDeletion.addLast(player);
+        }
+    }
+
+    public boolean DoesMeReallyNeedToPutPlayerOnDeletion()
+    {
+        return playersWerePutOnDeletion.isEmpty();
     }
 
     //
@@ -256,4 +270,13 @@ public class Master
         }
     }
 
+    public void StartDiscussing()
+    {
+        for (int i = 0; i < playersRemainingInTheGame.size(); i++)
+        {
+            playersRemainingInTheGame.get(i).Discuss(this);
+        }
+        playersRemainingInTheGame.addLast(playersRemainingInTheGame.getFirst());
+        playersRemainingInTheGame.removeFirst();
+    }
 }

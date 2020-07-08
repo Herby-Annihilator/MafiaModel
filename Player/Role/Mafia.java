@@ -5,20 +5,20 @@ import Player.Events.CandidateWasPutOnDeletionEventArgs;
 import Player.Events.EventArgs;
 import Player.Player;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.Random;
 
 public class Mafia extends Role
 {
     protected final int priorityInResolvingTheIssue = 1;
     protected Player nextPlayerToKill;
-    protected ArrayList<Player> mafias;
+    protected LinkedList<Player> mafias;
 
     public Mafia(Player owner)
     {
         super(owner);
         roleName = "Mafia";
-        mafias = new ArrayList<Player>();
+        mafias = new LinkedList<Player>();
     }
 
     @Override

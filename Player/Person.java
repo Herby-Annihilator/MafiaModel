@@ -1,8 +1,11 @@
 package Player;
 
+import Master.Master;
 import Player.Events.*;
 import Player.Role.Civilian;
 import Player.Role.Role;
+
+import java.util.Random;
 
 public class Person extends Player
 {
@@ -31,9 +34,30 @@ public class Person extends Player
         role = new Civilian(this);
     }
     @Override
-    public void ExecuteRole()
+    public void Discuss(Master master)
     {
-        role.Execute();
+        Player playerToDelete = null;
+        Substitute(blackList);
+        Substitute(grayList);
+        MakeExcuses();
+        if (!blackList.isEmpty())
+        {
+            playerToDelete = blackList.get(new Random().nextInt(blackList.size()));
+            PutCandidateForDeletion(playerToDelete);
+        }
+        else if (!grayList.isEmpty())
+        {
+            playerToDelete = grayList.get(new Random().nextInt(grayList.size()));
+            PutCandidateForDeletion(playerToDelete);
+        }
+        else if (!redList.isEmpty())
+        {
+            if (master.DoesMeReallyNeedToPutPlayerOnDeletion())
+            {
+                playerToDelete = grayList.get(new Random().nextInt(grayList.size()));
+            }
+            PutCandidateForDeletion(playerToDelete);
+        }
     }
 
 

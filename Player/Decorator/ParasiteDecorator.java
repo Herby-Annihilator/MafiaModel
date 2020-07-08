@@ -1,5 +1,6 @@
 package Player.Decorator;
 
+import Master.Master;
 import Player.Player;
 
 public class ParasiteDecorator extends PersonDecorator
@@ -18,8 +19,8 @@ public class ParasiteDecorator extends PersonDecorator
     }
 
     @Override
-    public void ExecuteRole()
+    public void Discuss(Master master)
     {
-
+        player.Discuss(master);
     }
 }

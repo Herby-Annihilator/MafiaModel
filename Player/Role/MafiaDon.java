@@ -3,7 +3,7 @@ package Player.Role;
 import Master.Master;
 import Player.Player;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class MafiaDon extends Mafia
 {
@@ -11,10 +11,10 @@ public class MafiaDon extends Mafia
     {
         super(owner);
         roleName = "MafiaDon";
-        checkedPlayers = new ArrayList<Player>();
+        checkedPlayers = new LinkedList<Player>();
     }
     private Player commissioner;
-    private ArrayList<Player> checkedPlayers;
+    private LinkedList<Player> checkedPlayers;
 
     @Override
     public void Execute()

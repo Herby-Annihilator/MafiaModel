@@ -1,5 +1,6 @@
 package Player;
 
+import Master.Master;
 import Player.Events.*;
 import Player.Role.Role;
 
@@ -8,7 +9,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
@@ -25,10 +26,10 @@ public abstract class Player
     //
     // Lists of players
     //
-    public ArrayList<PlayerWithConfidenceLevel> playersInGame;
-    public ArrayList<Player> blackList;
-    public ArrayList<Player> redList;
-    public ArrayList<Player> grayList;
+    public LinkedList<PlayerWithConfidenceLevel> playersInGame;
+    protected LinkedList<Player> blackList;
+    protected LinkedList<Player> redList;
+    protected LinkedList<Player> grayList;
     //
     // Default fields
     //
@@ -64,7 +65,7 @@ public abstract class Player
             }
         }
     }
-    protected void PutPlayerToColorList(Player player, ArrayList<Player> list)
+    protected void PutPlayerToColorList(Player player, LinkedList<Player> list)
     {
         for (int i = 0; i < list.size(); i++)
         {
@@ -75,7 +76,7 @@ public abstract class Player
         }
         list.add(player);
     }
-    protected void DeletePlayerFromOtherList(Player playerToDelete, ArrayList<Player> colorList)
+    protected void DeletePlayerFromOtherList(Player playerToDelete, LinkedList<Player> colorList)
     {
         for (int i = 0; i < colorList.size(); i++)
         {
@@ -93,7 +94,7 @@ public abstract class Player
         return role;
     }
 
-    public abstract void ExecuteRole();
+    public abstract void Discuss(Master master);
 
     protected String GetCurrentPath()
     {
@@ -190,7 +191,7 @@ public abstract class Player
     // очернить других
     public void Substitute(List<Player> players)
     {
-        ArrayList<PlayerWithAccusations> playerWithAccusations = new ArrayList<PlayerWithAccusations>();
+        LinkedList<PlayerWithAccusations> playerWithAccusations = new LinkedList<PlayerWithAccusations>();
         for (int i = 0; i < players.size(); i++)
         {
             playerWithAccusations.add(new PlayerWithAccusations(players.get(i), CalculateAccusation(players.get(i))));
@@ -226,7 +227,7 @@ public abstract class Player
         return toReturn;
     }
 
-    protected Player FindPlayerWithLessConfidenceLevel(ArrayList<Player> list)
+    protected Player FindPlayerWithLessConfidenceLevel(LinkedList<Player> list)
     {
         Player toReturn = null;
         int indexOfReturnedPlayer = 0;
