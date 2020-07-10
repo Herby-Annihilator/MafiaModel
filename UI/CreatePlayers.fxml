@@ -1,14 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="UI.CreatePlayers"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.CreatePlayers">
+   <children>
+      <TextField fx:id="playerNametxt" layoutX="21.0" layoutY="25.0" onKeyPressed="#playerNameKeyPressed" promptText="Player name" />
+      <TextField fx:id="playerSextxt" layoutX="21.0" layoutY="62.0" onKeyPressed="#playerNameKeyPressed" promptText="Player sex" />
+      <TextField fx:id="playerAgetxt" layoutX="21.0" layoutY="98.0" onKeyPressed="#playerNameKeyPressed" promptText="Player age" />
+      <TextField fx:id="playerOratorytxt" layoutX="437.0" layoutY="25.0" onKeyPressed="#OnlyNumbers" />
+      <Label layoutX="374.0" layoutY="29.0" text="Oratory" />
+      <TextField fx:id="playerStressResistencetxt" layoutX="437.0" layoutY="62.0" onKeyPressed="#OnlyNumbers" />
+      <Label layoutX="331.0" layoutY="66.0" text="Stress resistence" />
+      <TextField fx:id="playerSuspiciontxt" layoutX="437.0" layoutY="98.0" onKeyPressed="#OnlyNumbers" />
+      <Label layoutX="370.0" layoutY="102.0" text="Suspicion" />
+      <TextField fx:id="playerLeadershiptxt" layoutX="437.0" layoutY="132.0" onKeyPressed="#OnlyNumbers" />
+      <Label layoutX="366.0" layoutY="136.0" text="Leadership" />
+      <TextField fx:id="playerActingAbilitiestxt" layoutX="437.0" layoutY="165.0" onKeyPressed="#OnlyNumbers" />
+      <Label layoutX="346.0" layoutY="169.0" text="Acting abilities" />
+      <TextField fx:id="playerIntuitiontxt" layoutX="437.0" layoutY="199.0" onKeyPressed="#OnlyNumbers" />
+      <Label layoutX="374.0" layoutY="203.0" text="Intuition" />
+      <TextField fx:id="playerWillpowertxt" layoutX="437.0" layoutY="230.0" onKeyPressed="#OnlyNumbers" />
+      <Label layoutX="368.0" layoutY="234.0" text="Willpower" />
+      <TextField fx:id="playerOptimismtxt" layoutX="439.0" layoutY="261.0" onKeyPressed="#OnlyNumbers" />
+      <Label layoutX="370.0" layoutY="265.0" text="Optimism" />
+      <TextField fx:id="playerHumortxt" layoutX="439.0" layoutY="298.0" onKeyPressed="#OnlyNumbers" />
+      <Label layoutX="370.0" layoutY="302.0" text="Humor" />
+      <Button fx:id="AcceptBtn" layoutX="487.0" layoutY="355.0" mnemonicParsing="false" onMouseClicked="#AcceptBtn_Click" prefHeight="25.0" prefWidth="99.0" text="Accept" />
+      <Button fx:id="setPlayerTemperamentBtn" layoutX="21.0" layoutY="188.0" mnemonicParsing="false" onMouseClicked="#SetPlayerTemperamentBtn_Click" prefHeight="25.0" prefWidth="124.0" text="Set temperament" />
+      <Button fx:id="SetPlayerFetishBtn" layoutX="21.0" layoutY="230.0" mnemonicParsing="false" onMouseClicked="#SetPlayerFetishBtn_Click" prefHeight="25.0" prefWidth="124.0" text="Set fetish" />
+      <Button fx:id="SetPlayerEducationBtn" layoutX="21.0" layoutY="274.0" mnemonicParsing="false" onMouseClicked="#SetPlayerEducationBtn_Click" prefHeight="25.0" prefWidth="124.0" text="Set education" />
+      <Label layoutX="156.0" layoutY="192.0" text="you can set person temperament" />
+      <Label layoutX="156.0" layoutY="234.0" text="you can set person fetish" />
+      <Label layoutX="157.0" layoutY="278.0" text="you can set education for person" />
+   </children>
 </AnchorPane>

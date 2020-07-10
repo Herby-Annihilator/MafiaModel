@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="UI.SetEducation"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="344.0" prefWidth="329.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.SetEducation">
+   <children>
+      <Button fx:id="AcceptBtn" layoutX="227.0" layoutY="305.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="88.0" text="Accept" />
+      <RadioButton fx:id="HigherRbtn" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="Higher education">
+         <toggleGroup>
+            <ToggleGroup fx:id="first" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="CompleteSecondaryEducationRbtn" layoutX="14.0" layoutY="46.0" mnemonicParsing="false" text="Complete secondary education" toggleGroup="$first" />
+      <RadioButton fx:id="IncompleteSecondaryEducationRbtn" layoutX="14.0" layoutY="84.0" mnemonicParsing="false" text="Incomplete secondary education" toggleGroup="$first" />
+      <RadioButton fx:id="TwoClassesAndCorridorRbtn" layoutX="14.0" layoutY="123.0" mnemonicParsing="false" text="Two classes and corridor" toggleGroup="$first" />
+   </children>
 </AnchorPane>
