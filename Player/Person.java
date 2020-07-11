@@ -27,11 +27,13 @@ public class Person extends Player
     {
         this.role = role;
         this.characters = characters;
+        InitAllEvents();
     }
     public Person(Characters characters)
     {
         this.characters = characters;
         role = new Civilian(this);
+        InitAllEvents();
     }
     @Override
     public void Discuss(Master master)

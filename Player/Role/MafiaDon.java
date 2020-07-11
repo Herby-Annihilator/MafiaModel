@@ -16,11 +16,6 @@ public class MafiaDon extends Mafia
     private Player commissioner;
     private LinkedList<Player> checkedPlayers;
 
-    @Override
-    public void Execute()
-    {
-
-    }
 
     public boolean IsCommissioner(Player player)
     {

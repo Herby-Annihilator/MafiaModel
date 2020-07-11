@@ -83,36 +83,39 @@ public class Master
         {
             for (int i = 0; i < playerBoxes.length; i++)
             {
-                allPlayersInGame.add(playerBoxes[i].getPlayer());
-                playersRemainingInTheGame.add(playerBoxes[i].getPlayer());
-                SubscribeThisPlayerOnOtherPlayersEvents(playerBoxes[i].getPlayer());
-                if (playerBoxes[i].getPlayer().GetRole().GetRoleName().equals("Civilian"))
+                if (playerBoxes[i].getPlayer() != null)
                 {
-                    civilians.add(playerBoxes[i].getPlayer());
-                }
-                else if (playerBoxes[i].getPlayer().GetRole().GetRoleName().equals("Mafia"))
-                {
-                    mafias.add(playerBoxes[i].getPlayer());
-                }
-                else if (playerBoxes[i].getPlayer().GetRole().GetRoleName().equals("MafiaDon"))
-                {
-                    mafiaDon = playerBoxes[i].getPlayer();
-                }
-                else if (playerBoxes[i].getPlayer().GetRole().GetRoleName().equals("Commissioner"))
-                {
-                    commissioner = playerBoxes[i].getPlayer();
-                }
-                else if (playerBoxes[i].getPlayer().GetRole().GetRoleName().equals("Doctor"))
-                {
-                    doctor = playerBoxes[i].getPlayer();
-                }
-                else if (playerBoxes[i].getPlayer().GetRole().GetRoleName().equals("Maniac"))
-                {
-                    maniac = playerBoxes[i].getPlayer();
-                }
-                else if (playerBoxes[i].getPlayer().GetRole().GetRoleName().equals("Whore"))
-                {
-                    whore = playerBoxes[i].getPlayer();
+                    allPlayersInGame.add(playerBoxes[i].getPlayer());
+                    playersRemainingInTheGame.add(playerBoxes[i].getPlayer());
+                    SubscribeThisPlayerOnOtherPlayersEvents(playerBoxes[i].getPlayer());
+                    if (playerBoxes[i].getPlayer().GetRole().GetRoleName().equals("Civilian"))
+                    {
+                        civilians.add(playerBoxes[i].getPlayer());
+                    }
+                    else if (playerBoxes[i].getPlayer().GetRole().GetRoleName().equals("Mafia"))
+                    {
+                        mafias.add(playerBoxes[i].getPlayer());
+                    }
+                    else if (playerBoxes[i].getPlayer().GetRole().GetRoleName().equals("MafiaDon"))
+                    {
+                        mafiaDon = playerBoxes[i].getPlayer();
+                    }
+                    else if (playerBoxes[i].getPlayer().GetRole().GetRoleName().equals("Commissioner"))
+                    {
+                        commissioner = playerBoxes[i].getPlayer();
+                    }
+                    else if (playerBoxes[i].getPlayer().GetRole().GetRoleName().equals("Doctor"))
+                    {
+                        doctor = playerBoxes[i].getPlayer();
+                    }
+                    else if (playerBoxes[i].getPlayer().GetRole().GetRoleName().equals("Maniac"))
+                    {
+                        maniac = playerBoxes[i].getPlayer();
+                    }
+                    else if (playerBoxes[i].getPlayer().GetRole().GetRoleName().equals("Whore"))
+                    {
+                        whore = playerBoxes[i].getPlayer();
+                    }
                 }
             }
         }
@@ -122,13 +125,16 @@ public class Master
     {
         for (int i = 0; i < playerBoxes.length; i++)
         {
-            if (!playerBoxes[i].getPlayer().equals(player))
+            if (playerBoxes[i].getPlayer() != null)
             {
-                playerBoxes[i].getPlayer().substitutedEvent.AddListener(player.GetRole());
-                playerBoxes[i].getPlayer().candidateWasPutOnDeletionEvent.AddListener(player.GetRole());
-                playerBoxes[i].getPlayer().excusesMadeEvent.AddListener(player.GetRole());
-                playerBoxes[i].getPlayer().rolePublishedEvent.AddListener(player.GetRole());
-                playerBoxes[i].getPlayer().storyToldEvent.AddListener(player.GetRole());
+                if (!playerBoxes[i].getPlayer().equals(player))
+                {
+                    playerBoxes[i].getPlayer().substitutedEvent.AddListener(player.GetRole());
+                    playerBoxes[i].getPlayer().candidateWasPutOnDeletionEvent.AddListener(player.GetRole());
+                    playerBoxes[i].getPlayer().excusesMadeEvent.AddListener(player.GetRole());
+                    playerBoxes[i].getPlayer().rolePublishedEvent.AddListener(player.GetRole());
+                    playerBoxes[i].getPlayer().storyToldEvent.AddListener(player.GetRole());
+                }
             }
         }
     }

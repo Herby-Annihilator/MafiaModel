@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -547,9 +548,20 @@
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
                <children>
                   <Button fx:id="initMasterBtn" layoutX="14.0" layoutY="52.0" mnemonicParsing="false" onMouseClicked="#initMasterBtn_Click" prefHeight="25.0" prefWidth="116.0" text="Intit/Reset master" />
-                  <Button fx:id="startGameBtn" layoutX="401.0" layoutY="39.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="78.0" text="Start Game" />
-                  <Button fx:id="endGameBtn" layoutX="1239.0" layoutY="33.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="78.0" text="End Game" />
+                  <Button fx:id="startGameBtn" layoutX="1239.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="78.0" text="Start Game" />
+                  <Button fx:id="endGameBtn" layoutX="1239.0" layoutY="52.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="78.0" text="End Game" />
                   <Button fx:id="createPlayerBtn" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#createPlayerBtn_Click" prefHeight="25.0" prefWidth="116.0" text="Create players" />
+                  <Button layoutX="173.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="116.0" text="Tell a story" />
+                  <Separator layoutX="154.0" orientation="VERTICAL" prefHeight="92.0" prefWidth="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <Button layoutX="314.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="116.0" text="Wake up mafia" />
+                  <Button layoutX="459.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="123.0" text="Wake up mafia don" />
+                  <Button layoutX="314.0" layoutY="52.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="116.0" text="Wake up doctor" />
+                  <Button layoutX="459.0" layoutY="52.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="123.0" text="Wake up maniac" />
+                  <Button layoutX="603.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="116.0" text="Wake up whore" />
+                  <Button layoutX="603.0" layoutY="52.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="116.0" text="Wake up civilian" />
+                  <Button layoutX="745.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="146.0" text="Wake up commissioner" />
+                  <Separator layoutX="910.0" layoutY="-55.0" orientation="VERTICAL" prefHeight="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <Button layoutX="929.0" layoutY="14.0" mnemonicParsing="false" text="Start discussing" />
                </children>
             </AnchorPane>
          </children>
