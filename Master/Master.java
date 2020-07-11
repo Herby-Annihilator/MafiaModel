@@ -1,13 +1,16 @@
 package Master;
 
-import Player.Player;
+import Player.*;
 import Player.Role.*;
+import UI.MyControl.PlayerBox;
+import javafx.scene.control.TextArea;
 
 import java.util.LinkedList;
 
 public class Master
 {
     private static Master master;
+    private PlayerBox[] playerBoxes;
     private LinkedList<Player> allPlayersInGame;
     private LinkedList<Player> playersRemainingInTheGame;   // оставшиеся в игре игроки
     private LinkedList<Player> mafias;
@@ -42,6 +45,94 @@ public class Master
         }
         return master;
     }
+
+    public void Reset()
+    {
+        allPlayersInGame.clear();
+        playersRemainingInTheGame.clear();
+        mafias.clear();
+        civilians.clear();
+        playersWitchMafiaIsGoingToKill.clear();
+        playersWerePutOnDeletion.clear();
+        playerBoxes = null;
+        mafiaDon = null;
+        doctor = null;
+        maniac = null;
+        commissioner = null;
+        whore = null;
+    }
+
+    public void UnsubscribePlayer(Player player)
+    {
+        for (int i = 0; i < allPlayersInGame.size(); i++)
+        {
+            if (!allPlayersInGame.get(i).equals(player))
+            {
+                allPlayersInGame.get(i).storyToldEvent.RemoveListener(player.GetRole());
+                allPlayersInGame.get(i).candidateWasPutOnDeletionEvent.RemoveListener(player.GetRole());
+                allPlayersInGame.get(i).substitutedEvent.RemoveListener(player.GetRole());
+                allPlayersInGame.get(i).excusesMadeEvent.RemoveListener(player.GetRole());
+                allPlayersInGame.get(i).rolePublishedEvent.RemoveListener(player.GetRole());
+            }
+        }
+    }
+
+    public void SetAllPlayersParameters()
+    {
+        if (playerBoxes != null)
+        {
+            for (int i = 0; i < playerBoxes.length; i++)
+            {
+                allPlayersInGame.add(playerBoxes[i].getPlayer());
+                playersRemainingInTheGame.add(playerBoxes[i].getPlayer());
+                SubscribeThisPlayerOnOtherPlayersEvents(playerBoxes[i].getPlayer());
+                if (playerBoxes[i].getPlayer().GetRole().GetRoleName().equals("Civilian"))
+                {
+                    civilians.add(playerBoxes[i].getPlayer());
+                }
+                else if (playerBoxes[i].getPlayer().GetRole().GetRoleName().equals("Mafia"))
+                {
+                    mafias.add(playerBoxes[i].getPlayer());
+                }
+                else if (playerBoxes[i].getPlayer().GetRole().GetRoleName().equals("MafiaDon"))
+                {
+                    mafiaDon = playerBoxes[i].getPlayer();
+                }
+                else if (playerBoxes[i].getPlayer().GetRole().GetRoleName().equals("Commissioner"))
+                {
+                    commissioner = playerBoxes[i].getPlayer();
+                }
+                else if (playerBoxes[i].getPlayer().GetRole().GetRoleName().equals("Doctor"))
+                {
+                    doctor = playerBoxes[i].getPlayer();
+                }
+                else if (playerBoxes[i].getPlayer().GetRole().GetRoleName().equals("Maniac"))
+                {
+                    maniac = playerBoxes[i].getPlayer();
+                }
+                else if (playerBoxes[i].getPlayer().GetRole().GetRoleName().equals("Whore"))
+                {
+                    whore = playerBoxes[i].getPlayer();
+                }
+            }
+        }
+    }
+
+    private void SubscribeThisPlayerOnOtherPlayersEvents(Player player)
+    {
+        for (int i = 0; i < playerBoxes.length; i++)
+        {
+            if (!playerBoxes[i].getPlayer().equals(player))
+            {
+                playerBoxes[i].getPlayer().substitutedEvent.AddListener(player.GetRole());
+                playerBoxes[i].getPlayer().candidateWasPutOnDeletionEvent.AddListener(player.GetRole());
+                playerBoxes[i].getPlayer().excusesMadeEvent.AddListener(player.GetRole());
+                playerBoxes[i].getPlayer().rolePublishedEvent.AddListener(player.GetRole());
+                playerBoxes[i].getPlayer().storyToldEvent.AddListener(player.GetRole());
+            }
+        }
+    }
+
     public void setAllPlayersInGame(LinkedList<Player> playersInGame)
     {
         allPlayersInGame = playersInGame;
@@ -113,6 +204,15 @@ public class Master
     public Player getCommissioner()
     {
         return commissioner;
+    }
+    public PlayerBox[] getPlayerBoxes()
+    {
+        return playerBoxes;
+    }
+
+    public void setPlayerBoxes(PlayerBox[] playerBoxes)
+    {
+        this.playerBoxes = playerBoxes;
     }
 
     public boolean IsThisPlayerRoleYouNeed(Player sender, Player verifiedPlayer)
@@ -249,7 +349,8 @@ public class Master
         if (maniac != null)
         {
             ((Maniac)(maniac.GetRole())).TakeAShot(this);
-            maniacWantKillHim = playersWitchMafiaIsGoingToKill.get(0);
+            if (!playersWitchMafiaIsGoingToKill.isEmpty())
+                maniacWantKillHim = playersWitchMafiaIsGoingToKill.get(0);
             playersWitchMafiaIsGoingToKill.clear();
         }
     }
@@ -278,5 +379,10 @@ public class Master
         }
         playersRemainingInTheGame.addLast(playersRemainingInTheGame.getFirst());
         playersRemainingInTheGame.removeFirst();
+    }
+
+    public void ForcePlayerTellAStory(Scenario scenario, int playerIndexInPlayerBoxes, TextArea textArea)
+    {
+        playerBoxes[playerIndexInPlayerBoxes].getPlayer().TellAStory(scenario, textArea);
     }
 }

@@ -70,5 +70,7 @@
       <RadioButton fx:id="commissionerRole" layoutX="103.0" layoutY="178.0" mnemonicParsing="false" text="Commissioner" toggleGroup="$role" />
       <RadioButton fx:id="doctorRole" layoutX="103.0" layoutY="203.0" mnemonicParsing="false" text="Doctor" toggleGroup="$role" />
       <RadioButton fx:id="whoreRole" layoutX="103.0" layoutY="234.0" mnemonicParsing="false" text="Whore" toggleGroup="$role" />
+      <Label fx:id="playerID" layoutX="14.0" layoutY="645.0" />
+      <Button fx:id="createPlayerBtn" layoutX="404.0" layoutY="641.0" mnemonicParsing="false" onMouseClicked="#CreatePlayerBtn_Click" prefHeight="25.0" prefWidth="93.0" text="Create player" />
    </children>
 </AnchorPane>

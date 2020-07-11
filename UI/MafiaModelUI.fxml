@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -81,10 +82,25 @@
                                                 <Label layoutX="14.0" layoutY="12.0" text="Name" />
                                                 <Label id="firstPlayerName" fx:id="firstPlayerName" layoutX="58.0" layoutY="12.0" />
                                                 <Label layoutX="139.0" layoutY="12.0" text="Role" />
-                                                <Label fx:id="firstPlayerRole" layoutX="170.0" layoutY="12.0" prefHeight="17.0" prefWidth="2.0" />
+                                                <Label fx:id="firstPlayerRole" layoutX="170.0" layoutY="12.0" prefHeight="17.0" />
                                              </children>
                                           </AnchorPane>
-                                          <AnchorPane fx:id="firstPlayerPane" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
+                                          <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+                                             <children>
+                                                <GridPane layoutX="14.0" layoutY="8.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                  <columnConstraints>
+                                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                  </columnConstraints>
+                                                  <rowConstraints>
+                                                    <RowConstraints vgrow="SOMETIMES" />
+                                                    <RowConstraints maxHeight="45.0" minHeight="45.0" prefHeight="45.0" vgrow="SOMETIMES" />
+                                                  </rowConstraints>
+                                                   <children>
+                                                      <AnchorPane fx:id="firstPlayerPane" prefHeight="200.0" prefWidth="200.0" />
+                                                      <TextArea fx:id="firstPlayerText" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
+                                                   </children>
+                                                </GridPane>
+                                             </children></AnchorPane>
                                        </children>
                                     </GridPane>
                                  </children>
@@ -105,10 +121,25 @@
                                                 <Label layoutX="14.0" layoutY="12.0" text="Name" />
                                                 <Label fx:id="secondPlayerName" layoutX="53.0" layoutY="12.0" />
                                                 <Label layoutX="139.0" layoutY="12.0" text="Role" />
-                                                <Label fx:id="secondPlayerRole" layoutX="173.0" layoutY="12.0" prefHeight="17.0" prefWidth="2.0" />
+                                                <Label fx:id="secondPlayerRole" layoutX="173.0" layoutY="12.0" prefHeight="17.0" />
                                              </children>
                                           </AnchorPane>
-                                          <AnchorPane fx:id="secondPlayerPane" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
+                                          <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+                                             <children>
+                                                <GridPane prefHeight="122.0" prefWidth="187.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                   <columnConstraints>
+                                                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                   </columnConstraints>
+                                                   <rowConstraints>
+                                                      <RowConstraints vgrow="SOMETIMES" />
+                                                      <RowConstraints maxHeight="45.0" minHeight="45.0" prefHeight="45.0" vgrow="SOMETIMES" />
+                                                   </rowConstraints>
+                                                   <children>
+                                                      <AnchorPane fx:id="secondPlayerPane" prefHeight="200.0" prefWidth="200.0" />
+                                                      <TextArea fx:id="secondPlayerText" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
+                                                   </children>
+                                                </GridPane>
+                                             </children></AnchorPane>
                                        </children>
                                     </GridPane>
                                  </children>
@@ -129,10 +160,25 @@
                                                 <Label layoutX="14.0" layoutY="12.0" text="Name" />
                                                 <Label fx:id="thirdPlayerName" layoutX="55.0" layoutY="12.0" />
                                                 <Label layoutX="138.0" layoutY="12.0" text="Role" />
-                                                <Label fx:id="thirdPlayerRole" layoutX="168.0" layoutY="12.0" prefHeight="17.0" prefWidth="2.0" />
+                                                <Label fx:id="thirdPlayerRole" layoutX="168.0" layoutY="12.0" prefHeight="17.0" />
                                              </children>
                                           </AnchorPane>
-                                          <AnchorPane fx:id="thirdPlayerPane" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
+                                          <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+                                             <children>
+                                                <GridPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                   <columnConstraints>
+                                                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                   </columnConstraints>
+                                                   <rowConstraints>
+                                                      <RowConstraints vgrow="SOMETIMES" />
+                                                      <RowConstraints maxHeight="45.0" minHeight="45.0" prefHeight="45.0" vgrow="SOMETIMES" />
+                                                   </rowConstraints>
+                                                   <children>
+                                                      <AnchorPane fx:id="thirdPlayerPane" prefHeight="200.0" prefWidth="200.0" />
+                                                      <TextArea fx:id="thirdPlayerText" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
+                                                   </children>
+                                                </GridPane>
+                                             </children></AnchorPane>
                                        </children>
                                     </GridPane>
                                  </children>
@@ -156,7 +202,22 @@
                                                 <Label fx:id="fourthPlayerRole" layoutX="169.0" layoutY="12.0" />
                                              </children>
                                           </AnchorPane>
-                                          <AnchorPane fx:id="fourthPlayerPane" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
+                                          <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+                                             <children>
+                                                <GridPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                   <columnConstraints>
+                                                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                   </columnConstraints>
+                                                   <rowConstraints>
+                                                      <RowConstraints vgrow="SOMETIMES" />
+                                                      <RowConstraints maxHeight="45.0" minHeight="45.0" prefHeight="45.0" vgrow="SOMETIMES" />
+                                                   </rowConstraints>
+                                                   <children>
+                                                      <AnchorPane fx:id="fourthPlayerPane" prefHeight="200.0" prefWidth="200.0" />
+                                                      <TextArea fx:id="fourthPlayerText" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
+                                                   </children>
+                                                </GridPane>
+                                             </children></AnchorPane>
                                        </children>
                                     </GridPane>
                                  </children>
@@ -180,7 +241,22 @@
                                                 <Label fx:id="fifthPlayerRole" layoutX="173.0" layoutY="12.0" />
                                              </children>
                                           </AnchorPane>
-                                          <AnchorPane fx:id="fifthPlayerPane" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
+                                          <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+                                             <children>
+                                                <GridPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                   <columnConstraints>
+                                                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                   </columnConstraints>
+                                                   <rowConstraints>
+                                                      <RowConstraints vgrow="SOMETIMES" />
+                                                      <RowConstraints maxHeight="45.0" minHeight="45.0" prefHeight="45.0" vgrow="SOMETIMES" />
+                                                   </rowConstraints>
+                                                   <children>
+                                                      <AnchorPane fx:id="fifthPlayerPane" prefHeight="200.0" prefWidth="200.0" />
+                                                      <TextArea fx:id="fifthPlayerText" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
+                                                   </children>
+                                                </GridPane>
+                                             </children></AnchorPane>
                                        </children>
                                     </GridPane>
                                  </children>
@@ -204,7 +280,22 @@
                                                 <Label fx:id="sixthPlayerRole" layoutX="178.0" layoutY="12.0" />
                                              </children>
                                           </AnchorPane>
-                                          <AnchorPane fx:id="sixthPlayerPane" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
+                                          <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+                                             <children>
+                                                <GridPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                   <columnConstraints>
+                                                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                   </columnConstraints>
+                                                   <rowConstraints>
+                                                      <RowConstraints vgrow="SOMETIMES" />
+                                                      <RowConstraints maxHeight="45.0" minHeight="45.0" prefHeight="45.0" vgrow="SOMETIMES" />
+                                                   </rowConstraints>
+                                                   <children>
+                                                      <AnchorPane fx:id="sixthPlayerPane" prefHeight="200.0" prefWidth="200.0" />
+                                                      <TextArea fx:id="sixthPlayerText" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
+                                                   </children>
+                                                </GridPane>
+                                             </children></AnchorPane>
                                        </children>
                                     </GridPane>
                                  </children>
@@ -228,7 +319,22 @@
                                                 <Label fx:id="seventhPlayerRole" layoutX="174.0" layoutY="12.0" />
                                              </children>
                                           </AnchorPane>
-                                          <AnchorPane fx:id="seventhPlayerPane" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
+                                          <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+                                             <children>
+                                                <GridPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                   <columnConstraints>
+                                                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                   </columnConstraints>
+                                                   <rowConstraints>
+                                                      <RowConstraints vgrow="SOMETIMES" />
+                                                      <RowConstraints maxHeight="45.0" minHeight="45.0" prefHeight="45.0" vgrow="SOMETIMES" />
+                                                   </rowConstraints>
+                                                   <children>
+                                                      <AnchorPane fx:id="seventhPlayerPane" prefHeight="200.0" prefWidth="200.0" />
+                                                      <TextArea fx:id="sevenPlayerText" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
+                                                   </children>
+                                                </GridPane>
+                                             </children></AnchorPane>
                                        </children>
                                     </GridPane>
                                  </children>
@@ -252,7 +358,22 @@
                                                 <Label fx:id="eighthPlayerRole" layoutX="178.0" layoutY="12.0" />
                                              </children>
                                           </AnchorPane>
-                                          <AnchorPane fx:id="eighthPlayerPane" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
+                                          <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+                                             <children>
+                                                <GridPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                   <columnConstraints>
+                                                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                   </columnConstraints>
+                                                   <rowConstraints>
+                                                      <RowConstraints vgrow="SOMETIMES" />
+                                                      <RowConstraints maxHeight="45.0" minHeight="45.0" prefHeight="45.0" vgrow="SOMETIMES" />
+                                                   </rowConstraints>
+                                                   <children>
+                                                      <AnchorPane fx:id="eighthPlayerPane" prefHeight="200.0" prefWidth="200.0" />
+                                                      <TextArea fx:id="eighthPlayerText" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
+                                                   </children>
+                                                </GridPane>
+                                             </children></AnchorPane>
                                        </children>
                                     </GridPane>
                                  </children>
@@ -276,7 +397,22 @@
                                                 <Label fx:id="ninthPlayerRole" layoutX="175.0" layoutY="12.0" />
                                              </children>
                                           </AnchorPane>
-                                          <AnchorPane fx:id="ninthPlayerPane" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
+                                          <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+                                             <children>
+                                                <GridPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                   <columnConstraints>
+                                                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                   </columnConstraints>
+                                                   <rowConstraints>
+                                                      <RowConstraints vgrow="SOMETIMES" />
+                                                      <RowConstraints maxHeight="45.0" minHeight="45.0" prefHeight="45.0" vgrow="SOMETIMES" />
+                                                   </rowConstraints>
+                                                   <children>
+                                                      <AnchorPane fx:id="ninthPlayerPane" prefHeight="200.0" prefWidth="200.0" />
+                                                      <TextArea fx:id="ninthPlayerText" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
+                                                   </children>
+                                                </GridPane>
+                                             </children></AnchorPane>
                                        </children>
                                     </GridPane>
                                  </children>
@@ -300,7 +436,22 @@
                                                 <Label fx:id="tenthPlayerRole" layoutX="172.0" layoutY="12.0" />
                                              </children>
                                           </AnchorPane>
-                                          <AnchorPane fx:id="tenthPlayerPane" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
+                                          <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+                                             <children>
+                                                <GridPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                   <columnConstraints>
+                                                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                   </columnConstraints>
+                                                   <rowConstraints>
+                                                      <RowConstraints vgrow="SOMETIMES" />
+                                                      <RowConstraints maxHeight="45.0" minHeight="45.0" prefHeight="45.0" vgrow="SOMETIMES" />
+                                                   </rowConstraints>
+                                                   <children>
+                                                      <AnchorPane fx:id="tenthPlayerPane" prefHeight="200.0" prefWidth="200.0" />
+                                                      <TextArea fx:id="tenthPlayerText" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
+                                                   </children>
+                                                </GridPane>
+                                             </children></AnchorPane>
                                        </children>
                                     </GridPane>
                                  </children>
@@ -324,7 +475,22 @@
                                                 <Label fx:id="eleventhPlayerRole" layoutX="171.0" layoutY="12.0" />
                                              </children>
                                           </AnchorPane>
-                                          <AnchorPane fx:id="eleventhPlayerPane" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
+                                          <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+                                             <children>
+                                                <GridPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                   <columnConstraints>
+                                                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                   </columnConstraints>
+                                                   <rowConstraints>
+                                                      <RowConstraints vgrow="SOMETIMES" />
+                                                      <RowConstraints maxHeight="45.0" minHeight="45.0" prefHeight="45.0" vgrow="SOMETIMES" />
+                                                   </rowConstraints>
+                                                   <children>
+                                                      <AnchorPane fx:id="eleventhPlayerPane" prefHeight="200.0" prefWidth="200.0" />
+                                                      <TextArea fx:id="elevenPlayerText" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
+                                                   </children>
+                                                </GridPane>
+                                             </children></AnchorPane>
                                        </children>
                                     </GridPane>
                                  </children>
@@ -348,23 +514,42 @@
                                                 <Label fx:id="twelfthPlayerRole" layoutX="172.0" layoutY="12.0" />
                                              </children>
                                           </AnchorPane>
-                                          <AnchorPane fx:id="twelfthPlayerPane" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
+                                          <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+                                             <children>
+                                                <GridPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                   <columnConstraints>
+                                                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                   </columnConstraints>
+                                                   <rowConstraints>
+                                                      <RowConstraints vgrow="SOMETIMES" />
+                                                      <RowConstraints maxHeight="45.0" minHeight="45.0" prefHeight="45.0" vgrow="SOMETIMES" />
+                                                   </rowConstraints>
+                                                   <children>
+                                                      <AnchorPane fx:id="twelfthPlayerPane" prefHeight="200.0" prefWidth="200.0" />
+                                                      <TextArea fx:id="twelfthPlayerText" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
+                                                   </children>
+                                                </GridPane>
+                                             </children></AnchorPane>
                                        </children>
                                     </GridPane>
                                  </children>
                               </AnchorPane>
                            </children>
                         </GridPane>
-                        <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" />
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
+                           <children>
+                              <TextArea fx:id="informationAboutPlayer" layoutX="14.0" layoutY="14.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="3.0" />
+                           </children></AnchorPane>
                      </children>
                   </GridPane>
                </children>
             </AnchorPane>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
                <children>
-                  <Button fx:id="startGameBtn" layoutX="14.0" layoutY="33.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="78.0" text="Start Game" />
+                  <Button fx:id="initMasterBtn" layoutX="14.0" layoutY="52.0" mnemonicParsing="false" onMouseClicked="#initMasterBtn_Click" prefHeight="25.0" prefWidth="116.0" text="Intit/Reset master" />
+                  <Button fx:id="startGameBtn" layoutX="401.0" layoutY="39.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="78.0" text="Start Game" />
                   <Button fx:id="endGameBtn" layoutX="1239.0" layoutY="33.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="78.0" text="End Game" />
-                  <Button fx:id="createPlayerBtn" layoutX="119.0" layoutY="33.0" mnemonicParsing="false" onMouseClicked="#createPlayerBtn_Click" prefHeight="25.0" prefWidth="97.0" text="Create player" />
+                  <Button fx:id="createPlayerBtn" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#createPlayerBtn_Click" prefHeight="25.0" prefWidth="116.0" text="Create players" />
                </children>
             </AnchorPane>
          </children>

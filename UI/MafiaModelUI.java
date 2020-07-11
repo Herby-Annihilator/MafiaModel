@@ -9,12 +9,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.LinkedList;
 
 public class MafiaModelUI {
 
@@ -31,6 +31,9 @@ public class MafiaModelUI {
     private AnchorPane firstPlayerPane;
 
     @FXML
+    private TextArea firstPlayerText;
+
+    @FXML
     private Label secondPlayerName;
 
     @FXML
@@ -38,6 +41,9 @@ public class MafiaModelUI {
 
     @FXML
     private AnchorPane secondPlayerPane;
+
+    @FXML
+    private TextArea secondPlayerText;
 
     @FXML
     private Label thirdPlayerName;
@@ -49,6 +55,9 @@ public class MafiaModelUI {
     private AnchorPane thirdPlayerPane;
 
     @FXML
+    private TextArea thirdPlayerText;
+
+    @FXML
     private Label fourthPlayerName;
 
     @FXML
@@ -56,6 +65,9 @@ public class MafiaModelUI {
 
     @FXML
     private AnchorPane fourthPlayerPane;
+
+    @FXML
+    private TextArea fourthPlayerText;
 
     @FXML
     private Label fifthPlayerName;
@@ -67,6 +79,9 @@ public class MafiaModelUI {
     private AnchorPane fifthPlayerPane;
 
     @FXML
+    private TextArea fifthPlayerText;
+
+    @FXML
     private Label sixthPlayerName;
 
     @FXML
@@ -74,6 +89,9 @@ public class MafiaModelUI {
 
     @FXML
     private AnchorPane sixthPlayerPane;
+
+    @FXML
+    private TextArea sixthPlayerText;
 
     @FXML
     private Label seventhPlayerName;
@@ -85,6 +103,9 @@ public class MafiaModelUI {
     private AnchorPane seventhPlayerPane;
 
     @FXML
+    private TextArea sevenPlayerText;
+
+    @FXML
     private Label eighthPlayerName;
 
     @FXML
@@ -92,6 +113,9 @@ public class MafiaModelUI {
 
     @FXML
     private AnchorPane eighthPlayerPane;
+
+    @FXML
+    private TextArea eighthPlayerText;
 
     @FXML
     private Label ninthPlayerName;
@@ -103,6 +127,9 @@ public class MafiaModelUI {
     private AnchorPane ninthPlayerPane;
 
     @FXML
+    private TextArea ninthPlayerText;
+
+    @FXML
     private Label tenthPlayerName;
 
     @FXML
@@ -110,6 +137,9 @@ public class MafiaModelUI {
 
     @FXML
     private AnchorPane tenthPlayerPane;
+
+    @FXML
+    private TextArea tenthPlayerText;
 
     @FXML
     private Label eleventhPlayerName;
@@ -121,6 +151,9 @@ public class MafiaModelUI {
     private AnchorPane eleventhPlayerPane;
 
     @FXML
+    private TextArea elevenPlayerText;
+
+    @FXML
     private Label twelfthPlayerName;
 
     @FXML
@@ -128,6 +161,12 @@ public class MafiaModelUI {
 
     @FXML
     private AnchorPane twelfthPlayerPane;
+
+    @FXML
+    private TextArea twelfthPlayerText;
+
+    @FXML
+    private TextArea informationAboutPlayer;
 
     @FXML
     private Button startGameBtn;
@@ -138,12 +177,15 @@ public class MafiaModelUI {
     @FXML
     private Button createPlayerBtn;
 
+    @FXML
+    private Button initMasterBtn;
+
     //
     // Java is fucking language, that's why I am forced to leave this block of code framed in a comment
     //
     private CreatePlayers createPlayersForm;
     private Master master;
-    public LinkedList<PlayerBox> playersInGame;
+    public PlayerBox[] playersInGame;
     public Builder builder;
     //
     // end of block. Java is shit
@@ -151,14 +193,16 @@ public class MafiaModelUI {
 
     @FXML
     void createPlayerBtn_Click(MouseEvent event) {
-        FXMLLoader loader = new FXMLLoader();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("CreatePlayers.fxml"));
         try
         {
-            Parent root = loader.load(getClass().getResource("CreatePlayers.fxml"));
+            Parent root = loader.load();
             createPlayersForm = loader.getController();
+            createPlayersForm.players = playersInGame;
             Scene scene = new Scene(root);
             Stage stage = new Stage();
             stage.setScene(scene);
+            stage.setResizable(false);
             stage.show();
 
         }
@@ -171,28 +215,41 @@ public class MafiaModelUI {
     }
 
     @FXML
+    public void initMasterBtn_Click(MouseEvent event)
+    {
+        if (master == null)
+        {
+            master = master.InitMaster();
+        }
+        else
+        {
+            master.Reset();
+        }
+        master.setPlayerBoxes(playersInGame);
+        master.SetAllPlayersParameters();
+    }
+
+    @FXML
     public void initialize()
     {
         initPlayersInGame();
-        master = Master.InitMaster();
-        builder = new Builder();
     }
 
     private void initPlayersInGame()
     {
-        playersInGame = new LinkedList<PlayerBox>();
-        playersInGame.add(new PlayerBox(firstPlayerName,firstPlayerRole,firstPlayerPane));
-        playersInGame.add(new PlayerBox(secondPlayerName,secondPlayerRole,secondPlayerPane));
-        playersInGame.add(new PlayerBox(thirdPlayerName,thirdPlayerRole,thirdPlayerPane));
-        playersInGame.add(new PlayerBox(fourthPlayerName,fourthPlayerRole,fourthPlayerPane));
-        playersInGame.add(new PlayerBox(fifthPlayerName,fifthPlayerRole,fifthPlayerPane));
-        playersInGame.add(new PlayerBox(sixthPlayerName,sixthPlayerRole,sixthPlayerPane));
-        playersInGame.add(new PlayerBox(seventhPlayerName,seventhPlayerRole,seventhPlayerPane));
-        playersInGame.add(new PlayerBox(eighthPlayerName,eighthPlayerRole,eighthPlayerPane));
-        playersInGame.add(new PlayerBox(ninthPlayerName,ninthPlayerRole,ninthPlayerPane));
-        playersInGame.add(new PlayerBox(tenthPlayerName,tenthPlayerRole,tenthPlayerPane));
-        playersInGame.add(new PlayerBox(eleventhPlayerName,eleventhPlayerRole,eleventhPlayerPane));
-        playersInGame.add(new PlayerBox(twelfthPlayerName,twelfthPlayerRole,twelfthPlayerPane));
+        playersInGame = new PlayerBox[12];
+        playersInGame[0] = new PlayerBox(firstPlayerName,firstPlayerRole,firstPlayerPane, firstPlayerText);
+        playersInGame[1] = new PlayerBox(secondPlayerName,secondPlayerRole,secondPlayerPane, secondPlayerText);
+        playersInGame[2] = new PlayerBox(thirdPlayerName,thirdPlayerRole,thirdPlayerPane, thirdPlayerText);
+        playersInGame[3] = new PlayerBox(fourthPlayerName,fourthPlayerRole,fourthPlayerPane, fourthPlayerText);
+        playersInGame[4] = new PlayerBox(fifthPlayerName,fifthPlayerRole,fifthPlayerPane, fifthPlayerText);
+        playersInGame[5] = new PlayerBox(sixthPlayerName,sixthPlayerRole,sixthPlayerPane, sixthPlayerText);
+        playersInGame[6] = new PlayerBox(seventhPlayerName,seventhPlayerRole,seventhPlayerPane, sevenPlayerText);
+        playersInGame[7] = new PlayerBox(eighthPlayerName,eighthPlayerRole,eighthPlayerPane, eighthPlayerText);
+        playersInGame[8] = new PlayerBox(ninthPlayerName,ninthPlayerRole,ninthPlayerPane, ninthPlayerText);
+        playersInGame[9] = new PlayerBox(tenthPlayerName,tenthPlayerRole,tenthPlayerPane, tenthPlayerText);
+        playersInGame[10] = new PlayerBox(eleventhPlayerName,eleventhPlayerRole,eleventhPlayerPane, elevenPlayerText);
+        playersInGame[11] = new PlayerBox(twelfthPlayerName,twelfthPlayerRole,twelfthPlayerPane, twelfthPlayerText);
     }
 
 }

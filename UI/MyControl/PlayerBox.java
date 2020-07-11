@@ -2,6 +2,7 @@ package UI.MyControl;
 
 import Player.Player;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 
@@ -12,9 +13,11 @@ public class PlayerBox
     private AnchorPane playerBoxForImage;
     private Image playerFace;
     private Player player;
+    private TextArea textArea;
 
-    public PlayerBox(Label playerName, Label playerRole, AnchorPane playerBoxForImage)
+    public PlayerBox(Label playerName, Label playerRole, AnchorPane playerBoxForImage, TextArea textArea)
     {
+        this.textArea = textArea;
         this.playerName = playerName;
         this.playerRole = playerRole;
         this.playerBoxForImage = playerBoxForImage;
@@ -72,5 +75,15 @@ public class PlayerBox
         this.player = player;
         playerName.setText(player.GetCharacters().GetName());
         playerRole.setText(player.GetRole().GetRoleName());
+    }
+
+    public TextArea getTextArea()
+    {
+        return textArea;
+    }
+
+    public void setTextArea(TextArea textArea)
+    {
+        this.textArea = textArea;
     }
 }

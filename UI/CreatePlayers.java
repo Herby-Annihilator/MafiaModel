@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 import java.util.LinkedList;
 
@@ -127,19 +128,27 @@ public class CreatePlayers {
     @FXML
     private RadioButton whoreRole;
 
+    @FXML
+    private Label playerID;
+
+    @FXML
+    private Button createPlayerBtn;
+
     //
     // Java is fucking language, that's why I am forced to leave this block of code framed in a comment
     //
     private TextField[] textFields;
     public final int MAX_PLAYERS_COUNT = 12;
-    public int currentPlayersCount;  // должно быть инициализировано в вызывающем контроллере
-    public LinkedList<PlayerBox> players;   // должно быть инициализировано в вызывающем контроллере
+    public PlayerBox[] players;   // должно быть инициализировано в вызывающем контроллере
+    private LinkedList<Player> tempPlayers;
+    private int currentCountOfPlayers;
     //
     // end of block. Java is shit
     //
 
     @FXML
-    void AcceptBtn_Click(MouseEvent event) {
+    void CreatePlayerBtn_Click(MouseEvent event)
+    {
         if (IsThisFuckingTextFieldsEmpty())
         {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -147,6 +156,11 @@ public class CreatePlayers {
             alert.setHeaderText("You are moron and Java is a shit");
             alert.setContentText("You must fill all text fields!!!!");
             alert.show();
+        }
+        else if (tempPlayers.size() >= MAX_PLAYERS_COUNT)
+        {
+            playerID.setText("You can't create any players! Please, push Accept button");
+
         }
         else
         {
@@ -164,10 +178,19 @@ public class CreatePlayers {
                 player = setEducationIfNecessary(player);
                 player = setFetishIfNecessary(player);
                 player = setTemperamentIfNecessary(player);
+                tempPlayers.add(player);
+                playerID.setText("Player " + (tempPlayers.size() - 1) + " created!");
             }
-            players.get(currentPlayersCount).setPlayer(player);
         }
+    }
 
+    @FXML
+    void AcceptBtn_Click(MouseEvent event) {
+        for (int i = 0; i < tempPlayers.size(); i++)
+        {
+            players[i].setPlayer(tempPlayers.get(i));
+        }
+        ((Stage)(AcceptBtn.getScene().getWindow())).close();
     }
 
     private boolean setRole(Player player)
@@ -308,7 +331,7 @@ public class CreatePlayers {
                 playerAgetxt, playerNametxt, playerSextxt, playerSuspiciontxt, playerStressResistencetxt, playerWillpowertxt,
                 playerOratorytxt
         };
-        players = new LinkedList<PlayerBox>();
+        tempPlayers = new LinkedList<Player>();
     }
 
 

@@ -3,7 +3,7 @@ package Player;
 import Master.Master;
 import Player.Events.*;
 import Player.Role.Role;
-import javafx.scene.control.TextField;
+import javafx.scene.control.TextArea;
 
 import java.io.File;
 import java.io.IOException;
@@ -137,7 +137,7 @@ public abstract class Player
         }
         return toReturn;
     }
-    public void TellAStory(Scenario scenario, TextField textField)
+    public void TellAStory(Scenario scenario, TextArea textField)
     {
         switch (scenario)
         {
