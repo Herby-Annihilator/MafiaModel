@@ -1,5 +1,6 @@
 package UI.MyControl;
 
+import Player.Player;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
@@ -10,6 +11,7 @@ public class PlayerBox
     private Label playerRole;
     private AnchorPane playerBoxForImage;
     private Image playerFace;
+    private Player player;
 
     public PlayerBox(Label playerName, Label playerRole, AnchorPane playerBoxForImage)
     {
@@ -17,6 +19,7 @@ public class PlayerBox
         this.playerRole = playerRole;
         this.playerBoxForImage = playerBoxForImage;
         playerFace = null;
+        player = null;
     }
 
     public Label getPlayerName()
@@ -57,5 +60,17 @@ public class PlayerBox
     public void setPlayerFace(Image playerFace)
     {
         this.playerFace = playerFace;
+    }
+
+    public Player getPlayer()
+    {
+        return player;
+    }
+
+    public void setPlayer(Player player)
+    {
+        this.player = player;
+        playerName.setText(player.GetCharacters().GetName());
+        playerRole.setText(player.GetRole().GetRoleName());
     }
 }

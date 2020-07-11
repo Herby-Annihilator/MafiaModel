@@ -1,12 +1,17 @@
 package UI;
 
+import Player.Characters;
+import Player.Decorator.*;
+import Player.Person;
+import Player.Player;
+import Player.Role.*;
+import UI.MyControl.PlayerBox;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
-import javafx.stage.Stage;
+
+import java.util.LinkedList;
 
 
 public class CreatePlayers {
@@ -51,19 +56,84 @@ public class CreatePlayers {
     private Button AcceptBtn;
 
     @FXML
-    private Button setPlayerTemperamentBtn;
+    private CheckBox sanguineTemp;
 
     @FXML
-    private Button SetPlayerFetishBtn;
+    private CheckBox cholericTemp;
 
     @FXML
-    private Button SetPlayerEducationBtn;
+    private CheckBox melancholicTemp;
+
+    @FXML
+    private CheckBox phlegmaticTemp;
+
+    @FXML
+    private CheckBox boozerFetish;
+
+    @FXML
+    private CheckBox buggerFetish;
+
+    @FXML
+    private CheckBox freakFetish;
+
+    @FXML
+    private CheckBox femenistFetish;
+
+    @FXML
+    private CheckBox fanFetish;
+
+    @FXML
+    private CheckBox religiousManFetish;
+
+    @FXML
+    private CheckBox parasiteFetish;
+
+    @FXML
+    private RadioButton higherEdc;
+
+    @FXML
+    private ToggleGroup education;
+
+    @FXML
+    private RadioButton completeSecondaryEdc;
+
+    @FXML
+    private RadioButton incompleteSecondaryEdc;
+
+    @FXML
+    private RadioButton twoClassesAndCorridorEdc;
+
+    @FXML
+    private RadioButton civilianRole;
+
+    @FXML
+    private ToggleGroup role;
+
+    @FXML
+    private RadioButton maniacRole;
+
+    @FXML
+    private RadioButton mafiaRole;
+
+    @FXML
+    private RadioButton mafiaDonRole;
+
+    @FXML
+    private RadioButton commissionerRole;
+
+    @FXML
+    private RadioButton doctorRole;
+
+    @FXML
+    private RadioButton whoreRole;
 
     //
     // Java is fucking language, that's why I am forced to leave this block of code framed in a comment
     //
     private TextField[] textFields;
-
+    public final int MAX_PLAYERS_COUNT = 12;
+    public int currentPlayersCount;  // должно быть инициализировано в вызывающем контроллере
+    public LinkedList<PlayerBox> players;   // должно быть инициализировано в вызывающем контроллере
     //
     // end of block. Java is shit
     //
@@ -80,9 +150,154 @@ public class CreatePlayers {
         }
         else
         {
-            ((Stage)AcceptBtn.getScene().getWindow()).close();
+            Player player = createPlayer();
+            if (!setRole(player))
+            {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Error");
+                alert.setHeaderText("You are moron and Java is a shit");
+                alert.setContentText("You must chose Role!!!!");
+                alert.show();
+            }
+            else
+            {
+                player = setEducationIfNecessary(player);
+                player = setFetishIfNecessary(player);
+                player = setTemperamentIfNecessary(player);
+            }
+            players.get(currentPlayersCount).setPlayer(player);
         }
 
+    }
+
+    private boolean setRole(Player player)
+    {
+        if (civilianRole.isSelected())
+        {
+            player.SetRole(new Civilian(player));
+            return true;
+        }
+        if (mafiaDonRole.isSelected())
+        {
+            player.SetRole(new MafiaDon(player));
+            return true;
+        }
+        if (mafiaRole.isSelected())
+        {
+            player.SetRole(new Mafia(player));
+            return true;
+        }
+        if (commissionerRole.isSelected())
+        {
+            player.SetRole(new Commissioner(player));
+            return true;
+        }
+        if (doctorRole.isSelected())
+        {
+            player.SetRole(new Doctor(player));
+            return true;
+        }
+        if (maniacRole.isSelected())
+        {
+            player.SetRole(new Maniac(player));
+            return true;
+        }
+        if (whoreRole.isSelected())
+        {
+            player.SetRole(new Whore(player));
+            return true;
+        }
+        return false;
+    }
+
+    private Player createPlayer()
+    {
+        Characters characters = new Characters(playerNametxt.getText(),playerSextxt.getText(),
+                Integer.parseInt(playerAgetxt.getText()),Integer.parseInt(playerOratorytxt.getText()),
+                Integer.parseInt(playerStressResistencetxt.getText()),Integer.parseInt(playerSuspiciontxt.getText()),
+                Integer.parseInt(playerLeadershiptxt.getText()), Integer.parseInt(playerActingAbilitiestxt.getText()),
+                Integer.parseInt(playerIntuitiontxt.getText()), Integer.parseInt(playerWillpowertxt.getText()),
+                Integer.parseInt(playerOptimismtxt.getText()), Integer.parseInt(playerHumortxt.getText()));
+        Player player = new Person(characters);
+        return player;
+    }
+
+    private Player setTemperamentIfNecessary(Player player)
+    {
+        Player currentPlayer = player;
+        if (sanguineTemp.isSelected())
+        {
+            currentPlayer = new SanguineDecorator(currentPlayer);
+        }
+        if (cholericTemp.isSelected())
+        {
+            currentPlayer = new CholericDecorator(currentPlayer);
+        }
+        if (melancholicTemp.isSelected())
+        {
+            currentPlayer = new MelancholicDecorator(currentPlayer);
+        }
+        if (phlegmaticTemp.isSelected())
+        {
+            currentPlayer = new PhlegmaticDecorator(currentPlayer);
+        }
+        return currentPlayer;
+    }
+
+    private Player setFetishIfNecessary(Player player)
+    {
+        Player currentPlayer = player;
+        if (boozerFetish.isSelected())
+        {
+            currentPlayer = new BoozerDecorator(currentPlayer);
+        }
+        if (buggerFetish.isSelected())
+        {
+            currentPlayer = new BuggerDecorator(currentPlayer);
+        }
+        if (freakFetish.isSelected())
+        {
+            currentPlayer = new FreakDecorator(currentPlayer);
+        }
+        if (fanFetish.isSelected())
+        {
+            currentPlayer = new FanDecorator(currentPlayer);
+        }
+        if (femenistFetish.isSelected())
+        {
+            currentPlayer = new FeministDecorator(currentPlayer);
+        }
+        if (parasiteFetish.isSelected())
+        {
+            currentPlayer = new ParasiteDecorator(currentPlayer);
+        }
+        if (religiousManFetish.isSelected())
+        {
+            currentPlayer = new ReligiousManDecorator(currentPlayer);
+        }
+        return currentPlayer;
+    }
+
+    private Player setEducationIfNecessary(Player player)
+    {
+        Player currentPlayer = player;
+        if (higherEdc.isSelected())
+        {
+            currentPlayer = new HigherEducationDecorator(currentPlayer);
+        }
+        if (completeSecondaryEdc.isSelected())
+        {
+            currentPlayer = new CompleteSecondaryEducationDecorator(currentPlayer);
+        }
+        if (incompleteSecondaryEdc.isSelected())
+        {
+            currentPlayer = new IncompleteSecondaryEducationDecorator(currentPlayer);
+        }
+        if (twoClassesAndCorridorEdc.isSelected())
+        {
+            currentPlayer = new TwoClassesAndCorridorDecorator(currentPlayer);
+        }
+        return currentPlayer;
     }
 
     @FXML
@@ -93,6 +308,7 @@ public class CreatePlayers {
                 playerAgetxt, playerNametxt, playerSextxt, playerSuspiciontxt, playerStressResistencetxt, playerWillpowertxt,
                 playerOratorytxt
         };
+        players = new LinkedList<PlayerBox>();
     }
 
 
@@ -116,20 +332,6 @@ public class CreatePlayers {
         }
     }
 
-    @FXML
-    void SetPlayerEducationBtn_Click(MouseEvent event) {
-
-    }
-
-    @FXML
-    void SetPlayerFetishBtn_Click(MouseEvent event) {
-
-    }
-
-    @FXML
-    void SetPlayerTemperamentBtn_Click(MouseEvent event) {
-
-    }
 
     @FXML
     void playerNameKeyPressed(KeyEvent event) {
@@ -138,6 +340,7 @@ public class CreatePlayers {
             event.consume();
         }
     }
+
 
 }
 

@@ -1,39 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.CreatePlayers">
+<AnchorPane prefHeight="677.0" prefWidth="619.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.CreatePlayers">
    <children>
       <TextField fx:id="playerNametxt" layoutX="21.0" layoutY="25.0" onKeyPressed="#playerNameKeyPressed" promptText="Player name" />
       <TextField fx:id="playerSextxt" layoutX="21.0" layoutY="62.0" onKeyPressed="#playerNameKeyPressed" promptText="Player sex" />
       <TextField fx:id="playerAgetxt" layoutX="21.0" layoutY="98.0" onKeyPressed="#playerNameKeyPressed" promptText="Player age" />
-      <TextField fx:id="playerOratorytxt" layoutX="437.0" layoutY="25.0" onKeyPressed="#OnlyNumbers" />
+      <TextField fx:id="playerOratorytxt" layoutX="456.0" layoutY="25.0" onKeyPressed="#OnlyNumbers" />
       <Label layoutX="374.0" layoutY="29.0" text="Oratory" />
-      <TextField fx:id="playerStressResistencetxt" layoutX="437.0" layoutY="62.0" onKeyPressed="#OnlyNumbers" />
+      <TextField fx:id="playerStressResistencetxt" layoutX="456.0" layoutY="62.0" onKeyPressed="#OnlyNumbers" />
       <Label layoutX="331.0" layoutY="66.0" text="Stress resistence" />
-      <TextField fx:id="playerSuspiciontxt" layoutX="437.0" layoutY="98.0" onKeyPressed="#OnlyNumbers" />
+      <TextField fx:id="playerSuspiciontxt" layoutX="456.0" layoutY="98.0" onKeyPressed="#OnlyNumbers" />
       <Label layoutX="370.0" layoutY="102.0" text="Suspicion" />
-      <TextField fx:id="playerLeadershiptxt" layoutX="437.0" layoutY="132.0" onKeyPressed="#OnlyNumbers" />
+      <TextField fx:id="playerLeadershiptxt" layoutX="456.0" layoutY="132.0" onKeyPressed="#OnlyNumbers" />
       <Label layoutX="366.0" layoutY="136.0" text="Leadership" />
-      <TextField fx:id="playerActingAbilitiestxt" layoutX="437.0" layoutY="165.0" onKeyPressed="#OnlyNumbers" />
+      <TextField fx:id="playerActingAbilitiestxt" layoutX="456.0" layoutY="165.0" onKeyPressed="#OnlyNumbers" />
       <Label layoutX="346.0" layoutY="169.0" text="Acting abilities" />
-      <TextField fx:id="playerIntuitiontxt" layoutX="437.0" layoutY="199.0" onKeyPressed="#OnlyNumbers" />
+      <TextField fx:id="playerIntuitiontxt" layoutX="456.0" layoutY="199.0" onKeyPressed="#OnlyNumbers" />
       <Label layoutX="374.0" layoutY="203.0" text="Intuition" />
-      <TextField fx:id="playerWillpowertxt" layoutX="437.0" layoutY="230.0" onKeyPressed="#OnlyNumbers" />
+      <TextField fx:id="playerWillpowertxt" layoutX="456.0" layoutY="230.0" onKeyPressed="#OnlyNumbers" />
       <Label layoutX="368.0" layoutY="234.0" text="Willpower" />
-      <TextField fx:id="playerOptimismtxt" layoutX="439.0" layoutY="261.0" onKeyPressed="#OnlyNumbers" />
+      <TextField fx:id="playerOptimismtxt" layoutX="456.0" layoutY="261.0" onKeyPressed="#OnlyNumbers" />
       <Label layoutX="370.0" layoutY="265.0" text="Optimism" />
-      <TextField fx:id="playerHumortxt" layoutX="439.0" layoutY="298.0" onKeyPressed="#OnlyNumbers" />
-      <Label layoutX="370.0" layoutY="302.0" text="Humor" />
-      <Button fx:id="AcceptBtn" layoutX="487.0" layoutY="355.0" mnemonicParsing="false" onMouseClicked="#AcceptBtn_Click" prefHeight="25.0" prefWidth="99.0" text="Accept" />
-      <Button fx:id="setPlayerTemperamentBtn" layoutX="21.0" layoutY="188.0" mnemonicParsing="false" onMouseClicked="#SetPlayerTemperamentBtn_Click" prefHeight="25.0" prefWidth="124.0" text="Set temperament" />
-      <Button fx:id="SetPlayerFetishBtn" layoutX="21.0" layoutY="230.0" mnemonicParsing="false" onMouseClicked="#SetPlayerFetishBtn_Click" prefHeight="25.0" prefWidth="124.0" text="Set fetish" />
-      <Button fx:id="SetPlayerEducationBtn" layoutX="21.0" layoutY="274.0" mnemonicParsing="false" onMouseClicked="#SetPlayerEducationBtn_Click" prefHeight="25.0" prefWidth="124.0" text="Set education" />
-      <Label layoutX="156.0" layoutY="192.0" text="you can set person temperament" />
-      <Label layoutX="156.0" layoutY="234.0" text="you can set person fetish" />
-      <Label layoutX="157.0" layoutY="278.0" text="you can set education for person" />
+      <TextField fx:id="playerHumortxt" layoutX="456.0" layoutY="298.0" onKeyPressed="#OnlyNumbers" />
+      <Label layoutX="378.0" layoutY="302.0" text="Humor" />
+      <Button fx:id="AcceptBtn" layoutX="510.0" layoutY="641.0" mnemonicParsing="false" onMouseClicked="#AcceptBtn_Click" prefHeight="25.0" prefWidth="99.0" text="Accept" />
+      <Separator layoutX="14.0" layoutY="354.0" prefHeight="0.0" prefWidth="586.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+      <Separator layoutX="190.0" layoutY="354.0" orientation="VERTICAL" prefHeight="279.0" prefWidth="7.0" AnchorPane.topAnchor="354.0" />
+      <Separator layoutY="631.0" prefHeight="3.0" prefWidth="619.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+      <Separator layoutX="411.0" layoutY="354.0" orientation="VERTICAL" prefHeight="279.0" prefWidth="0.0" />
+      <Label layoutX="21.0" layoutY="365.0" text="Here you can set temperament" />
+      <Label layoutX="238.0" layoutY="365.0" text="Here you can set fetish" />
+      <Label layoutX="434.0" layoutY="365.0" text="Here you can set education" />
+      <CheckBox fx:id="sanguineTemp" layoutX="14.0" layoutY="419.0" mnemonicParsing="false" text="Sanguine" />
+      <CheckBox fx:id="cholericTemp" layoutX="13.0" layoutY="451.0" mnemonicParsing="false" text="Choleric" />
+      <CheckBox fx:id="melancholicTemp" layoutX="13.0" layoutY="480.0" mnemonicParsing="false" text="Melancholic" />
+      <CheckBox fx:id="phlegmaticTemp" layoutX="13.0" layoutY="512.0" mnemonicParsing="false" text="Phlegmatic" />
+      <CheckBox fx:id="boozerFetish" layoutX="204.0" layoutY="418.0" mnemonicParsing="false" text="Boozer" />
+      <CheckBox fx:id="buggerFetish" layoutX="204.0" layoutY="450.0" mnemonicParsing="false" text="Bugger" />
+      <CheckBox fx:id="freakFetish" layoutX="204.0" layoutY="479.0" mnemonicParsing="false" text="Freak" />
+      <CheckBox fx:id="femenistFetish" layoutX="204.0" layoutY="511.0" mnemonicParsing="false" text="Femenist" />
+      <CheckBox fx:id="fanFetish" layoutX="204.0" layoutY="542.0" mnemonicParsing="false" text="Fan" />
+      <CheckBox fx:id="religiousManFetish" layoutX="208.0" layoutY="574.0" mnemonicParsing="false" text="ReligiousMan" />
+      <CheckBox fx:id="parasiteFetish" layoutX="207.0" layoutY="599.0" mnemonicParsing="false" text="Parasite" />
+      <RadioButton fx:id="higherEdc" layoutX="421.0" layoutY="418.0" mnemonicParsing="false" text="Higher">
+         <toggleGroup>
+            <ToggleGroup fx:id="education" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="completeSecondaryEdc" layoutX="419.0" layoutY="450.0" mnemonicParsing="false" text="Complete secondary" toggleGroup="$education" />
+      <RadioButton fx:id="incompleteSecondaryEdc" layoutX="421.0" layoutY="480.0" mnemonicParsing="false" text="Incomplete secondary" toggleGroup="$education" />
+      <RadioButton fx:id="twoClassesAndCorridorEdc" layoutX="421.0" layoutY="512.0" mnemonicParsing="false" text="Two classes and corridor" toggleGroup="$education" />
+      <RadioButton fx:id="civilianRole" layoutX="21.0" layoutY="178.0" mnemonicParsing="false" text="Civilian">
+         <toggleGroup>
+            <ToggleGroup fx:id="role" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="maniacRole" layoutX="21.0" layoutY="203.0" mnemonicParsing="false" text="Maniac" toggleGroup="$role" />
+      <RadioButton fx:id="mafiaRole" layoutX="21.0" layoutY="234.0" mnemonicParsing="false" text="Mafia" toggleGroup="$role" />
+      <RadioButton fx:id="mafiaDonRole" layoutX="21.0" layoutY="265.0" mnemonicParsing="false" text="MafiaDon" toggleGroup="$role" />
+      <RadioButton fx:id="commissionerRole" layoutX="103.0" layoutY="178.0" mnemonicParsing="false" text="Commissioner" toggleGroup="$role" />
+      <RadioButton fx:id="doctorRole" layoutX="103.0" layoutY="203.0" mnemonicParsing="false" text="Doctor" toggleGroup="$role" />
+      <RadioButton fx:id="whoreRole" layoutX="103.0" layoutY="234.0" mnemonicParsing="false" text="Whore" toggleGroup="$role" />
    </children>
 </AnchorPane>

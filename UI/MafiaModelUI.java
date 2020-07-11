@@ -2,7 +2,7 @@ package UI;
 
 import Builder.Builder;
 import Master.Master;
-import Player.Player;
+import UI.MyControl.PlayerBox;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -143,7 +143,7 @@ public class MafiaModelUI {
     //
     private CreatePlayers createPlayersForm;
     private Master master;
-    public LinkedList<Player> playersInGame;
+    public LinkedList<PlayerBox> playersInGame;
     public Builder builder;
     //
     // end of block. Java is shit
@@ -170,5 +170,29 @@ public class MafiaModelUI {
 
     }
 
+    @FXML
+    public void initialize()
+    {
+        initPlayersInGame();
+        master = Master.InitMaster();
+        builder = new Builder();
+    }
+
+    private void initPlayersInGame()
+    {
+        playersInGame = new LinkedList<PlayerBox>();
+        playersInGame.add(new PlayerBox(firstPlayerName,firstPlayerRole,firstPlayerPane));
+        playersInGame.add(new PlayerBox(secondPlayerName,secondPlayerRole,secondPlayerPane));
+        playersInGame.add(new PlayerBox(thirdPlayerName,thirdPlayerRole,thirdPlayerPane));
+        playersInGame.add(new PlayerBox(fourthPlayerName,fourthPlayerRole,fourthPlayerPane));
+        playersInGame.add(new PlayerBox(fifthPlayerName,fifthPlayerRole,fifthPlayerPane));
+        playersInGame.add(new PlayerBox(sixthPlayerName,sixthPlayerRole,sixthPlayerPane));
+        playersInGame.add(new PlayerBox(seventhPlayerName,seventhPlayerRole,seventhPlayerPane));
+        playersInGame.add(new PlayerBox(eighthPlayerName,eighthPlayerRole,eighthPlayerPane));
+        playersInGame.add(new PlayerBox(ninthPlayerName,ninthPlayerRole,ninthPlayerPane));
+        playersInGame.add(new PlayerBox(tenthPlayerName,tenthPlayerRole,tenthPlayerPane));
+        playersInGame.add(new PlayerBox(eleventhPlayerName,eleventhPlayerRole,eleventhPlayerPane));
+        playersInGame.add(new PlayerBox(twelfthPlayerName,twelfthPlayerRole,twelfthPlayerPane));
+    }
 
 }

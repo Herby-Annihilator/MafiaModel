@@ -93,6 +93,10 @@ public abstract class Player
     {
         return role;
     }
+    public void SetRole(Role role)
+    {
+        this.role = role;
+    }
 
     public abstract void Discuss(Master master);
 
