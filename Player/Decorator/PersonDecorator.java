@@ -17,6 +17,9 @@ public abstract class PersonDecorator extends Player
         this.excusesMadeEvent = person.excusesMadeEvent;
         this.rolePublishedEvent = person.rolePublishedEvent;
         this.substitutedEvent = person.substitutedEvent;
+        this.blackList = person.blackList;
+        this.redList = person.redList;
+        this.grayList = person.grayList;
     }
 
     @Override

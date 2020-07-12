@@ -27,9 +27,9 @@ public abstract class Player
     // Lists of players
     //
     public LinkedList<PlayerWithConfidenceLevel> playersInGame;
-    protected LinkedList<Player> blackList;
-    protected LinkedList<Player> redList;
-    protected LinkedList<Player> grayList;
+    public LinkedList<Player> blackList;
+    public LinkedList<Player> redList;
+    public LinkedList<Player> grayList;
     //
     // Default fields
     //

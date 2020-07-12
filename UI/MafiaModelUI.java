@@ -2,11 +2,13 @@ package UI;
 
 import Builder.Builder;
 import Master.Master;
+import Player.Player;
 import UI.MyControl.PlayerBox;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
@@ -169,6 +171,9 @@ public class MafiaModelUI {
     private TextArea informationAboutPlayer;
 
     @FXML
+    private Button initMasterBtn;
+
+    @FXML
     private Button startGameBtn;
 
     @FXML
@@ -178,7 +183,34 @@ public class MafiaModelUI {
     private Button createPlayerBtn;
 
     @FXML
-    private Button initMasterBtn;
+    private Button tellAStoryBtn;
+
+    @FXML
+    private Button wakeUpMafiaBtn;
+
+    @FXML
+    private Button wakeUpMafiaDonBtn;
+
+    @FXML
+    private Button wakeUpDoctorBtn;
+
+    @FXML
+    private Button wakeUpManiacBtn;
+
+    @FXML
+    private Button wakeUpWhoreBtn;
+
+    @FXML
+    private Button wakeUpCivilianBtn;
+
+    @FXML
+    private Button wakeUpCommissionerBtn;
+
+    @FXML
+    private Button startDiscussingBtn;
+
+    @FXML
+    private Button removeAllPlayersBtn;
 
     //
     // Java is fucking language, that's why I am forced to leave this block of code framed in a comment
@@ -230,9 +262,114 @@ public class MafiaModelUI {
     }
 
     @FXML
+    public void showFirstPlayerInfo(MouseEvent event)
+    {
+        try
+        {
+            for (int i = 0; i < playersInGame.length; i++)
+            {
+                if (((AnchorPane)event.getSource()).equals(playersInGame[i].getPlayerBoxForImage()))
+                {
+                    ShowPlayerInfo(playersInGame[i].getPlayer(), informationAboutPlayer);
+                }
+            }
+        }
+        catch (Exception e)
+        {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setContentText("Can't cast to anchorPane (method name: showFirstPlayerInfo)");
+            alert.show();
+        }
+    }
+
+    private void ShowPlayerInfo( Player player, TextArea textArea)
+    {
+        textArea.setText("");
+        if (player == null)
+        {
+            return;
+        }
+        textArea.setText("\tCharacters\n\r" + "Name: " + player.GetCharacters().GetName() + "\n\r" +
+                "Sex: " + player.GetCharacters().GetSex() + "\n\r" + "Age: " + player.GetCharacters().GetAge() + "\n\r" +
+                "Oratory: " + player.GetCharacters().GetOratory() + "\n\r" + "Stress resistance: " +
+                player.GetCharacters().GetStressResistance() + "\n\r" + "Suspicion: " + player.GetCharacters().GetSuspicion() +
+                "\n\r" + "Leadership: " + player.GetCharacters().GetLeadership() + "\n\r" + "Acting abilities: " +
+                player.GetCharacters().GetActingAbilities() +"\n\r" + "Intuition: " + player.GetCharacters().GetIntuition() +
+                "\n\r" + "Willpower: " + player.GetCharacters().GetWillPower() + "\n\r" + "Optimism: " +
+                player.GetCharacters().GetOptimism() + "\n\r" + "Humor: " + player.GetCharacters().GetHumor() + "\n\r\n\r" +
+                "Role: " + player.GetRole().GetRoleName());
+    }
+
+    @FXML
+    void removeAllPlayersBtn_Click(MouseEvent event) {
+
+    }
+
+
+    @FXML
+    void startDiscussingBtn_Click(MouseEvent event) {
+
+    }
+
+    @FXML
+    void tellAStoryBtn_Click(MouseEvent event) {
+
+    }
+
+    @FXML
+    void wakeUpCivilianBtn_Click(MouseEvent event) {
+
+    }
+
+    @FXML
+    void wakeUpCommissionerBtn_Click(MouseEvent event) {
+
+    }
+
+    @FXML
+    void wakeUpDoctorBtn_Click(MouseEvent event) {
+
+    }
+
+    @FXML
+    void wakeUpMafiaBtn_Click(MouseEvent event) {
+
+    }
+
+    @FXML
+    void wakeUpMafiaDonBtn_Click(MouseEvent event) {
+
+    }
+
+    @FXML
+    void wakeUpManiacBtn_Click(MouseEvent event) {
+
+    }
+
+    @FXML
+    void wakeUpWhoreBtn_Click(MouseEvent event) {
+
+    }
+
+    @FXML
     public void initialize()
     {
+        DisableButtons();
         initPlayersInGame();
+    }
+
+    private void DisableButtons()
+    {
+        startDiscussingBtn.setDisable(true);
+        tellAStoryBtn.setDisable(true);
+        wakeUpCivilianBtn.setDisable(true);
+        wakeUpCommissionerBtn.setDisable(true);
+        wakeUpDoctorBtn.setDisable(true);
+        wakeUpMafiaBtn.setDisable(true);
+        wakeUpMafiaDonBtn.setDisable(true);
+        wakeUpManiacBtn.setDisable(true);
+        wakeUpWhoreBtn.setDisable(true);
     }
 
     private void initPlayersInGame()

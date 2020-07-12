@@ -5,6 +5,7 @@ import Player.Events.*;
 import Player.Role.Civilian;
 import Player.Role.Role;
 
+import java.util.LinkedList;
 import java.util.Random;
 
 public class Person extends Player
@@ -73,6 +74,9 @@ public class Person extends Player
         toReturn.excusesMadeEvent = (ExcusesMadeEvent) this.excusesMadeEvent.clone();
         toReturn.rolePublishedEvent = (RolePublishedEvent) this.rolePublishedEvent.clone();
         toReturn.substitutedEvent = (SubstitutedEvent) this.substitutedEvent.clone();
+        toReturn.blackList = (LinkedList<Player>) this.blackList.clone();
+        toReturn.redList = (LinkedList<Player>) this.blackList.clone();
+        toReturn.grayList = (LinkedList<Player>) this.blackList.clone();
         return toReturn;
     }
 

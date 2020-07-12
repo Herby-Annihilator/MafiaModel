@@ -8,11 +8,16 @@ import Player.Role.*;
 import UI.MyControl.PlayerBox;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.LinkedList;
+import java.util.Random;
 
 
 public class CreatePlayers {
@@ -189,8 +194,29 @@ public class CreatePlayers {
         for (int i = 0; i < tempPlayers.size(); i++)
         {
             players[i].setPlayer(tempPlayers.get(i));
+            players[i].setPlayerFace(GetRandomImage());
         }
         ((Stage)(AcceptBtn.getScene().getWindow())).close();
+    }
+
+    private Image GetRandomImage()
+    {
+        try
+        {
+            File currentDir = new File("");
+            String path = currentDir.getAbsolutePath() + "\\Images\\" + (new Random().nextInt(10) + 1) + ".jpg";
+            //Path pathToFile = Path.of(path + "\\Images\\" + (new Random().nextInt(1) + 1) + ".jpg");
+            Image image = new Image(new FileInputStream(path));
+            return image;
+        }
+        catch (FileNotFoundException e)
+        {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Error");
+            alert.setHeaderText("Image not found");
+            alert.show();
+            return null;
+        }
     }
 
     private boolean setRole(Player player)

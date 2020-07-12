@@ -4,7 +4,7 @@ import Player.Player;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.*;
 
 public class PlayerBox
 {
@@ -63,6 +63,8 @@ public class PlayerBox
     public void setPlayerFace(Image playerFace)
     {
         this.playerFace = playerFace;
+        playerBoxForImage.setBackground(new Background(new BackgroundImage(playerFace, BackgroundRepeat.NO_REPEAT,
+                BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT)));
     }
 
     public Player getPlayer()

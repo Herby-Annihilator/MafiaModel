@@ -97,7 +97,7 @@
                                                     <RowConstraints maxHeight="45.0" minHeight="45.0" prefHeight="45.0" vgrow="SOMETIMES" />
                                                   </rowConstraints>
                                                    <children>
-                                                      <AnchorPane fx:id="firstPlayerPane" prefHeight="200.0" prefWidth="200.0" />
+                                                      <AnchorPane fx:id="firstPlayerPane" onMouseClicked="#showFirstPlayerInfo" prefHeight="200.0" prefWidth="200.0" />
                                                       <TextArea fx:id="firstPlayerText" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
                                                    </children>
                                                 </GridPane>
@@ -136,7 +136,7 @@
                                                       <RowConstraints maxHeight="45.0" minHeight="45.0" prefHeight="45.0" vgrow="SOMETIMES" />
                                                    </rowConstraints>
                                                    <children>
-                                                      <AnchorPane fx:id="secondPlayerPane" prefHeight="200.0" prefWidth="200.0" />
+                                                      <AnchorPane fx:id="secondPlayerPane" onMouseClicked="#showFirstPlayerInfo" prefHeight="200.0" prefWidth="200.0" />
                                                       <TextArea fx:id="secondPlayerText" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
                                                    </children>
                                                 </GridPane>
@@ -175,7 +175,7 @@
                                                       <RowConstraints maxHeight="45.0" minHeight="45.0" prefHeight="45.0" vgrow="SOMETIMES" />
                                                    </rowConstraints>
                                                    <children>
-                                                      <AnchorPane fx:id="thirdPlayerPane" prefHeight="200.0" prefWidth="200.0" />
+                                                      <AnchorPane fx:id="thirdPlayerPane" onMouseClicked="#showFirstPlayerInfo" prefHeight="200.0" prefWidth="200.0" />
                                                       <TextArea fx:id="thirdPlayerText" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
                                                    </children>
                                                 </GridPane>
@@ -214,7 +214,7 @@
                                                       <RowConstraints maxHeight="45.0" minHeight="45.0" prefHeight="45.0" vgrow="SOMETIMES" />
                                                    </rowConstraints>
                                                    <children>
-                                                      <AnchorPane fx:id="fourthPlayerPane" prefHeight="200.0" prefWidth="200.0" />
+                                                      <AnchorPane fx:id="fourthPlayerPane" onMouseClicked="#showFirstPlayerInfo" prefHeight="200.0" prefWidth="200.0" />
                                                       <TextArea fx:id="fourthPlayerText" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
                                                    </children>
                                                 </GridPane>
@@ -253,7 +253,7 @@
                                                       <RowConstraints maxHeight="45.0" minHeight="45.0" prefHeight="45.0" vgrow="SOMETIMES" />
                                                    </rowConstraints>
                                                    <children>
-                                                      <AnchorPane fx:id="fifthPlayerPane" prefHeight="200.0" prefWidth="200.0" />
+                                                      <AnchorPane fx:id="fifthPlayerPane" onMouseClicked="#showFirstPlayerInfo" prefHeight="200.0" prefWidth="200.0" />
                                                       <TextArea fx:id="fifthPlayerText" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
                                                    </children>
                                                 </GridPane>
@@ -292,7 +292,7 @@
                                                       <RowConstraints maxHeight="45.0" minHeight="45.0" prefHeight="45.0" vgrow="SOMETIMES" />
                                                    </rowConstraints>
                                                    <children>
-                                                      <AnchorPane fx:id="sixthPlayerPane" prefHeight="200.0" prefWidth="200.0" />
+                                                      <AnchorPane fx:id="sixthPlayerPane" onMouseClicked="#showFirstPlayerInfo" prefHeight="200.0" prefWidth="200.0" />
                                                       <TextArea fx:id="sixthPlayerText" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
                                                    </children>
                                                 </GridPane>
@@ -331,7 +331,7 @@
                                                       <RowConstraints maxHeight="45.0" minHeight="45.0" prefHeight="45.0" vgrow="SOMETIMES" />
                                                    </rowConstraints>
                                                    <children>
-                                                      <AnchorPane fx:id="seventhPlayerPane" prefHeight="200.0" prefWidth="200.0" />
+                                                      <AnchorPane fx:id="seventhPlayerPane" onMouseClicked="#showFirstPlayerInfo" prefHeight="200.0" prefWidth="200.0" />
                                                       <TextArea fx:id="sevenPlayerText" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
                                                    </children>
                                                 </GridPane>
@@ -370,7 +370,7 @@
                                                       <RowConstraints maxHeight="45.0" minHeight="45.0" prefHeight="45.0" vgrow="SOMETIMES" />
                                                    </rowConstraints>
                                                    <children>
-                                                      <AnchorPane fx:id="eighthPlayerPane" prefHeight="200.0" prefWidth="200.0" />
+                                                      <AnchorPane fx:id="eighthPlayerPane" onMouseClicked="#showFirstPlayerInfo" prefHeight="200.0" prefWidth="200.0" />
                                                       <TextArea fx:id="eighthPlayerText" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
                                                    </children>
                                                 </GridPane>
@@ -409,7 +409,7 @@
                                                       <RowConstraints maxHeight="45.0" minHeight="45.0" prefHeight="45.0" vgrow="SOMETIMES" />
                                                    </rowConstraints>
                                                    <children>
-                                                      <AnchorPane fx:id="ninthPlayerPane" prefHeight="200.0" prefWidth="200.0" />
+                                                      <AnchorPane fx:id="ninthPlayerPane" onMouseClicked="#showFirstPlayerInfo" prefHeight="200.0" prefWidth="200.0" />
                                                       <TextArea fx:id="ninthPlayerText" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
                                                    </children>
                                                 </GridPane>
@@ -448,7 +448,7 @@
                                                       <RowConstraints maxHeight="45.0" minHeight="45.0" prefHeight="45.0" vgrow="SOMETIMES" />
                                                    </rowConstraints>
                                                    <children>
-                                                      <AnchorPane fx:id="tenthPlayerPane" prefHeight="200.0" prefWidth="200.0" />
+                                                      <AnchorPane fx:id="tenthPlayerPane" onMouseClicked="#showFirstPlayerInfo" prefHeight="200.0" prefWidth="200.0" />
                                                       <TextArea fx:id="tenthPlayerText" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
                                                    </children>
                                                 </GridPane>
@@ -487,7 +487,7 @@
                                                       <RowConstraints maxHeight="45.0" minHeight="45.0" prefHeight="45.0" vgrow="SOMETIMES" />
                                                    </rowConstraints>
                                                    <children>
-                                                      <AnchorPane fx:id="eleventhPlayerPane" prefHeight="200.0" prefWidth="200.0" />
+                                                      <AnchorPane fx:id="eleventhPlayerPane" onMouseClicked="#showFirstPlayerInfo" prefHeight="200.0" prefWidth="200.0" />
                                                       <TextArea fx:id="elevenPlayerText" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
                                                    </children>
                                                 </GridPane>
@@ -526,7 +526,7 @@
                                                       <RowConstraints maxHeight="45.0" minHeight="45.0" prefHeight="45.0" vgrow="SOMETIMES" />
                                                    </rowConstraints>
                                                    <children>
-                                                      <AnchorPane fx:id="twelfthPlayerPane" prefHeight="200.0" prefWidth="200.0" />
+                                                      <AnchorPane fx:id="twelfthPlayerPane" onMouseClicked="#showFirstPlayerInfo" prefHeight="200.0" prefWidth="200.0" />
                                                       <TextArea fx:id="twelfthPlayerText" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
                                                    </children>
                                                 </GridPane>
@@ -551,17 +551,19 @@
                   <Button fx:id="startGameBtn" layoutX="1239.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="78.0" text="Start Game" />
                   <Button fx:id="endGameBtn" layoutX="1239.0" layoutY="52.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="78.0" text="End Game" />
                   <Button fx:id="createPlayerBtn" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#createPlayerBtn_Click" prefHeight="25.0" prefWidth="116.0" text="Create players" />
-                  <Button layoutX="173.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="116.0" text="Tell a story" />
-                  <Separator layoutX="154.0" orientation="VERTICAL" prefHeight="92.0" prefWidth="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                  <Button layoutX="314.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="116.0" text="Wake up mafia" />
-                  <Button layoutX="459.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="123.0" text="Wake up mafia don" />
-                  <Button layoutX="314.0" layoutY="52.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="116.0" text="Wake up doctor" />
-                  <Button layoutX="459.0" layoutY="52.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="123.0" text="Wake up maniac" />
-                  <Button layoutX="603.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="116.0" text="Wake up whore" />
-                  <Button layoutX="603.0" layoutY="52.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="116.0" text="Wake up civilian" />
-                  <Button layoutX="745.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="146.0" text="Wake up commissioner" />
-                  <Separator layoutX="910.0" layoutY="-55.0" orientation="VERTICAL" prefHeight="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                  <Button layoutX="929.0" layoutY="14.0" mnemonicParsing="false" text="Start discussing" />
+                  <Button fx:id="tellAStoryBtn" layoutX="421.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#tellAStoryBtn_Click" prefHeight="25.0" prefWidth="116.0" text="Tell a story" />
+                  <Separator layoutX="268.0" orientation="VERTICAL" prefHeight="92.0" prefWidth="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <Button fx:id="wakeUpMafiaBtn" layoutX="562.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#wakeUpMafiaBtn_Click" prefHeight="25.0" prefWidth="116.0" text="Wake up mafia" />
+                  <Button fx:id="wakeUpMafiaDonBtn" layoutX="707.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#wakeUpMafiaDonBtn_Click" prefHeight="25.0" prefWidth="123.0" text="Wake up mafia don" />
+                  <Button fx:id="wakeUpDoctorBtn" layoutX="562.0" layoutY="52.0" mnemonicParsing="false" onMouseClicked="#wakeUpDoctorBtn_Click" prefHeight="25.0" prefWidth="116.0" text="Wake up doctor" />
+                  <Button fx:id="wakeUpManiacBtn" layoutX="707.0" layoutY="52.0" mnemonicParsing="false" onMouseClicked="#wakeUpManiacBtn_Click" prefHeight="25.0" prefWidth="123.0" text="Wake up maniac" />
+                  <Button fx:id="wakeUpWhoreBtn" layoutX="851.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#wakeUpWhoreBtn_Click" prefHeight="25.0" prefWidth="116.0" text="Wake up whore" />
+                  <Button fx:id="wakeUpCivilianBtn" layoutX="851.0" layoutY="52.0" mnemonicParsing="false" onMouseClicked="#wakeUpCivilianBtn_Click" prefHeight="25.0" prefWidth="116.0" text="Wake up civilian" />
+                  <Button fx:id="wakeUpCommissionerBtn" layoutX="993.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#wakeUpCommissionerBtn_Click" prefHeight="25.0" prefWidth="146.0" text="Wake up commissioner" />
+                  <Separator layoutX="1163.0" orientation="VERTICAL" prefHeight="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <Button fx:id="startDiscussingBtn" layoutX="285.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#startDiscussingBtn_Click" text="Start discussing" />
+                  <Button fx:id="removeAllPlayersBtn" layoutX="144.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#removeAllPlayersBtn_Click" prefHeight="25.0" prefWidth="116.0" text="Remove all players" />
+                  <Separator layoutX="401.0" orientation="VERTICAL" prefHeight="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
                </children>
             </AnchorPane>
          </children>
