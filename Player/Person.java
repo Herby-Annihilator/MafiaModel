@@ -23,18 +23,28 @@ public class Person extends Player
         role = new Civilian(this);
         characters = new Characters();
         InitAllEvents();
+        InitAllLists();
     }
     public Person(Role role, Characters characters)
     {
         this.role = role;
         this.characters = characters;
         InitAllEvents();
+        InitAllLists();
     }
     public Person(Characters characters)
     {
         this.characters = characters;
         role = new Civilian(this);
         InitAllEvents();
+        InitAllLists();
+    }
+    public void InitAllLists()
+    {
+        playersInGame = new LinkedList<PlayerWithConfidenceLevel>();
+        blackList = new LinkedList<Player>();
+        redList = new LinkedList<Player>();
+        grayList = new LinkedList<Player>();
     }
     @Override
     public void Discuss(Master master)
@@ -77,6 +87,7 @@ public class Person extends Player
         toReturn.blackList = (LinkedList<Player>) this.blackList.clone();
         toReturn.redList = (LinkedList<Player>) this.blackList.clone();
         toReturn.grayList = (LinkedList<Player>) this.blackList.clone();
+        toReturn.playersInGame = (LinkedList<PlayerWithConfidenceLevel>) this.playersInGame.clone();
         return toReturn;
     }
 

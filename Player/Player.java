@@ -5,10 +5,11 @@ import Player.Events.*;
 import Player.Role.Role;
 import javafx.scene.control.TextArea;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
@@ -110,10 +111,18 @@ public abstract class Player
     {
         try
         {
+
+
             Random random = new Random();
             String currentDirectory = GetCurrentPath();
-            Path path = Path.of(currentDirectory + "\\" + fileName);
-            List<String> strings = Files.readAllLines(path);
+            File file = new File(currentDirectory + "\\" + fileName);
+            BufferedReader reader = new BufferedReader(new FileReader(file));
+            List<String> strings = new ArrayList<String>();
+            String st;
+            while ((st = reader.readLine()) != null)
+            {
+                strings.add(st);
+            }
             strings = RemoveEmptyEntries(strings);
             int stringNumber = random.nextInt(strings.size());
             return strings.get(stringNumber);

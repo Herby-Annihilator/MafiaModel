@@ -205,7 +205,6 @@ public class CreatePlayers {
         {
             File currentDir = new File("");
             String path = currentDir.getAbsolutePath() + "\\Images\\" + (new Random().nextInt(10) + 1) + ".jpg";
-            //Path pathToFile = Path.of(path + "\\Images\\" + (new Random().nextInt(1) + 1) + ".jpg");
             Image image = new Image(new FileInputStream(path));
             return image;
         }

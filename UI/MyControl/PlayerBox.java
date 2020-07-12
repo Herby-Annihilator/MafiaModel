@@ -1,10 +1,15 @@
 package UI.MyControl;
 
 import Player.Player;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 
 public class PlayerBox
 {
@@ -21,8 +26,26 @@ public class PlayerBox
         this.playerName = playerName;
         this.playerRole = playerRole;
         this.playerBoxForImage = playerBoxForImage;
-        playerFace = null;
+        SetDefaultFace();
         player = null;
+    }
+
+    public void SetDefaultFace()
+    {
+        try
+        {
+            File currentDir = new File("");
+            String path = currentDir.getAbsolutePath() + "\\Images\\" + "default" + ".jpg";
+            Image image = new Image(new FileInputStream(path));
+            setPlayerFace(image);
+        }
+        catch (FileNotFoundException e)
+        {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Error");
+            alert.setHeaderText("Image 'default' not found");
+            alert.show();
+        }
     }
 
     public Label getPlayerName()
@@ -75,8 +98,11 @@ public class PlayerBox
     public void setPlayer(Player player)
     {
         this.player = player;
-        playerName.setText(player.GetCharacters().GetName());
-        playerRole.setText(player.GetRole().GetRoleName());
+        if (player != null)
+        {
+            playerName.setText(player.GetCharacters().GetName());
+            playerRole.setText(player.GetRole().GetRoleName());
+        }
     }
 
     public TextArea getTextArea()

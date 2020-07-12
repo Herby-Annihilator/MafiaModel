@@ -44,10 +44,7 @@ public class Mafia extends Role
     @Override
     public void RolePublished(Object sender, EventArgs e)
     {
-        if (!mafias.contains(((CandidateWasPutOnDeletionEventArgs)e).getPlayerWasPut()))
-        {
-            ChangeConfidenceLevelOfPlayer((Player)sender, -70);
-        }
+        ChangeConfidenceLevelOfPlayer((Player)sender, -70);
     }
 
     @Override
@@ -69,10 +66,7 @@ public class Mafia extends Role
     @Override
     public void ExcusesMade(Object sender, EventArgs e)
     {
-        if (!mafias.contains(((CandidateWasPutOnDeletionEventArgs)e).getPlayerWasPut()))
-        {
-            ChangeConfidenceLevelOfPlayer((Player)sender, -70);
-        }
+        ChangeConfidenceLevelOfPlayer((Player)sender, -70);
     }
 
 
@@ -85,5 +79,10 @@ public class Mafia extends Role
     public void TakeAShot(Master master)
     {
         master.TakeThePlayerToBeKilled(nextPlayerToKill);
+    }
+
+    public void AddMafiaToMafiasList(Player player)
+    {
+        mafias.add(player);
     }
 }

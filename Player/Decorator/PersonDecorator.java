@@ -20,6 +20,7 @@ public abstract class PersonDecorator extends Player
         this.blackList = person.blackList;
         this.redList = person.redList;
         this.grayList = person.grayList;
+        this.playersInGame = person.playersInGame;
     }
 
     @Override

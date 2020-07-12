@@ -88,6 +88,7 @@ public class Master
                     allPlayersInGame.add(playerBoxes[i].getPlayer());
                     playersRemainingInTheGame.add(playerBoxes[i].getPlayer());
                     SubscribeThisPlayerOnOtherPlayersEvents(playerBoxes[i].getPlayer());
+                    InformPlayerAboutOtherPlayers(playerBoxes[i].getPlayer());
                     if (playerBoxes[i].getPlayer().GetRole().GetRoleName().equals("Civilian"))
                     {
                         civilians.add(playerBoxes[i].getPlayer());
@@ -118,6 +119,26 @@ public class Master
                     }
                 }
             }
+            IntroduceMafias();
+        }
+    }
+
+    private void IntroduceMafias()
+    {
+        for (int i = 0; i < mafias.size(); i++)
+        {
+            for (int j = 0; j < mafias.size(); j++)
+            {
+                if (!mafias.get(i).equals(mafias.get(j)))
+                {
+                    ((Mafia)mafias.get(i).GetRole()).AddMafiaToMafiasList(mafias.get(j));
+                }
+            }
+            if (mafiaDon != null)
+            {
+                ((Mafia)mafias.get(i).GetRole()).AddMafiaToMafiasList(mafiaDon);
+                ((MafiaDon)mafiaDon.GetRole()).AddMafiaToMafiasList(mafias.get(i));
+            }
         }
     }
 
@@ -134,6 +155,20 @@ public class Master
                     playerBoxes[i].getPlayer().excusesMadeEvent.AddListener(player.GetRole());
                     playerBoxes[i].getPlayer().rolePublishedEvent.AddListener(player.GetRole());
                     playerBoxes[i].getPlayer().storyToldEvent.AddListener(player.GetRole());
+                }
+            }
+        }
+    }
+
+    private void InformPlayerAboutOtherPlayers(Player playerToInform)
+    {
+        for (int i = 0; i < playerBoxes.length; i++)
+        {
+            if (playerBoxes[i].getPlayer() != null)
+            {
+                if (!playerBoxes[i].getPlayer().equals(playerToInform))
+                {
+                    playerToInform.playersInGame.add(new PlayerWithConfidenceLevel(playerBoxes[i].getPlayer(), 0));
                 }
             }
         }
@@ -287,7 +322,10 @@ public class Master
         {
             ((Mafia)mafias.get(i).GetRole()).TakeAShot(this);
         }
-        ((MafiaDon)mafiaDon.GetRole()).TakeAShot(this);
+        if (mafiaDon != null)
+        {
+            ((MafiaDon)mafiaDon.GetRole()).TakeAShot(this);
+        }
         mafiaWantKillHim = FindOutPlayerToKill();
         playersWitchMafiaIsGoingToKill.clear();
     }
@@ -305,7 +343,7 @@ public class Master
             {
                 if (currentPlayer.equals(playersWitchMafiaIsGoingToKill.get(j)))
                 {
-                    countOfMafiasWitchWantToKillPlayerWithSpecificIndex[j]++;
+                    countOfMafiasWitchWantToKillPlayerWithSpecificIndex[i]++;
                 }
             }
         }
@@ -390,5 +428,21 @@ public class Master
     public void ForcePlayerTellAStory(Scenario scenario, int playerIndexInPlayerBoxes, TextArea textArea)
     {
         playerBoxes[playerIndexInPlayerBoxes].getPlayer().TellAStory(scenario, textArea);
+    }
+
+    public void ResetAllPlayersSettings()
+    {
+        if (allPlayersInGame != null)
+        {
+            for (int i = 0; i < allPlayersInGame.size(); i++)
+            {
+                allPlayersInGame.get(i).playersInGame = new LinkedList<PlayerWithConfidenceLevel>();
+                allPlayersInGame.get(i).blackList = new LinkedList<Player>();
+                allPlayersInGame.get(i).redList = new LinkedList<Player>();
+                allPlayersInGame.get(i).grayList = new LinkedList<Player>();
+                UnsubscribePlayer(allPlayersInGame.get(i));
+            }
+            allPlayersInGame = new LinkedList<Player>();
+        }
     }
 }

@@ -2,7 +2,7 @@ package Player;
 
 public class PlayerWithConfidenceLevel
 {
-    PlayerWithConfidenceLevel(Player player, int confidenceLevel)
+    public PlayerWithConfidenceLevel(Player player, int confidenceLevel)
     {
         this.player = player;
         setConfidenceLevel(confidenceLevel);

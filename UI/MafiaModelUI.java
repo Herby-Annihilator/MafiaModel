@@ -18,6 +18,8 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+import static Player.Scenario.factory;
+
 public class MafiaModelUI {
 
     @FXML
@@ -201,7 +203,7 @@ public class MafiaModelUI {
     private Button wakeUpWhoreBtn;
 
     @FXML
-    private Button wakeUpCivilianBtn;
+    private Button wakeUpAllBtn;
 
     @FXML
     private Button wakeUpCommissionerBtn;
@@ -259,6 +261,7 @@ public class MafiaModelUI {
         }
         master.setPlayerBoxes(playersInGame);
         master.SetAllPlayersParameters();
+        SetButtonsDisable(false);
     }
 
     @FXML
@@ -303,73 +306,96 @@ public class MafiaModelUI {
 
     @FXML
     void removeAllPlayersBtn_Click(MouseEvent event) {
+        SetButtonsDisable(true);
+        if (master != null)
+        {
+            master.ResetAllPlayersSettings();
+        }
+        ResetPlayersInGameParameters();
+    }
 
+    private void ResetPlayersInGameParameters()
+    {
+
+        for (int i = 0; i < playersInGame.length; i++)
+        {
+            playersInGame[i].setPlayer(null);
+            playersInGame[i].SetDefaultFace();
+            playersInGame[i].getPlayerName().setText("");
+            playersInGame[i].getPlayerRole().setText("");
+        }
     }
 
 
     @FXML
     void startDiscussingBtn_Click(MouseEvent event) {
-
+        master.StartDiscussing();
     }
 
     @FXML
     void tellAStoryBtn_Click(MouseEvent event) {
-
+        for (int i = 0; i < playersInGame.length; i++)
+        {
+            if (playersInGame[i].getPlayer() != null)
+            {
+                master.ForcePlayerTellAStory(factory, i, playersInGame[i].getTextArea());
+            }
+        }
     }
 
     @FXML
-    void wakeUpCivilianBtn_Click(MouseEvent event) {
+    void wakeUpAllBtn_Click(MouseEvent event) {
 
     }
 
     @FXML
     void wakeUpCommissionerBtn_Click(MouseEvent event) {
-
+        master.WakeUpCommissioner();
     }
 
     @FXML
     void wakeUpDoctorBtn_Click(MouseEvent event) {
-
+        master.WakeUpDoctor();
     }
 
     @FXML
     void wakeUpMafiaBtn_Click(MouseEvent event) {
-
+        master.WakeUpMafia();
     }
 
     @FXML
     void wakeUpMafiaDonBtn_Click(MouseEvent event) {
-
+        master.WakeUpMafiaDon();
     }
 
     @FXML
     void wakeUpManiacBtn_Click(MouseEvent event) {
-
+        master.WakeUpManiac();
     }
 
     @FXML
     void wakeUpWhoreBtn_Click(MouseEvent event) {
-
+        master.WakeUpWhore();
     }
 
     @FXML
     public void initialize()
     {
-        DisableButtons();
+        SetButtonsDisable(true);
         initPlayersInGame();
     }
 
-    private void DisableButtons()
+    private void SetButtonsDisable(boolean isDisable)
     {
-        startDiscussingBtn.setDisable(true);
-        tellAStoryBtn.setDisable(true);
-        wakeUpCivilianBtn.setDisable(true);
-        wakeUpCommissionerBtn.setDisable(true);
-        wakeUpDoctorBtn.setDisable(true);
-        wakeUpMafiaBtn.setDisable(true);
-        wakeUpMafiaDonBtn.setDisable(true);
-        wakeUpManiacBtn.setDisable(true);
-        wakeUpWhoreBtn.setDisable(true);
+        startDiscussingBtn.setDisable(isDisable);
+        tellAStoryBtn.setDisable(isDisable);
+        wakeUpAllBtn.setDisable(isDisable);
+        wakeUpCommissionerBtn.setDisable(isDisable);
+        wakeUpDoctorBtn.setDisable(isDisable);
+        wakeUpMafiaBtn.setDisable(isDisable);
+        wakeUpMafiaDonBtn.setDisable(isDisable);
+        wakeUpManiacBtn.setDisable(isDisable);
+        wakeUpWhoreBtn.setDisable(isDisable);
     }
 
     private void initPlayersInGame()
@@ -388,5 +414,4 @@ public class MafiaModelUI {
         playersInGame[10] = new PlayerBox(eleventhPlayerName,eleventhPlayerRole,eleventhPlayerPane, elevenPlayerText);
         playersInGame[11] = new PlayerBox(twelfthPlayerName,twelfthPlayerRole,twelfthPlayerPane, twelfthPlayerText);
     }
-
 }

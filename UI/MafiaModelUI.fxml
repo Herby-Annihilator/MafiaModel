@@ -558,7 +558,7 @@
                   <Button fx:id="wakeUpDoctorBtn" layoutX="562.0" layoutY="52.0" mnemonicParsing="false" onMouseClicked="#wakeUpDoctorBtn_Click" prefHeight="25.0" prefWidth="116.0" text="Wake up doctor" />
                   <Button fx:id="wakeUpManiacBtn" layoutX="707.0" layoutY="52.0" mnemonicParsing="false" onMouseClicked="#wakeUpManiacBtn_Click" prefHeight="25.0" prefWidth="123.0" text="Wake up maniac" />
                   <Button fx:id="wakeUpWhoreBtn" layoutX="851.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#wakeUpWhoreBtn_Click" prefHeight="25.0" prefWidth="116.0" text="Wake up whore" />
-                  <Button fx:id="wakeUpCivilianBtn" layoutX="851.0" layoutY="52.0" mnemonicParsing="false" onMouseClicked="#wakeUpCivilianBtn_Click" prefHeight="25.0" prefWidth="116.0" text="Wake up civilian" />
+                  <Button fx:id="wakeUpAllBtn" layoutX="851.0" layoutY="52.0" mnemonicParsing="false" onMouseClicked="#wakeUpAllBtn_Click" prefHeight="25.0" prefWidth="116.0" text="Wake up all" />
                   <Button fx:id="wakeUpCommissionerBtn" layoutX="993.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#wakeUpCommissionerBtn_Click" prefHeight="25.0" prefWidth="146.0" text="Wake up commissioner" />
                   <Separator layoutX="1163.0" orientation="VERTICAL" prefHeight="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
                   <Button fx:id="startDiscussingBtn" layoutX="285.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#startDiscussingBtn_Click" text="Start discussing" />
