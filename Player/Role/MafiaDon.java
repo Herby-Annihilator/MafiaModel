@@ -67,7 +67,11 @@ public class MafiaDon extends Mafia
         {
             nextPlayerToKill = commissioner;
         }
-        master.TakeThePlayerToBeKilled(nextPlayerToKill);
+        else
+        {
+            super.TakeAShot(master);
+        }
+
     }
 
     public void NullifyCommissioner()

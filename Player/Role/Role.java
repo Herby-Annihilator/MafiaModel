@@ -74,14 +74,19 @@ public abstract class Role implements IPlayerEventListener
     {
         if (((CandidateWasPutOnDeletionEventArgs)e).getPlayerWasPut().equals(owner))
         {
-            owner.playersInGame.get(owner.playersInGame.indexOf((Player)sender)).setConfidenceLevel(
-                    owner.playersInGame.get(owner.playersInGame.indexOf((Player)sender)).getConfidenceLevel() -
-                            (int)(owner.playersInGame.get(owner.playersInGame.indexOf((Player)sender)).getConfidenceLevel() * 0.7)
-            );
+            for (int i = 0; i < owner.playersInGame.size(); i++)
+            {
+                if (owner.playersInGame.get(i).getPlayer().equals((Player)sender))
+                {
+                    owner.playersInGame.get(i).setConfidenceLevel(owner.playersInGame.get(i).getConfidenceLevel() -
+                            (int)(owner.playersInGame.get(i).getConfidenceLevel() * 0.7));
+                    break;
+                }
+            }
         }
         for (int i = 0; i < owner.playersInGame.size(); i++)
         {
-            if (owner.playersInGame.get(i).getPlayer() == ((CandidateWasPutOnDeletionEventArgs)e).getPlayerWasPut())
+            if (owner.playersInGame.get(i).getPlayer().equals(((CandidateWasPutOnDeletionEventArgs)e).getPlayerWasPut()))
             {
                 owner.playersInGame.get(i).setConfidenceLevel(owner.playersInGame.get(i).getConfidenceLevel() -
                         (int)(owner.playersInGame.get(i).getConfidenceLevel() * 0.15));

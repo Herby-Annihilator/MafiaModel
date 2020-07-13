@@ -203,9 +203,6 @@ public class MafiaModelUI {
     private Button wakeUpWhoreBtn;
 
     @FXML
-    private Button wakeUpAllBtn;
-
-    @FXML
     private Button wakeUpCommissionerBtn;
 
     @FXML
@@ -213,6 +210,18 @@ public class MafiaModelUI {
 
     @FXML
     private Button removeAllPlayersBtn;
+
+    @FXML
+    private Label mafiasWantKillHimLabel;
+
+    @FXML
+    private Label maniacWantKillHimLabel;
+
+    @FXML
+    private Label doctorWantHealHimLabel;
+
+    @FXML
+    private Label whoreWantGiveAnAlibiLabel;
 
     //
     // Java is fucking language, that's why I am forced to leave this block of code framed in a comment
@@ -233,6 +242,7 @@ public class MafiaModelUI {
             Parent root = loader.load();
             createPlayersForm = loader.getController();
             createPlayersForm.players = playersInGame;
+            createPlayersForm.initMasterBtn = initMasterBtn;
             Scene scene = new Scene(root);
             Stage stage = new Stage();
             stage.setScene(scene);
@@ -288,20 +298,14 @@ public class MafiaModelUI {
 
     private void ShowPlayerInfo( Player player, TextArea textArea)
     {
-        textArea.setText("");
-        if (player == null)
+        if (master != null)
         {
-            return;
+            master.ShowPlayerInfo(player, textArea);
         }
-        textArea.setText("\tCharacters\n\r" + "Name: " + player.GetCharacters().GetName() + "\n\r" +
-                "Sex: " + player.GetCharacters().GetSex() + "\n\r" + "Age: " + player.GetCharacters().GetAge() + "\n\r" +
-                "Oratory: " + player.GetCharacters().GetOratory() + "\n\r" + "Stress resistance: " +
-                player.GetCharacters().GetStressResistance() + "\n\r" + "Suspicion: " + player.GetCharacters().GetSuspicion() +
-                "\n\r" + "Leadership: " + player.GetCharacters().GetLeadership() + "\n\r" + "Acting abilities: " +
-                player.GetCharacters().GetActingAbilities() +"\n\r" + "Intuition: " + player.GetCharacters().GetIntuition() +
-                "\n\r" + "Willpower: " + player.GetCharacters().GetWillPower() + "\n\r" + "Optimism: " +
-                player.GetCharacters().GetOptimism() + "\n\r" + "Humor: " + player.GetCharacters().GetHumor() + "\n\r\n\r" +
-                "Role: " + player.GetRole().GetRoleName());
+        else
+        {
+            textArea.setText("Please, init your master!");
+        }
     }
 
     @FXML
@@ -344,11 +348,6 @@ public class MafiaModelUI {
     }
 
     @FXML
-    void wakeUpAllBtn_Click(MouseEvent event) {
-
-    }
-
-    @FXML
     void wakeUpCommissionerBtn_Click(MouseEvent event) {
         master.WakeUpCommissioner();
     }
@@ -356,11 +355,27 @@ public class MafiaModelUI {
     @FXML
     void wakeUpDoctorBtn_Click(MouseEvent event) {
         master.WakeUpDoctor();
+        if (master.getPlayerYouWillHeal() != null)
+        {
+            doctorWantHealHimLabel.setText(master.getPlayerYouWillHeal().GetCharacters().GetName());
+        }
+        else
+        {
+            doctorWantHealHimLabel.setText("");
+        }
     }
 
     @FXML
     void wakeUpMafiaBtn_Click(MouseEvent event) {
         master.WakeUpMafia();
+        if (master.getMafiaWantKillHim() != null)
+        {
+            mafiasWantKillHimLabel.setText(master.getMafiaWantKillHim().GetCharacters().GetName());
+        }
+        else
+        {
+            mafiasWantKillHimLabel.setText("");
+        }
     }
 
     @FXML
@@ -371,11 +386,27 @@ public class MafiaModelUI {
     @FXML
     void wakeUpManiacBtn_Click(MouseEvent event) {
         master.WakeUpManiac();
+        if (master.getManiacWantKillHim() != null)
+        {
+            maniacWantKillHimLabel.setText(master.getManiacWantKillHim().GetCharacters().GetName());
+        }
+        else
+        {
+            maniacWantKillHimLabel.setText("");
+        }
     }
 
     @FXML
     void wakeUpWhoreBtn_Click(MouseEvent event) {
         master.WakeUpWhore();
+        if (master.getPlayerWillHasAnAlibi() != null)
+        {
+            whoreWantGiveAnAlibiLabel.setText(master.getPlayerWillHasAnAlibi().GetCharacters().GetName());
+        }
+        else
+        {
+            whoreWantGiveAnAlibiLabel.setText("");
+        }
     }
 
     @FXML
@@ -387,9 +418,9 @@ public class MafiaModelUI {
 
     private void SetButtonsDisable(boolean isDisable)
     {
+        initMasterBtn.setDisable(isDisable);
         startDiscussingBtn.setDisable(isDisable);
         tellAStoryBtn.setDisable(isDisable);
-        wakeUpAllBtn.setDisable(isDisable);
         wakeUpCommissionerBtn.setDisable(isDisable);
         wakeUpDoctorBtn.setDisable(isDisable);
         wakeUpMafiaBtn.setDisable(isDisable);

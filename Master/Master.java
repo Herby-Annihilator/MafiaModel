@@ -1,7 +1,9 @@
 package Master;
 
-import Player.*;
+import Player.Player;
+import Player.PlayerWithConfidenceLevel;
 import Player.Role.*;
+import Player.Scenario;
 import UI.MyControl.PlayerBox;
 import javafx.scene.control.TextArea;
 
@@ -37,6 +39,44 @@ public class Master
         playersWitchMafiaIsGoingToKill = new LinkedList<Player>();
         playersWerePutOnDeletion = new LinkedList<Player>();
     }
+
+    public void ShowPlayerInfo(Player player, TextArea textArea)
+    {
+        textArea.setText("");
+        if (player == null)
+        {
+            return;
+        }
+        textArea.setText("\tCharacters\n\r" + "Name: " + player.GetCharacters().GetName() + "\n\r" +
+                "Sex: " + player.GetCharacters().GetSex() + "\n\r" + "Age: " + player.GetCharacters().GetAge() + "\n\r" +
+                "Oratory: " + player.GetCharacters().GetOratory() + "\n\r" + "Stress resistance: " +
+                player.GetCharacters().GetStressResistance() + "\n\r" + "Suspicion: " + player.GetCharacters().GetSuspicion() +
+                "\n\r" + "Leadership: " + player.GetCharacters().GetLeadership() + "\n\r" + "Acting abilities: " +
+                player.GetCharacters().GetActingAbilities() +"\n\r" + "Intuition: " + player.GetCharacters().GetIntuition() +
+                "\n\r" + "Willpower: " + player.GetCharacters().GetWillPower() + "\n\r" + "Optimism: " +
+                player.GetCharacters().GetOptimism() + "\n\r" + "Humor: " + player.GetCharacters().GetHumor() + "\n\r\n\r" +
+                "Role: " + player.GetRole().GetRoleName() + "\n\r\n\r" + "Black list: " + showColorListOfPlayer(player.blackList) +
+                "\n\r" + "Gray list: " + showColorListOfPlayer(player.grayList) + "\n\r" + "Red list: " +
+                showColorListOfPlayer(player.redList));
+    }
+
+    private String showColorListOfPlayer(LinkedList<Player> colorList)
+    {
+        String toReturn = "";
+        if (colorList != null)
+        {
+            for (int i = 0; i < colorList.size(); i++)
+            {
+                toReturn += colorList.get(i).GetCharacters().GetName() + " ";
+                if (i % 3 == 0)
+                {
+                    toReturn += "\n\r";
+                }
+            }
+        }
+        return toReturn;
+    }
+
     public static Master InitMaster()
     {
         if (master == null)
@@ -444,5 +484,25 @@ public class Master
             }
             allPlayersInGame = new LinkedList<Player>();
         }
+    }
+
+    public Player getPlayerYouWillHeal()
+    {
+        return playerYouWillHeal;
+    }
+
+    public Player getPlayerWillHasAnAlibi()
+    {
+        return playerWillHasAnAlibi;
+    }
+
+    public Player getMafiaWantKillHim()
+    {
+        return mafiaWantKillHim;
+    }
+
+    public Player getManiacWantKillHim()
+    {
+        return maniacWantKillHim;
     }
 }

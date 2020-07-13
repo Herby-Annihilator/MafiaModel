@@ -41,6 +41,10 @@ public class Whore extends Role
                         playerWasChosen = true;
                     }
                 }
+                else
+                {
+                    playerWasChosen = true;
+                }
             }
         }
         master.TakeThePlayerWitchWillHasAnAlibi(playerWillHasAnAlibi);

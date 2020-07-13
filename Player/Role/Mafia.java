@@ -78,6 +78,29 @@ public class Mafia extends Role
 
     public void TakeAShot(Master master)
     {
+        if (owner.playersInGame.size() > 5)
+        {
+            Random random = new Random();
+            int index;
+            boolean playerChosen;
+            do
+            {
+                playerChosen = true;
+                index = random.nextInt(owner.playersInGame.size());
+                for (int i = 0; i < mafias.size(); i++)
+                {
+                    if (owner.playersInGame.get(index).getPlayer().equals(mafias.get(i)))
+                    {
+                        playerChosen = false;
+                    }
+                }
+            } while (!playerChosen);
+            nextPlayerToKill = owner.playersInGame.get(index).getPlayer();
+        }
+        else
+        {
+            nextPlayerToKill = owner.playersInGame.get(0).getPlayer();
+        }
         master.TakeThePlayerToBeKilled(nextPlayerToKill);
     }
 

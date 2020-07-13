@@ -145,6 +145,7 @@ public class CreatePlayers {
     private TextField[] textFields;
     public final int MAX_PLAYERS_COUNT = 12;
     public PlayerBox[] players;   // должно быть инициализировано в вызывающем контроллере
+    public Button initMasterBtn;
     private LinkedList<Player> tempPlayers;
     private int currentCountOfPlayers;
     //
@@ -191,6 +192,10 @@ public class CreatePlayers {
 
     @FXML
     void AcceptBtn_Click(MouseEvent event) {
+        if (tempPlayers.size() > 0)
+        {
+            initMasterBtn.setDisable(false);
+        }
         for (int i = 0; i < tempPlayers.size(); i++)
         {
             players[i].setPlayer(tempPlayers.get(i));
