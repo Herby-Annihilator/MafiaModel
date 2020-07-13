@@ -505,4 +505,14 @@ public class Master
     {
         return maniacWantKillHim;
     }
+
+    public void startAnalysis()
+    {
+
+    }
+
+    public void RemoveChosenPlayer()
+    {
+        
+    }
 }

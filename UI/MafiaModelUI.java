@@ -23,6 +23,12 @@ import static Player.Scenario.factory;
 public class MafiaModelUI {
 
     @FXML
+    private Button removeThisPlayerBtn;
+
+    @FXML
+    private Button startAnalisysBtn;
+
+    @FXML
     private AnchorPane root;
 
     @FXML
@@ -427,6 +433,8 @@ public class MafiaModelUI {
         wakeUpMafiaDonBtn.setDisable(isDisable);
         wakeUpManiacBtn.setDisable(isDisable);
         wakeUpWhoreBtn.setDisable(isDisable);
+        removeThisPlayerBtn.setDisable(isDisable);
+        startAnalisysBtn.setDisable(isDisable);
     }
 
     private void initPlayersInGame()
@@ -444,5 +452,17 @@ public class MafiaModelUI {
         playersInGame[9] = new PlayerBox(tenthPlayerName,tenthPlayerRole,tenthPlayerPane, tenthPlayerText);
         playersInGame[10] = new PlayerBox(eleventhPlayerName,eleventhPlayerRole,eleventhPlayerPane, elevenPlayerText);
         playersInGame[11] = new PlayerBox(twelfthPlayerName,twelfthPlayerRole,twelfthPlayerPane, twelfthPlayerText);
+    }
+
+    @FXML
+    void removeThisPlayerBtn_Click(MouseEvent event)
+    {
+
+    }
+
+    @FXML
+    void startAnalysisBtn_Click(MouseEvent event)
+    {
+
     }
 }

@@ -548,8 +548,6 @@
             <AnchorPane prefHeight="200.0" prefWidth="1331.0" GridPane.rowIndex="2">
                <children>
                   <Button fx:id="initMasterBtn" layoutX="14.0" layoutY="52.0" mnemonicParsing="false" onMouseClicked="#initMasterBtn_Click" prefHeight="25.0" prefWidth="116.0" text="Intit/Reset master" />
-                  <Button fx:id="startGameBtn" layoutX="1239.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="78.0" text="Start Game" />
-                  <Button fx:id="endGameBtn" layoutX="1239.0" layoutY="52.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="78.0" text="End Game" />
                   <Button fx:id="createPlayerBtn" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#createPlayerBtn_Click" prefHeight="25.0" prefWidth="116.0" text="Create players" />
                   <Button fx:id="tellAStoryBtn" layoutX="165.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#tellAStoryBtn_Click" prefHeight="25.0" prefWidth="116.0" text="Tell a story" />
                   <Separator layoutX="150.0" orientation="VERTICAL" prefHeight="130.0" prefWidth="6.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
@@ -559,18 +557,22 @@
                   <Button fx:id="wakeUpManiacBtn" layoutX="455.0" layoutY="92.0" mnemonicParsing="false" onMouseClicked="#wakeUpManiacBtn_Click" prefHeight="25.0" prefWidth="146.0" text="Wake up maniac" />
                   <Button fx:id="wakeUpWhoreBtn" layoutX="310.0" layoutY="92.0" mnemonicParsing="false" onMouseClicked="#wakeUpWhoreBtn_Click" prefHeight="25.0" prefWidth="123.0" text="Wake up whore" />
                   <Button fx:id="wakeUpCommissionerBtn" layoutX="455.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#wakeUpCommissionerBtn_Click" prefHeight="25.0" prefWidth="146.0" text="Wake up commissioner" />
-                  <Separator layoutX="1163.0" orientation="VERTICAL" prefHeight="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <Separator layoutX="890.0" orientation="VERTICAL" prefHeight="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
                   <Button fx:id="startDiscussingBtn" layoutX="165.0" layoutY="52.0" mnemonicParsing="false" onMouseClicked="#startDiscussingBtn_Click" prefHeight="25.0" prefWidth="116.0" text="Start discussing" />
                   <Button fx:id="removeAllPlayersBtn" layoutX="14.0" layoutY="91.0" mnemonicParsing="false" onMouseClicked="#removeAllPlayersBtn_Click" prefHeight="25.0" prefWidth="116.0" text="Remove all players" />
                   <Separator layoutX="298.0" orientation="VERTICAL" prefHeight="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                  <Label layoutX="903.0" layoutY="18.0" text="Mafias want to kill: " />
-                  <Label fx:id="mafiasWantKillHimLabel" layoutX="1026.0" layoutY="18.0" />
-                  <Label layoutX="903.0" layoutY="44.0" text="Maniac want to kill: " />
-                  <Label fx:id="maniacWantKillHimLabel" layoutX="1041.0" layoutY="45.0" />
-                  <Label layoutX="903.0" layoutY="69.0" text="Doctor want heal: " />
-                  <Label fx:id="doctorWantHealHimLabel" layoutX="1012.0" layoutY="70.0" />
-                  <Label layoutX="903.0" layoutY="95.0" text="Whore want give alibi: " />
-                  <Label fx:id="whoreWantGiveAnAlibiLabel" layoutX="1035.0" layoutY="96.0" />
+                  <Label layoutX="634.0" layoutY="17.0" text="Mafias want to kill: " />
+                  <Label fx:id="mafiasWantKillHimLabel" layoutX="757.0" layoutY="17.0" />
+                  <Label layoutX="634.0" layoutY="43.0" text="Maniac want to kill: " />
+                  <Label fx:id="maniacWantKillHimLabel" layoutX="772.0" layoutY="44.0" />
+                  <Label layoutX="634.0" layoutY="68.0" text="Doctor want heal: " />
+                  <Label fx:id="doctorWantHealHimLabel" layoutX="743.0" layoutY="69.0" prefHeight="17.0" prefWidth="0.0" />
+                  <Label layoutX="634.0" layoutY="94.0" text="Whore want give alibi: " />
+                  <Label fx:id="whoreWantGiveAnAlibiLabel" layoutX="766.0" layoutY="95.0" />
+                  <Label layoutX="896.0" layoutY="18.0" text="По итогам всех проверок Вам нужно убарть из игры игрока:" />
+                  <Label fx:id="masterShouldDeleteThisPlayer" layoutX="1241.0" layoutY="18.0" />
+                  <Button fx:id="removeThisPlayerBtn" layoutX="896.0" layoutY="49.0" mnemonicParsing="false" onMouseClicked="#removeThisPlayerBtn_Click" style="-fx-border-color: #8B0000;" text="Remove this player?" />
+                  <Button fx:id="startAnalisysBtn" layoutX="165.0" layoutY="90.0" mnemonicParsing="false" onMouseClicked="#startAnalysisBtn_Click" prefHeight="25.0" prefWidth="116.0" style="-fx-border-color: #32CD32;" text="Start analysis" />
                </children>
             </AnchorPane>
          </children>
