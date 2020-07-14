@@ -528,14 +528,45 @@ public class MafiaModelUI {
                 int index = new Random().nextInt(master.getPlayersWerePutOnDeletion().size());
                 residentsKickedOut.setText(master.getPlayersWerePutOnDeletion().get(index).GetCharacters().GetName());
                 master.RemoveChosenPlayer(master.getPlayersWerePutOnDeletion().get(index));
+                master.getPlayersWerePutOnDeletion().clear();
             }
 
+        }
+        CheckTheEndOfGame();
+    }
+
+    private void CheckTheEndOfGame()
+    {
+        if (master.getMafiaDon() != null)
+        {
+            if ((master.getMafias().size() + 1) >= master.getPlayersRemainingInTheGame().size())
+            {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Game over");
+                alert.setContentText("Mafias are winners!\nPlease press 'Remove all players' or 'Init\\Reset master' button");
+                alert.show();
+            }
+        }
+        else if (master.getMafias().size() >= master.getPlayersRemainingInTheGame().size())
+        {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Game over");
+            alert.setContentText("Mafias are winners!\nPlease press 'Remove all players' or 'Init\\Reset master' button");
+            alert.show();
+        }
+        else if (master.getMafias().size() == 0 && master.getMafiaDon() == null)
+        {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Game over");
+            alert.setContentText("Civilians are winners!\nPlease press 'Remove all players' or 'Init\\Reset master' button");
+            alert.show();
         }
     }
 
     @FXML
     void startNightBtn_Click(MouseEvent event)
     {
+        SetButtonsDisable(false);
         if (master.getManiac() == null)
         {
             wakeUpManiacBtn.setDisable(true);
@@ -567,6 +598,9 @@ public class MafiaModelUI {
     @FXML
     void startDayBtn_Click(MouseEvent event)
     {
+        SetButtonsDisable(true);
+        startNightBtn.setDisable(false);
+        startAnalisysBtn.setDisable(false);
         startDiscussingBtn.setDisable(false);
         isNight = false;
     }

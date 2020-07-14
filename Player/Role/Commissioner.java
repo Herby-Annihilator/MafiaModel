@@ -57,7 +57,13 @@ public class Commissioner extends Civilian
     {
         for (int i = 0; i < mafias.size(); i++)
         {
-            owner.playersInGame.get(owner.playersInGame.indexOf(mafias.get(i))).setConfidenceLevel(0);
+            for (int j = 0; j < owner.playersInGame.size(); j++)
+            {
+                if (owner.playersInGame.get(j).getPlayer().equals(mafias.get(i)))
+                {
+                    owner.playersInGame.get(j).setConfidenceLevel(0);
+                }
+            }
         }
         owner.ScanPlayersAndPutThemInColorList();
     }

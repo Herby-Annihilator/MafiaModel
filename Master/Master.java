@@ -30,6 +30,11 @@ public class Master
     private Player mafiaWantKillHim;
     private Player maniacWantKillHim;
 
+    public LinkedList<Player> getPlayersRemainingInTheGame()
+    {
+        return playersRemainingInTheGame;
+    }
+
     private Master()
     {
         allPlayersInGame = new LinkedList<Player>();
@@ -50,6 +55,7 @@ public class Master
         if (!playersRemainingInTheGame.contains(player))
         {
             textArea.setText("Player was removed from the game");
+            return;
         }
         textArea.setText("\tCharacters\n\r" + "Name: " + player.GetCharacters().GetName() + "\n\r" +
                 "Sex: " + player.GetCharacters().GetSex() + "\n\r" + "Age: " + player.GetCharacters().GetAge() + "\n\r" +
@@ -520,7 +526,7 @@ public class Master
     {
         for (int i = 0; i < playerBoxes.length; i++)
         {
-            if (playerBoxes[i].getPlayer().equals(player))
+            if (playerBoxes[i].getPlayer() != null && playerBoxes[i].getPlayer().equals(player))
             {
                 playerBoxes[i].SetDeletedFace();
             }
