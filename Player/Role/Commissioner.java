@@ -119,4 +119,16 @@ public class Commissioner extends Civilian
         super.CandidateWasPutOnDeletion(sender, e);
         NullifyMafia();
     }
+
+    public void RemovePlayerFromSpecialLists(Player player)
+    {
+        if (mafias.contains(player))
+        {
+            mafias.remove(player);
+        }
+        if (checkedPlayers.contains(player))
+        {
+            checkedPlayers.remove(player);
+        }
+    }
 }

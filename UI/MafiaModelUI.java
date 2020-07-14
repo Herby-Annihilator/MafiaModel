@@ -1,6 +1,5 @@
 package UI;
 
-import Builder.Builder;
 import Master.Master;
 import Player.Player;
 import UI.MyControl.PlayerBox;
@@ -17,16 +16,11 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Random;
 
 import static Player.Scenario.factory;
 
 public class MafiaModelUI {
-
-    @FXML
-    private Button removeThisPlayerBtn;
-
-    @FXML
-    private Button startAnalisysBtn;
 
     @FXML
     private AnchorPane root;
@@ -182,12 +176,6 @@ public class MafiaModelUI {
     private Button initMasterBtn;
 
     @FXML
-    private Button startGameBtn;
-
-    @FXML
-    private Button endGameBtn;
-
-    @FXML
     private Button createPlayerBtn;
 
     @FXML
@@ -229,13 +217,31 @@ public class MafiaModelUI {
     @FXML
     private Label whoreWantGiveAnAlibiLabel;
 
+    @FXML
+    private Button startAnalisysBtn;
+
+    @FXML
+    private Button startNightBtn;
+
+    @FXML
+    private Button startDayBtn;
+
+    @FXML
+    private Label mafiasKilled;
+
+    @FXML
+    private Label maniacKilled;
+
+    @FXML
+    private Label residentsKickedOut;
+
     //
     // Java is fucking language, that's why I am forced to leave this block of code framed in a comment
     //
     private CreatePlayers createPlayersForm;
     private Master master;
     public PlayerBox[] playersInGame;
-    public Builder builder;
+    private boolean isNight = false;
     //
     // end of block. Java is shit
     //
@@ -277,7 +283,9 @@ public class MafiaModelUI {
         }
         master.setPlayerBoxes(playersInGame);
         master.SetAllPlayersParameters();
-        SetButtonsDisable(false);
+        tellAStoryBtn.setDisable(false);
+        startDayBtn.setDisable(false);
+        startNightBtn.setDisable(false);
     }
 
     @FXML
@@ -425,6 +433,8 @@ public class MafiaModelUI {
     private void SetButtonsDisable(boolean isDisable)
     {
         initMasterBtn.setDisable(isDisable);
+        startNightBtn.setDisable(isDisable);
+        startDayBtn.setDisable(isDisable);
         startDiscussingBtn.setDisable(isDisable);
         tellAStoryBtn.setDisable(isDisable);
         wakeUpCommissionerBtn.setDisable(isDisable);
@@ -433,7 +443,6 @@ public class MafiaModelUI {
         wakeUpMafiaDonBtn.setDisable(isDisable);
         wakeUpManiacBtn.setDisable(isDisable);
         wakeUpWhoreBtn.setDisable(isDisable);
-        removeThisPlayerBtn.setDisable(isDisable);
         startAnalisysBtn.setDisable(isDisable);
     }
 
@@ -454,15 +463,111 @@ public class MafiaModelUI {
         playersInGame[11] = new PlayerBox(twelfthPlayerName,twelfthPlayerRole,twelfthPlayerPane, twelfthPlayerText);
     }
 
-    @FXML
-    void removeThisPlayerBtn_Click(MouseEvent event)
-    {
-
-    }
 
     @FXML
     void startAnalysisBtn_Click(MouseEvent event)
     {
+        maniacKilled.setText("");
+        mafiasKilled.setText("");
+        residentsKickedOut.setText("");
+        if (isNight)
+        {
+            boolean playerShouldBeKilledByMafia = false;
+            boolean playerShouldBeKilledByManiac = false;
+            if (master.getManiacWantKillHim() != null)
+            {
+                playerShouldBeKilledByManiac = true;
+                if (master.getPlayerYouWillHeal() != null)
+                {
+                    if (master.getManiacWantKillHim().equals(master.getPlayerYouWillHeal()))
+                    {
+                        playerShouldBeKilledByManiac = false;
+                    }
+                }
+                if (master.getPlayerWillHasAnAlibi() != null)
+                {
+                    if (master.getManiacWantKillHim().equals(master.getPlayerWillHasAnAlibi()))
+                    {
+                        playerShouldBeKilledByManiac = false;
+                    }
+                }
+            }
+            if (master.getMafiaWantKillHim() != null)
+            {
+                playerShouldBeKilledByMafia = true;
+                if (master.getPlayerYouWillHeal() != null)
+                {
+                    if (master.getMafiaWantKillHim().equals(master.getPlayerYouWillHeal()))
+                    {
+                        playerShouldBeKilledByMafia = false;
+                    }
+                }
+                if (master.getPlayerWillHasAnAlibi() != null)
+                {
+                    if (master.getMafiaWantKillHim().equals(master.getPlayerWillHasAnAlibi()))
+                    {
+                        playerShouldBeKilledByMafia = false;
+                    }
+                }
+            }
+            if (playerShouldBeKilledByMafia)
+            {
+                mafiasKilled.setText(master.getMafiaWantKillHim().GetCharacters().GetName());
+                master.RemoveChosenPlayer(master.getMafiaWantKillHim());
+            }
+            if (playerShouldBeKilledByManiac)
+            {
+                maniacKilled.setText(master.getManiacWantKillHim().GetCharacters().GetName());
+                master.RemoveChosenPlayer(master.getManiacWantKillHim());
+            }
+        }
+        else
+        {
+            if (master.getPlayersWerePutOnDeletion() != null)
+            {
+                int index = new Random().nextInt(master.getPlayersWerePutOnDeletion().size());
+                residentsKickedOut.setText(master.getPlayersWerePutOnDeletion().get(index).GetCharacters().GetName());
+                master.RemoveChosenPlayer(master.getPlayersWerePutOnDeletion().get(index));
+            }
 
+        }
+    }
+
+    @FXML
+    void startNightBtn_Click(MouseEvent event)
+    {
+        if (master.getManiac() == null)
+        {
+            wakeUpManiacBtn.setDisable(true);
+        }
+        if (master.getMafiaDon() == null)
+        {
+            wakeUpMafiaDonBtn.setDisable(true);
+        }
+        if (master.getMafias() == null)
+        {
+            wakeUpMafiaBtn.setDisable(true);
+        }
+        if (master.getDoctor() == null)
+        {
+            wakeUpDoctorBtn.setDisable(true);
+        }
+        if (master.getCommissioner() == null)
+        {
+            wakeUpCommissionerBtn.setDisable(true);
+        }
+        if (master.getWhore() == null)
+        {
+            wakeUpWhoreBtn.setDisable(true);
+        }
+        startDiscussingBtn.setDisable(true);
+        isNight = true;
+    }
+
+    @FXML
+    void startDayBtn_Click(MouseEvent event)
+    {
+        startDiscussingBtn.setDisable(false);
+        isNight = false;
     }
 }

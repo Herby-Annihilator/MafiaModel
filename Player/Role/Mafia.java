@@ -102,10 +102,19 @@ public class Mafia extends Role
             nextPlayerToKill = owner.playersInGame.get(0).getPlayer();
         }
         master.TakeThePlayerToBeKilled(nextPlayerToKill);
+        nextPlayerToKill = null;
     }
 
     public void AddMafiaToMafiasList(Player player)
     {
         mafias.add(player);
+    }
+
+    public void RemovePlayerFromSpecialLists(Player player)
+    {
+        if (mafias.contains(player))
+        {
+            mafias.remove(player);
+        }
     }
 }

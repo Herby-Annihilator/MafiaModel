@@ -225,9 +225,9 @@ public abstract class Player
         rolePublishedEvent.NotifySubscribers(this, new RolePublishedEventArgs(role.GetRoleName()));
     }
 
-    public Player PutCandidateForDeletion(Player player)
+    public void PutCandidateForDeletion(Master master)
     {
-        Player toReturn = null;
+        Player toReturn;
         if (!blackList.isEmpty())
         {
             toReturn = FindPlayerWithLessConfidenceLevel(blackList);
@@ -236,8 +236,12 @@ public abstract class Player
         {
             toReturn = FindPlayerWithLessConfidenceLevel(grayList);
         }
+        else
+        {
+            toReturn = playersInGame.get(new Random().nextInt(playersInGame.size())).getPlayer();
+        }
         candidateWasPutOnDeletionEvent.NotifySubscribers(this, new CandidateWasPutOnDeletionEventArgs(toReturn));
-        return toReturn;
+        master.TakePlayerWasPutOnDeletion(toReturn);
     }
 
     protected Player FindPlayerWithLessConfidenceLevel(LinkedList<Player> list)
@@ -256,6 +260,30 @@ public abstract class Player
             toReturn = playersInGame.get(indexOfReturnedPlayer).getPlayer();
         }
         return toReturn;
+    }
+
+    public void RemovePlayerFromPlayersLists(Player player)
+    {
+        for (int i = 0; i < playersInGame.size(); i++)
+        {
+            if (playersInGame.get(i).getPlayer().equals(player))
+            {
+                playersInGame.remove(i);
+                break;
+            }
+        }
+        if (blackList.contains(player))
+        {
+            blackList.remove(player);
+        }
+        if (grayList.contains(player))
+        {
+            grayList.remove(player);
+        }
+        if (redList.contains(player))
+        {
+            redList.remove(player);
+        }
     }
 
     @Override

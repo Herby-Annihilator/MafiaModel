@@ -47,6 +47,10 @@ public class Master
         {
             return;
         }
+        if (!playersRemainingInTheGame.contains(player))
+        {
+            textArea.setText("Player was removed from the game");
+        }
         textArea.setText("\tCharacters\n\r" + "Name: " + player.GetCharacters().GetName() + "\n\r" +
                 "Sex: " + player.GetCharacters().GetSex() + "\n\r" + "Age: " + player.GetCharacters().GetAge() + "\n\r" +
                 "Oratory: " + player.GetCharacters().GetOratory() + "\n\r" + "Stress resistance: " +
@@ -56,7 +60,7 @@ public class Master
                 "\n\r" + "Willpower: " + player.GetCharacters().GetWillPower() + "\n\r" + "Optimism: " +
                 player.GetCharacters().GetOptimism() + "\n\r" + "Humor: " + player.GetCharacters().GetHumor() + "\n\r\n\r" +
                 "Role: " + player.GetRole().GetRoleName() + "\n\r\n\r" + "Black list: " + showColorListOfPlayer(player.blackList) +
-                "\n\r" + "Gray list: " + showColorListOfPlayer(player.grayList) + "\n\r" + "Red list: " +
+                "\n\r\n\r" + "Gray list: " + showColorListOfPlayer(player.grayList) + "\n\r\n\r" + "Red list: " +
                 showColorListOfPlayer(player.redList));
     }
 
@@ -67,8 +71,8 @@ public class Master
         {
             for (int i = 0; i < colorList.size(); i++)
             {
-                toReturn += colorList.get(i).GetCharacters().GetName() + " ";
-                if (i % 3 == 0)
+                toReturn += colorList.get(i).GetCharacters().GetName() + ", ";
+                if (i != 0 && i % 3 == 0)
                 {
                     toReturn += "\n\r";
                 }
@@ -296,6 +300,11 @@ public class Master
         this.playerBoxes = playerBoxes;
     }
 
+    public LinkedList<Player> getPlayersWerePutOnDeletion()
+    {
+        return playersWerePutOnDeletion;
+    }
+
     public boolean IsThisPlayerRoleYouNeed(Player sender, Player verifiedPlayer)
     {
         if (sender.GetRole().GetRoleName().equals("Commissioner"))
@@ -484,6 +493,7 @@ public class Master
             }
             allPlayersInGame = new LinkedList<Player>();
         }
+        playersRemainingInTheGame = new LinkedList<Player>();
     }
 
     public Player getPlayerYouWillHeal()
@@ -506,13 +516,42 @@ public class Master
         return maniacWantKillHim;
     }
 
-    public void startAnalysis()
+    public void RemoveChosenPlayer(Player player)
     {
-
-    }
-
-    public void RemoveChosenPlayer()
-    {
-        
+        for (int i = 0; i < playerBoxes.length; i++)
+        {
+            if (playerBoxes[i].getPlayer().equals(player))
+            {
+                playerBoxes[i].SetDeletedFace();
+            }
+        }
+        for (int i = 0; i < playersRemainingInTheGame.size(); i++)
+        {
+            if (playersRemainingInTheGame.get(i).equals(player))
+            {
+                playersRemainingInTheGame.remove(player);
+                i--;
+            }
+            else
+            {
+                UnsubscribePlayer(player);
+                playersRemainingInTheGame.get(i).RemovePlayerFromPlayersLists(player);
+            }
+        }
+        if (mafias != null && mafias.contains(player))
+        {
+            for (int i = 0; i < mafias.size(); i++)
+            {
+                ((Mafia)mafias.get(i).GetRole()).RemovePlayerFromSpecialLists(player);
+            }
+        }
+        if (mafiaDon != null)
+        {
+            ((MafiaDon)mafiaDon.GetRole()).RemovePlayerFromSpecialLists(player);
+        }
+        if (commissioner != null)
+        {
+            ((Commissioner)commissioner.GetRole()).RemovePlayerFromSpecialLists(player);
+        }
     }
 }

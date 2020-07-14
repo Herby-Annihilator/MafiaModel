@@ -6,7 +6,6 @@ import Player.Role.Civilian;
 import Player.Role.Role;
 
 import java.util.LinkedList;
-import java.util.Random;
 
 public class Person extends Player
 {
@@ -49,27 +48,23 @@ public class Person extends Player
     @Override
     public void Discuss(Master master)
     {
-        Player playerToDelete = null;
         Substitute(blackList);
         Substitute(grayList);
         MakeExcuses();
         if (!blackList.isEmpty())
         {
-            playerToDelete = blackList.get(new Random().nextInt(blackList.size()));
-            PutCandidateForDeletion(playerToDelete);
+            PutCandidateForDeletion(master);
         }
         else if (!grayList.isEmpty())
         {
-            playerToDelete = grayList.get(new Random().nextInt(grayList.size()));
-            PutCandidateForDeletion(playerToDelete);
+            PutCandidateForDeletion(master);
         }
         else if (!redList.isEmpty())
         {
             if (master.DoesMeReallyNeedToPutPlayerOnDeletion())
             {
-                playerToDelete = grayList.get(new Random().nextInt(grayList.size()));
+                PutCandidateForDeletion(master);
             }
-            PutCandidateForDeletion(playerToDelete);
         }
     }
 

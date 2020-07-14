@@ -78,4 +78,14 @@ public class MafiaDon extends Mafia
     {
         commissioner = null;
     }
+
+    @Override
+    public void RemovePlayerFromSpecialLists(Player player)
+    {
+        super.RemovePlayerFromSpecialLists(player);
+        if (commissioner != null)
+        {
+            commissioner = null;
+        }
+    }
 }

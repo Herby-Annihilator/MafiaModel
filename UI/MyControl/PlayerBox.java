@@ -48,6 +48,24 @@ public class PlayerBox
         }
     }
 
+    public void SetDeletedFace()
+    {
+        try
+        {
+            File currentDir = new File("");
+            String path = currentDir.getAbsolutePath() + "\\Images\\" + "deleted" + ".jpg";
+            Image image = new Image(new FileInputStream(path));
+            setPlayerFace(image);
+        }
+        catch (FileNotFoundException e)
+        {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Error");
+            alert.setHeaderText("Image 'deleted' not found");
+            alert.show();
+        }
+    }
+
     public Label getPlayerName()
     {
         return playerName;
