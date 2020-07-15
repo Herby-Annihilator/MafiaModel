@@ -5,9 +5,15 @@ import Player.PlayerWithConfidenceLevel;
 import Player.Role.*;
 import Player.Scenario;
 import UI.MyControl.PlayerBox;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextArea;
+import javafx.scene.image.Image;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.LinkedList;
+import java.util.Random;
 
 public class Master
 {
@@ -135,6 +141,7 @@ public class Master
             {
                 if (playerBoxes[i].getPlayer() != null)
                 {
+                    playerBoxes[i].setPlayerFace(GetRandomImage());
                     allPlayersInGame.add(playerBoxes[i].getPlayer());
                     playersRemainingInTheGame.add(playerBoxes[i].getPlayer());
                     SubscribeThisPlayerOnOtherPlayersEvents(playerBoxes[i].getPlayer());
@@ -170,6 +177,25 @@ public class Master
                 }
             }
             IntroduceMafias();
+        }
+    }
+
+    private Image GetRandomImage()
+    {
+        try
+        {
+            File currentDir = new File("");
+            String path = currentDir.getAbsolutePath() + "\\Images\\" + (new Random().nextInt(10) + 1) + ".jpg";
+            Image image = new Image(new FileInputStream(path));
+            return image;
+        }
+        catch (FileNotFoundException e)
+        {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Error");
+            alert.setHeaderText("Image not found");
+            alert.show();
+            return null;
         }
     }
 
@@ -544,6 +570,7 @@ public class Master
                 playersRemainingInTheGame.get(i).RemovePlayerFromPlayersLists(player);
             }
         }
+        RemovePlayerIfItHasSpecialRole(player);
         if (mafias != null && mafias.contains(player))
         {
             for (int i = 0; i < mafias.size(); i++)
@@ -558,6 +585,59 @@ public class Master
         if (commissioner != null)
         {
             ((Commissioner)commissioner.GetRole()).RemovePlayerFromSpecialLists(player);
+        }
+    }
+
+    private void RemovePlayerIfItHasSpecialRole(Player player)
+    {
+        if (player != null)
+        {
+            if (doctor != null)
+            {
+                if (doctor.equals(player))
+                {
+                    doctor = null;
+                }
+            }
+            else if (maniac != null)
+            {
+                if (maniac.equals(player))
+                {
+                    maniac = null;
+                }
+            }
+            else if (mafiaDon != null)
+            {
+                if (mafiaDon.equals(player))
+                {
+                    mafiaDon = null;
+                }
+            }
+            else if (whore != null)
+            {
+                if (whore.equals(player))
+                {
+                    whore = null;
+                }
+            }
+            else if (commissioner != null)
+            {
+                if (commissioner.equals(player))
+                {
+                    commissioner = null;
+                }
+            }
+            else if (mafias != null)
+            {
+                for (int i = 0; i < mafias.size(); i++)
+                {
+                    if (mafias.get(i).equals(player))
+                    {
+                        mafias.remove(player);
+                        break;
+                    }
+                }
+            }
         }
     }
 }

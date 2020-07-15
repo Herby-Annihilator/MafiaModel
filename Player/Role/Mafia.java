@@ -33,9 +33,16 @@ public class Mafia extends Role
     {
         for (int i = 0; i < owner.playersInGame.size(); i++)
         {
-            if (owner.playersInGame.get(i).getPlayer() == player)
+            if (owner.playersInGame.get(i).getPlayer().equals(player))
             {
-                owner.playersInGame.get(i).setConfidenceLevel(new Random().nextInt(70));
+                if (mafias.contains(player))
+                {
+                    owner.playersInGame.get(i).setConfidenceLevel(90);
+                }
+                else
+                {
+                    owner.playersInGame.get(i).setConfidenceLevel(new Random().nextInt(70));
+                }
                 break;
             }
         }

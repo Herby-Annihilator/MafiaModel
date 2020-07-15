@@ -8,16 +8,11 @@ import Player.Role.*;
 import UI.MyControl.PlayerBox;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.util.LinkedList;
-import java.util.Random;
 
 
 public class CreatePlayers {
@@ -155,38 +150,48 @@ public class CreatePlayers {
     @FXML
     void CreatePlayerBtn_Click(MouseEvent event)
     {
-        if (IsThisFuckingTextFieldsEmpty())
+        try
         {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Error");
-            alert.setHeaderText("You are moron and Java is a shit");
-            alert.setContentText("You must fill all text fields!!!!");
-            alert.show();
-        }
-        else if (tempPlayers.size() >= MAX_PLAYERS_COUNT)
-        {
-            playerID.setText("You can't create any players! Please, push Accept button");
-
-        }
-        else
-        {
-            Player player = createPlayer();
-            if (!setRole(player))
+            if (IsThisFuckingTextFieldsEmpty())
             {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Error");
                 alert.setHeaderText("You are moron and Java is a shit");
-                alert.setContentText("You must chose Role!!!!");
+                alert.setContentText("You must fill all text fields!!!!");
                 alert.show();
+            }
+            else if (tempPlayers.size() >= MAX_PLAYERS_COUNT)
+            {
+                playerID.setText("You can't create any players! Please, press 'Accept' button");
+
             }
             else
             {
-                player = setEducationIfNecessary(player);
-                player = setFetishIfNecessary(player);
-                player = setTemperamentIfNecessary(player);
-                tempPlayers.add(player);
-                playerID.setText("Player " + (tempPlayers.size() - 1) + " created!");
+                Player player = createPlayer();
+                if (!setRole(player))
+                {
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Error");
+                    alert.setHeaderText("You are moron and Java is a shit");
+                    alert.setContentText("You must chose Role!!!!");
+                    alert.show();
+                }
+                else
+                {
+                    player = setEducationIfNecessary(player);
+                    player = setFetishIfNecessary(player);
+                    player = setTemperamentIfNecessary(player);
+                    tempPlayers.add(player);
+                    playerID.setText("Player " + (tempPlayers.size() - 1) + " created!");
+                }
             }
+        }
+        catch (Exception e)
+        {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setContentText("One or several fields have wrong data");
+            alert.show();
         }
     }
 
@@ -199,28 +204,8 @@ public class CreatePlayers {
         for (int i = 0; i < tempPlayers.size(); i++)
         {
             players[i].setPlayer(tempPlayers.get(i));
-            players[i].setPlayerFace(GetRandomImage());
         }
         ((Stage)(AcceptBtn.getScene().getWindow())).close();
-    }
-
-    private Image GetRandomImage()
-    {
-        try
-        {
-            File currentDir = new File("");
-            String path = currentDir.getAbsolutePath() + "\\Images\\" + (new Random().nextInt(10) + 1) + ".jpg";
-            Image image = new Image(new FileInputStream(path));
-            return image;
-        }
-        catch (FileNotFoundException e)
-        {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Error");
-            alert.setHeaderText("Image not found");
-            alert.show();
-            return null;
-        }
     }
 
     private boolean setRole(Player player)

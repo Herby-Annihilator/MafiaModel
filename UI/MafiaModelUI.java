@@ -539,20 +539,24 @@ public class MafiaModelUI {
     {
         if (master.getMafiaDon() != null)
         {
-            if ((master.getMafias().size() + 1) >= master.getPlayersRemainingInTheGame().size())
+            if ((master.getMafias().size() + 1) >= (master.getPlayersRemainingInTheGame().size() - (master.getMafias().size() + 1)))
             {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Game over");
                 alert.setContentText("Mafias are winners!\nPlease press 'Remove all players' or 'Init\\Reset master' button");
                 alert.show();
+                SetButtonsDisable(true);
+                initMasterBtn.setDisable(false);
             }
         }
-        else if (master.getMafias().size() >= master.getPlayersRemainingInTheGame().size())
+        else if (master.getMafias().size() >= (master.getPlayersRemainingInTheGame().size() - master.getMafias().size()))
         {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Game over");
             alert.setContentText("Mafias are winners!\nPlease press 'Remove all players' or 'Init\\Reset master' button");
             alert.show();
+            SetButtonsDisable(true);
+            initMasterBtn.setDisable(false);
         }
         else if (master.getMafias().size() == 0 && master.getMafiaDon() == null)
         {
@@ -560,6 +564,8 @@ public class MafiaModelUI {
             alert.setTitle("Game over");
             alert.setContentText("Civilians are winners!\nPlease press 'Remove all players' or 'Init\\Reset master' button");
             alert.show();
+            SetButtonsDisable(true);
+            initMasterBtn.setDisable(false);
         }
     }
 
@@ -592,6 +598,7 @@ public class MafiaModelUI {
             wakeUpWhoreBtn.setDisable(true);
         }
         startDiscussingBtn.setDisable(true);
+        startNightBtn.setDisable(true);
         isNight = true;
     }
 
